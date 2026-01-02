@@ -222,6 +222,12 @@ let SuperMario, ShoppingCart
 // - 학년 (변경 가능)
 // - 학번 (변경 불가)
 // - 학교 이름 (변경 불가)
+const STUDENTL_ID = '123456'
+const SCHOOL_NAME = '멋쟁이 사자처럼 스쿨'
+let studentName = '장예지'
+let studentGrade = '3학년'
+
+console.log(studentName, studentGrade,SCHOOL_NAME,STUDENTL_ID)
 
 // 문제 2: 도서관 책 정보를 저장하는 변수를 만드세요.
 // - 책 제목 (변경 불가)
@@ -229,12 +235,32 @@ let SuperMario, ShoppingCart
 // - 대출 가능 여부 (변경 가능)
 // - 대출 횟수 (변경 가능)
 
+const BOOK_TITLE = '자바스크립트 16기 학습 노트'
+const AUTHOR = '멋쟁이 사자처럼'
+let canBorrow = true
+let borrowCount = 4
+console.log(
+'도서명:',BOOK_TITLE, '\n',
+'저자:',AUTHOR, '\n',
+'대출 가능 여부:', canBorrow,'\n', 
+'대출 횟수:',borrowCount
+)
+
 // 문제 3: 온라인 쇼핑몰 장바구니를 만드세요.
 // - 상품명 (변경 불가)
 // - 가격 (변경 불가)
 // - 수량 (변경 가능)
 // - 총 금액 (변경 가능)
 
+const PRODUCT_NAME = '자바스크립트 학습서'
+const PRODUCT_PRICE = 20000
+let productCount = 5
+let totalPrice = PRODUCT_PRICE * productCount
+
+console.log('상품명:',PRODUCT_NAME)
+console.log('가격:',PRODUCT_PRICE,'원')
+console.log('수량:',productCount)
+console.log('총 금액:',totalPrice,'원')
 
 // --------------------------------------------------------------------------
 // 요약 및 베스트 프랙티스
