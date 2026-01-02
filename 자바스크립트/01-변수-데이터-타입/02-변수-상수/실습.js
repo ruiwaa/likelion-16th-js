@@ -222,12 +222,12 @@ let SuperMario, ShoppingCart
 // - 학년 (변경 가능)
 // - 학번 (변경 불가)
 // - 학교 이름 (변경 불가)
-const STUDENTL_ID = '123456'
+const STUDENT_ID = '123456'
 const SCHOOL_NAME = '멋쟁이 사자처럼 스쿨'
 let studentName = '장예지'
 let studentGrade = '3학년'
 
-console.log(studentName, studentGrade,SCHOOL_NAME,STUDENTL_ID)
+console.log(studentName, studentGrade, SCHOOL_NAME, STUDENT_ID)
 
 // 문제 2: 도서관 책 정보를 저장하는 변수를 만드세요.
 // - 책 제목 (변경 불가)
@@ -243,7 +243,7 @@ console.log(
 '도서명:',BOOK_TITLE, '\n',
 '저자:',AUTHOR, '\n',
 '대출 가능 여부:', canBorrow,'\n', 
-'대출 횟수:',borrowCount
+'대출 횟수:',borrowCount,'회'
 )
 
 // 문제 3: 온라인 쇼핑몰 장바구니를 만드세요.
