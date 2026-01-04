@@ -240,10 +240,10 @@ const AUTHOR = '멋쟁이 사자처럼'
 let canBorrow = true
 let borrowCount = 4
 console.log(
-'도서명:',BOOK_TITLE, '\n',
-'저자:',AUTHOR, '\n',
-'대출 가능 여부:', canBorrow,'\n', 
-'대출 횟수:',borrowCount,'회'
+`도서명 : ${BOOK_TITLE} \n`,
+`저자 : ${AUTHOR} \n`,
+`대출 가능 여부 : ${canBorrow} \n`, 
+`대출 횟수 : ${borrowCount}, 회`,
 )
 
 // 문제 3: 온라인 쇼핑몰 장바구니를 만드세요.
