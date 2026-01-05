@@ -126,8 +126,13 @@ console.log(9 % 2);
 // --------------------------------------------------------------------------
 
 // true 값
+console.log(true);
+console.log(3 == '3'); //비교 연산자(참,거짓 비교하는 것)
 
 // false 값
+console.log(false);
+console.log(3 === '3'); //비교 연산자
+
 
 
 // --------------------------------------------------------------------------
@@ -137,14 +142,34 @@ console.log(9 % 2);
 // null 값 - 의도적으로 비어있음
 // 예시:
 // * 선택된 인덱스
+let selectedIndex = null // 개발자가 의도를 가지고 값을 비운 경우를 나타냄
+console.log(selectedIndex);
+selectedIndex = 3 // 4번째 박스가 선택됨 (상태)
+console.log(selectedIndex);
+selectedIndex = 1 // 2번째 박스가 선택됨 (상태: 시간의 흐름에 따라 변경된 값)
+console.log(selectedIndex);
+
 // * 로그인 사용자
+let signInUser = null //로그인된 사용자가 없다. (의도를 가지고 있음)
+// 로그인 시도
+// 로그인 성공
+signInUser = '예지'
+console.log('로그인 사용자:', signInUser);
+// 로그아웃
+signInUser = null // 로그인 사용자가 없다. (상태 변경)
+console.log('로그인 사용자: ', signInUser)
 
 
 // --------------------------------------------------------------------------
 // 언디파인드 (Undefined)
 // --------------------------------------------------------------------------
+let xMark ='엑스 마크'
+let yMark
+console.log(yMark)
 
-// 선언만 하고 값을 할당하지 않음
+// 선언만 하고 값을 할당하지 않음 (의도를 가지고 설정하는 값이 아님.)
+// 1. 선언
+// 2. 초기화: 의도적으로 값을 할당하지 않음
 
 // undefined vs null 비교
 // undefined → 값이 없음 (자동)
