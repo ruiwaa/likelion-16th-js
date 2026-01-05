@@ -179,11 +179,20 @@ console.log(yMark)
 // --------------------------------------------------------------------------
 // 심볼 (Symbol)
 // --------------------------------------------------------------------------
+// 문자값의 경우, 같은 키 값인 경우 동일한 값이다.
+const ProductAId = 'abc',
+      ProductBId = 'abc'
 
 // 심볼 생성 - 항상 고유한 값
+// 심볼인 경우, 같은 키 값을 사용해도 각각 고유한 값이다.
 
-// 설명이 있는 심볼
+const productAIDSymbol = Symbol('abc')
+const productBIDSymbol = Symbol('abc')
 
+// 고유한 값인가? (조건 : productAId와 productBId가 값이 달라야 한다.)
+// 비교 연산자(두 값을 비교 -> 불리언 값 평가)
+console.log('문자열을 사용할 때 고유하지 않은가?:', ProductAId == ProductBId)
+console.log('심볼을 사용할 때 고유하지 않다?:', productAIDSymbol == productBIDSymbol);
 
 // --------------------------------------------------------------------------
 // 빅인트 (BigInt)
