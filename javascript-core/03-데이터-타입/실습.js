@@ -199,17 +199,22 @@ console.log('심볼을 사용할 때 고유하지 않다?:', productAIDSymbol ==
 // --------------------------------------------------------------------------
 
 // 일반 숫자의 한계
-// * Number.MAX_SAFE_INTEGER
+// * Number.MAX_SAFE_INTEGER (9007199254740991)
 // * +1 한계 초과
 // * +2 정확하지 않음
 
 // BigInt 생성 - 숫자 뒤에 n 붙이기
+const bigIntLiteral = 1000n
+console.log(bigIntLiteral)
 
 // BigInt() 사용
-
+const bigInt =  BigInt(1000)
+console.log(bigInt)
 // BigInt와 Number는 섞을 수 없음
 // ❌ 숫자와 빅인트를 더할 경우 에러!
+//console.log(1000 + 1000n) ❌
 // ✅ 빅인트끼리 더할 경우 가능
+console.log(100n + 1000n)
 
 
 // --------------------------------------------------------------------------
