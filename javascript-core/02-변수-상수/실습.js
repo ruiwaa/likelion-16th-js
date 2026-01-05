@@ -85,7 +85,7 @@ console.log('screen_height =', screen_height)
 // 상수 선언과 동시에 값 할당 (필수!)
 // 상수는 uppercase를 사용하여 입력한다.
 const 상수 = '고정된 값'
-console.log(상수)
+// console.log(상수)
 // 상수는 재할당 불가능
 // ❌ 에러 발생! TypeError: Assignment to constant variable.
 
@@ -159,7 +159,7 @@ let margin_block_start
 let user_name
 
 // 카멜 케이스 (camelCase) - 변수 또는 함수 이름 권장
-let paddingInlineEnd, userName
+let paddingInlineEnd
 
 // 파스칼 케이스 (PascalCase) - 클래스, 생성자
 let SuperMario, ShoppingCart
@@ -172,19 +172,37 @@ let SuperMario, ShoppingCart
 // 사용자 정보 관리
 // --------------------------------------------------------------------------
 
+console.log('실행 시작!')
+
 // 사용자 기본 정보 (let 사용 - 변경 가능)
 // * 이름
+let userName = '장예지'
 // * 나이
+let userAge = 97
 // * 이메일
+let userEmail = 'ji6129@naver.com'
+console.log('변경 전:',userName, userAge, userEmail)
 
 // 정보 업데이트
+userName = 'ruizhi'
+userAge = 30
+userEmail = 'yeejii08@gamil.com'
+console.log('변경 후:',userName, userAge, userEmail)
+
+
 
 // 시스템 설정 (const 사용 - 변경 불가)
 // * 시스템 이름
+const SYSTEM_NAME = 'macOS'
 // * 시스템 버전
+const SYSTEM_VERSION = '15.6.2'
 // * 최대 로그인 시도 횟수
+const MAX_LOGIN_ATTEMPTS = 5
 // * 세션 타임아웃
+const SESSION_TIMEOUT = 3000 //3s(3000ms)
 
+// ❌ TypeError 상수에 다른 값을 할당하려 했기 때문
+// SYSTEM_NAME = 'Windows'
 
 // --------------------------------------------------------------------------
 // 쇼핑몰 상품 관리
@@ -192,14 +210,22 @@ let SuperMario, ShoppingCart
 
 // 상품 정보 (변경 가능한 변수)
 // * 상품 이름
+let productName = '노트북'
 // * 상품 가격
+let productPrice = 98_000
 // * 상품 재고
+let productInventory = 102
 // * 상품 카테고리
+let productCategory = '디지털 기기 / 랩탑'
+
 
 // 시스템 상수 (변경 불가)
 // * 부가세 10%
+const SURTAX = 0.1
 // * 무료배송 기준 40,000원
+const SHIPPING_FREE = 40_000
 // * 최소 주문 금액 10,000원
+const MIN_ORDER_AMOUNT = 10_000
 
 
 // --------------------------------------------------------------------------
