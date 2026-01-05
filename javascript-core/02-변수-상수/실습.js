@@ -288,6 +288,30 @@ console.log('가격:',PRODUCT_PRICE,'원')
 console.log('수량:',productCount)
 console.log('총 금액:',totalPrice,'원')
 
+// 1. `const` 키워드를 사용해 값이 변하지 않는 상수를 선언해봅니다.
+//     1. "하루는 24시간"
+const HOURS_PER_DAY = '24h'
+//     2. "물의 어는 점은 섭씨 0도"
+const WATER_FREEZING_POINT = 0
+//     3. "삼각형 내각의 합은 180도"
+const TRIANGLE_ANGLE_SUM = 180
+//     4. "지구의 중력 가속도는 9.8 m/s²"
+const EARTH_GRAVITY = 9.8
+console.log('하루 시간:', HOURS_PER_DAY)
+console.log('물의 어는 점:', WATER_FREEZING_POINT)
+console.log('삼각형 내각의 합:', TRIANGLE_ANGLE_SUM)
+console.log('지구의 중력 가속도:', EARTH_GRAVITY)
+
+// 2. 다음 내용을 코드로 작성해 결과 값을 콘솔 패널에 출력해보세요.
+//     1. `let` 키워드를 사용해 `sum` 변수를 선언하고 값을 `0`으로 설정합니다.
+let sum = 0
+//     2. `num1`, `num2` 변수를 선언하고, 각각 `300`, `50`으로 값을 설정합니다.
+let num1 = 300
+let num2 = 50
+//     3. `num1`, `num2`의 합을 `sum` 변수에 할당합니다.
+sum = num1 + num2
+console.log(sum)
+
 
 // --------------------------------------------------------------------------
 // 요약 및 베스트 프랙티스
