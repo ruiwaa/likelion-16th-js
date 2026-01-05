@@ -234,6 +234,14 @@ console.log('3. 커피를 추출하고 있습니다.')
 console.log(커피_만들기('케냐', '뜨거운 물', true))
 
 // 객체
+const coffeeMenu = {
+  name: '아메리카노',
+  price: 4500,
+  size: 'Large',
+  isHot:true,
+  ingredients: ['에스프레소', '물', '크림'],
+}
+console.log(coffeeMenu);
 
 // 배열
 
