@@ -45,26 +45,80 @@ console.log('줄바꿈\n문자');
 // * \t -tab
 console.log('탭\t문자');
 
+// 문자 + 문자 (문자 연결)
+const materialType = '아이언'
+const heroGender = '맨'
+const hero = materialType + heroGender
+console.log(hero); // '아이언' + '맨' = '아이언맨'
+console.log('Java' + 'Script');
+
+console.log('1' + '1') // '11' 이라는 문자열이 만들어진다.
+
+
 
 // --------------------------------------------------------------------------
 // 숫자 (Number)
 // --------------------------------------------------------------------------
 
 // 정수
+1076840
+console.log(107840);
+
+
+// 가독성을 위한 언더스코어 (ES2021)
+1_076_840
+console.log(1_076_840);
+
 
 // 실수 (정수 + 소수)
+console.log(823 + 0.73);
 
 // 음수
+console.log(-100);
 
 // 큰 숫자
 
-// 과학적 표기법
+// 과학적(지수) 표기법
 // 2.5 × 10^6 = 2,500,000
+console.log(25e5);
+
 
 // 특수 숫자 값
 // * Infinity
 // * -Infinity
-// * NaN
+// * NaN(Not a Number)
+
+//자바스크립트에서 허용하는 큰/작은 정수
+// NUMBER.MAX_SAFE_INTEGER
+// NUMBER.MIN_SAFE_INTEGER
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(Number.MIN_SAFE_INTEGER);
+
+
+//숫자 데이터 타입 & 산술 연산자 
+//프로그래밍 산술 연산자 (+, -, *, /)
+// 덧셈(add) 연산
+console.log(9 +1);
+console.log(-100 + 90);
+console.log(0.9 + 0.2);
+
+// 뺄셈(substract) 연산
+console.log(90 - 10);
+console.log(0.5 - 0.3);
+
+// 곱셉(multiple) 연산
+console.log(90 * 10);
+console.log(0.5 * 0.3);
+
+// 나눗셈(divide) 연산
+console.log(90 / 10);
+console.log(0.5 / 0.3);
+
+//나머지(modulus) 연산
+console.log(9 % 3);
+console.log(100 % 20);
+console.log(9 % 2);
+
 
 
 // --------------------------------------------------------------------------
