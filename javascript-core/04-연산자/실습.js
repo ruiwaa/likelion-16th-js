@@ -166,7 +166,9 @@ console.log(count)
 // [할당 연산] 점수 누적
 // --------------------------------------------------------------------------
 let totalScore = 0
-// console.log(totalScore)
+totalScore += 70
+totalScore += 85
+console.log(totalScore)
 
 // [할당 연산] 재고 감소
 let stock = 100
@@ -176,6 +178,26 @@ let stock = 100
 let price = 10000
 // console.log(price)
 
+// --------------------------------------------------------------------------
+// 문자열 연결
+//
+
+// 문자열 + 문자열
+const 성 = '장'
+const 이름 = '예지'
+console.log(성 + 이름);
+
+// 문자열 + 숫자 (숫자가 문자열로 변환됨)
+const greetingMessage = '안녕'
+const myFavoriteNumber = '9'
+let result = greetingMessage + myFavoriteNumber
+// const result = '안녕' + 9 //숫자 데이터를 이때 자바스크립트가 문자화시킴
+// -> const result = '안녕!9'
+console.log(result, typeof result)
+
+//  숫자 + 문자열
+result = myFavoriteNumber + greetingMessage
+console.log(result, typeof result)
 
 
 // --------------------------------------------------------------------------
