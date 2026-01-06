@@ -8,12 +8,17 @@ const BORROWED_TODAY = '12권'  // 오늘 대출된 책
 const RETURNED_TODAY = '8권'   // 오늘 반납된 책
 
 // BORROWED_TODAY를 숫자로 변환하세요.
+let borrowToday = parseInt(BORROWED_TODAY)
 
 // RETURNED_TODAY를 숫자로 변환하세요.
+let returnedToday = parseInt(RETURNED_TODAY)
 
 // 현재 대출 가능한 책의 수를 계산하세요.
+let loan_today = TOTAL_BOOKS - borrowToday + returnedToday
+
 
 // 대출 가능한 책이 100권 이상인지 확인하세요.
+let more_than_100_books = TOTAL_BOOKS >= 100
 
 // 결과를 출력하세요.
 // console.log('오늘 대출된 책 =', ___권)
@@ -21,6 +26,12 @@ const RETURNED_TODAY = '8권'   // 오늘 반납된 책
 // console.log('현재 대출 가능한 책의 수 = ', ___권)
 // console.log('대출 가능한 책이 100권 이상 =', 참/거짓)
 
+console.group('[도서관 대출 시스템]')
+console.log('오늘 대출된 책 =', borrowToday + '권')
+console.log('오늘 반납됩 책 =',returnedToday + '권')
+console.log('현재 대출 가능한 책의 수 = ', loan_today + '권')
+console.log('대출 가능한 책이 100권 이상 =', more_than_100_books)
+console.groupEnd('[도서관 대출 시스템]')
 
 // --------------------------------------------------------------------------
 // 연습 문제: 온라인 서점 할인 계산
@@ -32,14 +43,20 @@ const BOOK_RATING = '4.5점'    // 책 평점
 let cart_count = 0              // 장바구니 수량
 
 // BOOK_PRICE를 숫자로 변환하세요.
+let bookPrice = parseInt(BOOK_PRICE)
 
 // 장바구니에 책을 3권 추가하세요.
+cart_count += 3
 
 // 총 금액을 계산하세요. (책 가격 × 수량)
+let booksPrice = bookPrice * cart_count
+let totalBookPrice = booksPrice
 
 // 10% 할인된 금액을 계산하세요.
+let discountedPrice = booksPrice * 0.1
 
 // 최종 결제 금액을 계산하세요.
+totalBookPrice -= discountedPrice
 
 // 결과를 출력하세요.
 // console.log('장바구니 수량 =', ___권)
@@ -47,6 +64,12 @@ let cart_count = 0              // 장바구니 수량
 // console.log('할인된 금액 =', ___원)
 // console.log('최종 결제 금액 =', ___원)
 
+console.group('[온라인 서점 할인 계산]')
+console.log('장바구니 수량 =',cart_count + '권')
+console.log('할인 전 금액 =', bookPrice + '원')
+console.log('할인된 금액 =', discountedPrice + '원')
+console.log('최종 결제 금액 =',totalBookPrice + '원')
+console.groupEnd('[온라인 서점 할인 계산]')
 
 // --------------------------------------------------------------------------
 // 연습 문제: 도서 페이지 진행률 계산
@@ -58,19 +81,26 @@ const SHELF_NUMBER = '12'      // 서가 번호
 let current_page = 0            // 현재 읽은 페이지
 
 // BOOK_PAGE를 숫자로 변환하세요.
+let bookPages = parseInt(BOOK_PAGE)
 
 // 오늘 64페이지를 읽었습니다. current_page에 더하세요.
+current_page += 64
 
 // 내일 48페이지를 더 읽을 예정입니다. current_page에 더하세요.
+current_page +=48
 
 // 읽은 페이지가 전체의 절반 이상인지 확인하세요.
+let more_than_half_pages = current_page >= BOOK_PAGE / 2
 
-// 남은 페이지를 계산하세요.
+// 남은 페이지를 계산하세요. 
+let remain_pages = bookPages - current_page
 
-// 진행률을 계산하세요.
+// 진행률을 계산하세요.(읽은 페이지 / 전체 페이지 * 100)
+let read_processing = current_page / bookPages * 100 
+
 
 // 하루에 32페이지씩 읽는다면, 남은 책을 다 읽는데 며칠이 걸릴까요?
-
+let read_all_pages_days = Math.ceil(remain_pages / 32) //Math.celi를 통해 소수점 올림 처리
 
 // 결과를 출력하세요.
 // console.log('전체 페이지 =', ___쪽)
@@ -80,6 +110,14 @@ let current_page = 0            // 현재 읽은 페이지
 // console.log('절반 이상 읽음 =', ___)
 // console.log('완독까지 남은 일수 =', ___일)
 
+console.group('[도서 페이지 진행률 계산]')
+console.log('전체 페이지 =', bookPages + '쪽')
+console.log('현재 페이지 =', current_page + '쪽')
+console.log('남은 페이지 =', remain_pages + '쪽')
+console.log('진행률 =', read_processing + '%')
+console.log('절반 이상 읽음 =', more_than_half_pages)
+console.log('완독까지 남은 일수 =', read_all_pages_days + '일')
+console.groupEnd('[도서 페이지 진행률 계산]')
 
 // --------------------------------------------------------------------------
 // 연습 문제: 도서관 회원 포인트 시스템
@@ -90,15 +128,22 @@ const MEMBER_ID = '2024'       // 회원 번호
 let points = 0                 // 현재 포인트
 
 // 책 1권 대출 시, 100포인트를 적립합니다. (3권 대출)
+points += 100
+points += 100
+points += 100
 
 // 포인트가 500점 이상이면 '우수 회원'입니다.
+let vipMember = points >= 500
 
 // 회원 번호가 숫자 2024와 일치하는지 확인하세요.
+console.log(MEMBER_ID === 2024)
 
 // 포인트로 책 1권을 교환하려면 250포인트가 필요합니다.
 // 현재 포인트로 몇 권을 교환할 수 있나요?
+let exchangeBooks =  Math.floor(points/250)
 
 // 교환 후 남은 포인트는 얼마인가요?
+let remainingPoints = points - (250 * exchangeBooks)
 
 // 결과를 출력하세요.
 // console.log('회원 번호:', ___)
@@ -106,3 +151,11 @@ let points = 0                 // 현재 포인트
 // console.log('우수 회원:', ___)
 // console.log('교환 가능 권수:', ___권)
 // console.log('교환 후 남은 포인트:', ___점)
+
+console.group('[도서관 회원 포인트 시스템]')
+console.log('회원 번호:', MEMBER_ID)
+console.log('현재 포인트:', points + '점')
+console.log('우수 회원:', vipMember)
+console.log('교환 가능 권수:', exchangeBooks + '권')
+console.log('교환 후 남은 포인트:', remainingPoints + '점')
+console.groupEnd('[도서관 회원 포인트 시스템]')
