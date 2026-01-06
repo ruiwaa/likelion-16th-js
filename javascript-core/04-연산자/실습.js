@@ -208,13 +208,21 @@ console.log(result, typeof result)
 // 모든 조건이 true여야 true
 
 // 예제: 로그인 & 권한 검증
-let is_logged_in
-let has_permission
+let is_logged_in = false
+let has_permission = false
 // 로그인 ❌ 권한 ❌ 출력 결과: false
+console.log(is_logged_in && has_permission)
 // 로그인 ✅ 권한 ❌ 출력 결과: false
+is_logged_in = true
+console.log(is_logged_in && has_permission)
 // 로그인 ❌ 권한 ✅ 출력 결과: false
+is_logged_in = false
+has_permission = true
+console.log(is_logged_in && has_permission)
 // 로그인 ✅ 권한 ✅ 출력 결과: true
-
+is_logged_in = true
+has_permission = true
+console.log(is_logged_in && has_permission)
 
 // --------------------------------------------------------------------------
 // [논리 연산] OR (||)
@@ -225,12 +233,24 @@ let has_permission
 // 조건 중 하나만 true여도 true
 
 // 예제: 이상형 확인
-let is_handsome
-let is_rich
+let is_handsome = false
+let is_rich = false
 // 잘생김 ❌ 부자 ❌ 출력 결과: false
+is_handsome = false
+is_rich = false
+console.log(is_handsome || is_rich)
 // 잘생김 ❌ 부자 ✅ 출력 결과: true
+is_handsome = false
+is_rich = true
+console.log(is_handsome || is_rich)
 // 잘생김 ✅ 부자 ❌ 출력 결과: true
+is_handsome = true
+is_rich = false
+console.log(is_handsome || is_rich)
 // 잘생김 ✅ 부자 ✅ 출력 결과: true
+is_handsome = true
+is_rich = true
+console.log(is_handsome || is_rich)
 
 
 // --------------------------------------------------------------------------
@@ -239,45 +259,95 @@ let is_rich
 
 // 반대로 변환
 let truthy = true
+let reverse_truthy =!truthy
+console.log(reverse_truthy)
 // 출력 결과: false
-let reverse_truthy
-
 let falsy = false
+let reverse_falsy =!falsy
+console.log(reverse_falsy)
 // 출력 결과: true
-let reverse_falsy
+
 
 // 예제: 로그인 상태 반전
+let is_logged_out = !is_logged_in
+console.log(is_logged_out)
 // 출력 결과: is_logged_in 값 반전
-let is_logged_out
 
 // 이중 부정 (!!) - boolean 변환 (Boolean() 대체)
-// '자바스크립트'
-// '' 변환 출력 결과: false
-// ' ' 변환 출력 결과: true
-// 0 변환 출력 결과: false
-// '0' 변환 출력 결과: true
-// 1 변환 출력 결과: true
-// '1' 변환 출력 결과: true
-// null 변환 출력 결과: false
-// undefined 변환 출력 결과: false
+console.log(Boolean('자바스크립트'))
+console.log(!!('자바스크립트'))
 
+// '' 변환 출력 결과: false
+console.log(Boolean(''))
+console.log(!!'')
+
+// ' ' 변환 출력 결과: true
+console.log(Boolean(' '))
+console.log(!!' ')
+
+// 0 변환 출력 결과: false
+console.log(Boolean(0))
+console.log(!!0)
+
+// '0' 변환 출력 결과: true
+console.log(Boolean('0'))
+console.log(!!'0')
+
+// 1 변환 출력 결과: true
+console.log(Boolean(1))
+console.log(!!1)
+
+// '1' 변환 출력 결과: true
+console.log(Boolean('1'))
+console.log(!!'1')
+
+// null 변환 출력 결과: false
+console.log(Boolean(null))
+console.log(!!null)
+
+// undefined 변환 출력 결과: false
+console.log(Boolean(undefined))
+console.log(!!undefined)
 
 // --------------------------------------------------------------------------
 // [비교 연산] 크기 비교
 // --------------------------------------------------------------------------
 
 // 숫자 비교
+const a = 9, b = 4
+
 // * 10이 5보다 큼
+console.log(a > b)
+
 // * 10이 5보다 작지 않음
+console.log(a < b)
+
 // * 10이 10보다 크거나 같음
+console.log(a >= b)
+
 // * 10이 5보다 작거나 같지 않음
+console.log(a <= b)
 
 // 문자열 비교 (사전순)
 // * 'a', 'b' 비교
+console.log('a' < 'b');
+
 // * 'apple', 'banana' 비교
+console.log('apple' < 'banana') 
+
 // * 'A', 'a' 비교 (대문자가 소문자보다 작음)
+console.log('A' < 'a')   //대문자가 소문자보다 작다  
+
+console.log('a' > 'b') // 알파벳 순서 비교, a 뒷순서인 b가 더 크다
+console.log('Z' > 'k') //대문자가 소문자보다 작다
+
+const memberName = '김이현'
+const partnerName = '이주인'
+console.log(memberName < partnerName)  
 
 // 문자열과 숫자 비교 (문자열이 숫자로 변환됨)
+
+
 // * '10'이 5보다 큼
 // * '100'이 '20'보다 작음 (문자열끼리 비교하면 사전순!)
 
