@@ -80,13 +80,19 @@ console.log(라면_끓이기('진라면','계란 2개'));
 // 출력 결과:
 // 성 = 지
 // 이름 = 훈
+function sayName(firstName, lastName) {
+  console.log('성 = ', firstName)
+  console.log('이름 = ', lastName)
+}
+sayName('지', '훈')
+
 
 // 인자를 전달하지 않은 경우
 // 설명: 값을 전달하지 않으면 매개변수는 `undefined`가 됩니다.
 // 출력 결과:
 // 성 = undefined
 // 이름 = undefined
-
+sayName()
 
 // --------------------------------------------------------------------------
 // 반환문 (Return)
