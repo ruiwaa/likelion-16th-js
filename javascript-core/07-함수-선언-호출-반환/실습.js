@@ -167,7 +167,10 @@ console.log(나의_함수())
 
 // 두 수의 차(subtract)를 계산해 결과를 반환하는 함수 작성
 // 출력 결과: 7
-
+const substract_result = function (num1, num2){
+  return num1 - num2
+}
+console.log(substract_result(9,2))
 
 // --------------------------------------------------------------------------
 // 핵심!
@@ -188,7 +191,7 @@ console.log(logger())
 const remTopx = function(remValue){
   return parseFloat(remValue * 16) + 'px'
 }
-console.log(remTopx(13))
+console.log(remTopx(5))
 //2)함수 선언
 function remToPx(remValue){
 return parseFloat(remValue) * 16 + 'px'
@@ -202,3 +205,55 @@ const pxToRem = function (pxValue) {
 }
 console.log(pxToRem(30))
 console.log(pxToRem('30px'))
+
+// 4. 피자 한 판 가격 계산 함수 만들기
+// 피자 한 판이 얼마인지 알고 있고, 몇 판을 살 건지도 알 때, 총 금액을 계산하는 함수
+const pizza_total_price = function (pizzaPie) {
+  return pizzaPie * 20000 + '원'
+}
+console.log(pizza_total_price(3))
+
+//5. 주차 요금 계산 함수 만들기
+//주차장에 몇 시간 있었는지를 입력하면, 1시간에 1,000원씩 계산하는 함수
+const parking_fee = function (useHourParkingLot){
+  return useHourParkingLot * 1000 + '원'
+}
+console.log(parking_fee(10))
+
+//6.짝수인지 확인하는 함수 만들기
+//어떤 숫자가 짝수인지 아닌지를 확인하는 함수. 짝수면 true, 홀수면 false
+const is_even_number = function(number){
+  return number % 2 === 0
+}
+console.log(is_even_number(3))
+
+// 7.생일 축하 메시지 출력 함수 만들기
+//이름만 알려주면 자동으로 축하 메시지를 만들어주는 자동 응답기 같은 함수
+const happyBirthday = function(yourName){
+  return yourName + '야! ' + '생일 축하해~! 좋은 하루 보내!'
+}
+console.log(happyBirthday('예지'))
+
+//8. 올해 남은 날짜 계산 함수 만들기
+//오늘이 120일째라면, 1년(365일)에서 얼마나 남았는지 알려주는 함수
+const countDownThisYear = function(daysPassed){
+  return 365 - daysPassed + '일이 남았습니다.'
+}
+console.log(countDownThisYear(120))
+
+//9.세금 포함 가격 계산 함수 만들기
+//상품 가격에 부가세를 붙여서 최종 금액을 계산하는 함수
+
+//10.나이가 성인인지 판별하는 함수 만들기
+//놀이공원 입장 시, 성인(19+) 구역에 들어갈 수 있는 나이인지 확인해주는 함수
+//함수 표현식
+const i_am_adult = function(yourAge){
+  return yourAge >= 19
+}
+console.log(i_am_adult(10))
+
+//함수 선언식
+// function i_am_adult (yourAge){
+// return yourAge >= 19
+// }
+// console.log(i_am_adult(10))
