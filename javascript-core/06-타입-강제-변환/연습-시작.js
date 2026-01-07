@@ -57,18 +57,19 @@ console.log(final_payment)
 const POINT_RATE = '0.01'
 // 출력 결과: 2178 (number)
 let earned_points = final_payment * Number(POINT_RATE)
-console.log(earned_points)
+console.log(earned_points,typeof(earned_points))
 
 // 다음 구매 시 사용 가능한 쿠폰 금액 (문자열)
 const COUPON_AMOUNT = '5000'
 // 쿠폰을 사용했을 때의 금액을 계산하세요.
 // 출력 결과: 212800 (number)
 let payment_with_coupon = final_payment - Number(COUPON_AMOUNT)
-console.log(payment_with_coupon)
+console.log(payment_with_coupon, typeof(payment_with_coupon))
 
 // 결제 정보를 문자열로 출력하세요.
-// 출력 결과: '상품 합계: 239000원, 배송비: 3000원, 할인: 24200원, 최종 결제: 217800원'
-let payment_summary 
+// 출력 결과: '상품 합계: 239000원, 배송비: 3000원, 할인: 24200원, 최종 결제: 212800원'
+let payment_summary = `상품 합계: ${cart_total}원, 배송비: ${SHIPPING_FEE}원, 할인: ${discount_amount}, 최종 결제: ${payment_with_coupon}원`
+console.log(payment_summary)
 
 // 잘못된 계산 예시 (주의!)
 // PRODUCT_1_PRICE, PRODUCT_1_QUANTITY 덧셈: 문자열 연결이 일어나는 경우 
