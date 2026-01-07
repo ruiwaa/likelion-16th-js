@@ -29,9 +29,36 @@ const LAST_YEAR = '2025년',
 // --------------------------------------------------------------------------
 
 // 출력 결과: '2025년' → 2025
+console.log(parseInt(LAST_YEAR))
 
 // 출력 결과: '2026' → 2026
+//전역(Global scope) 함수(내장)
+console.log(parseInt(LAST_YEAR, 10) + 1 + '년')
 
+console.log(parseInt('1280px',10) + 5 + 'px')
+console.log(parseInt('4rem',10) + 5 + 'rem')
+// 단위를 제거하여, 값을 추가 연산하도록 하게 할 수 있다.
+// parseInt() 안에 10진수를 넣어주는 걸 권장한다.
+
+console.log(parseInt('123abc')) // 123 (앞의 숫자만 추출)
+console.log(parseInt('abc123')) // NaN (숫자로 시작하지 않음)
+console.log(parseInt('12.34'))  // 12 (정수 부분만)
+
+
+// * Number(str): 순수 숫자 문자열만 변환
+const n1 = '1274', n2 = '1274년', n3 ='1247.457'
+
+console.log(Number(n1))
+console.log(Number(n2)) //문자와 결합되어 있기 때문에 출력 안됨
+console.log(Number(n3))
+
+const a1 = '1', a2 = '2', a3 = '3'
+
+// 단항 연산자를 활용하여 같은 값을 출력 가능, 하지만 명시적이지 않음.
+console.log('1' + '2' + '3')
+console.log(a1 + a2 + a3)
+console.log(Number(a1) + Number(a2) + Number(a3))
+console.log(+a1 + +a2 + +a3)
 
 // --------------------------------------------------------------------------
 // 문자 → 실수(소수) 변환
