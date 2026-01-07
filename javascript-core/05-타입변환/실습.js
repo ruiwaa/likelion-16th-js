@@ -277,17 +277,22 @@ console.log( Number.isNaN({}))
 // --------------------------------------------------------------------------
 
 // 출력 결과: 0 → false
+console.log(Boolean(0))
 
 // 출력 결과: '' → false
+console.log(Boolean(''))
 
 // 출력 결과: false → false
+console.log(false)
 
 // 출력 결과: null → false
+console.log(Boolean(null))
 
 // 출력 결과: undefined → false
+console.log(!!(undefined))
 
 // 출력 결과: NaN → false
-
+console.log(!!(NaN))
 
 // --------------------------------------------------------------------------
 // 권장 사항
