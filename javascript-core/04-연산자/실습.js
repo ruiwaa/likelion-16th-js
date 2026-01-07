@@ -346,7 +346,7 @@ const partnerName = '이주인'
 console.log(memberName < partnerName)  
 
 // 문자열과 숫자 비교 (문자열이 숫자로 변환됨)
-console.log('10' > '5')         // false ('1'과 '5'를 비교하므로)
+console.log('10' > 5)         // true (문자열 '10'이 숫자 10으로 변환됨)
 // * '10'이 5보다 큼
 console.log('100' < '20')       // true  ('1'과 '2'를 비교하므로)
 // * '100'이 '20'보다 작음 (문자열끼리 비교하면 사전순!)
