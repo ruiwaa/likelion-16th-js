@@ -227,31 +227,47 @@ console.log(Infinity - Infinity)
 // * isNaN(): 타입 변환 후 판단 (부정확) ⚠️
 // * Number.isNaN(): 진짜 NaN만 판단 (정확) ✅
 // --------------------------------------------------------------------------
+const thisIsNaN = Math.sqrt(-1)
+console.log(thisIsNaN)
+
+//비교 연산자로 NaN을 구분하는 것은 불가능!
+console.log(thisIsNaN ==NaN)
+console.log(thisIsNaN ===NaN)
 
 // 출력 결과: typeof NaN → 'number' (⚠️ NaN이지만, number 타입으로 인식)
+console.log(typeof thisIsNaN)
 
 // 출력 결과: isNaN(1) → false (✅ NaN 아님)
+console.log(isNaN(1))    
 
 // 출력 결과: isNaN('3') → false (✅ NaN 아님)
+console.log(isNaN('3'))  
 
 // 출력 결과: isNaN([]) → false (✅ NaN 아님)
+console.log(isNaN([]))  
 
 // 출력 결과: isNaN(null) → false (✅ NaN 아님)
+console.log(isNaN(null)) 
 
 // 출력 결과: isNaN(NaN) → true (✅ NaN 맞음)
+console.log(isNaN(NaN))
 
 // 출력 결과: isNaN('3n') → true (⚠️ NaN 맞음? 부정확한 이유: 타입 변환 후, 검사)
+console.log(isNaN('3n'))
 
 // 출력 결과: isNaN(undefined) → true (⚠️ NaN 맞음?)
+console.log(isNaN(undefined))
 
 // 출력 결과: isNaN({}) → true (⚠️ NaN 맞음?)
+console.log(isNaN({}))
 
 // 출력 결과: Number.isNaN('3n') → false (✅ NaN 아님, 정확한 이유: 타입 변환 없이 검사)
+console.log( Number.isNaN('3n'))
 
 // 출력 결과: Number.isNaN(undefined) → false (✅ NaN 아님)
-
+console.log( Number.isNaN(undefined))
 // 출력 결과: Number.isNaN({}) → false (✅ NaN 아님)
-
+console.log( Number.isNaN({}))
 
 // --------------------------------------------------------------------------
 // Falsy & Truthy
