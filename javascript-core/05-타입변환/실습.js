@@ -54,7 +54,7 @@ console.log(Number(n3))
 
 const a1 = '1', a2 = '2', a3 = '3'
 
-// 단항 연산자를 활용하여 같은 값을 출력 가능, 하지만 명시적이지 않음.
+// 단항 연산자를 활용하여 number() 값과 동일한 값 출력 가능, 하지만 명시적이지 않음.
 console.log('1' + '2' + '3')
 console.log(a1 + a2 + a3)
 console.log(Number(a1) + Number(a2) + Number(a3))
@@ -67,9 +67,10 @@ console.log(+a1 + +a2 + +a3)
 // --------------------------------------------------------------------------
 
 // 출력 결과: '3.141592' → 3.141592
+console.log(parseFloat('3.141592'))
 
 // 출력 결과: '9.24점' → 9.24
-
+console.log(parseFloat('9.24점'))
 
 // --------------------------------------------------------------------------
 // 숫자 → 문자 변환
@@ -80,13 +81,58 @@ console.log(+a1 + +a2 + +a3)
 // --------------------------------------------------------------------------
 
 // 출력 결과: 2027 → '2027'
+console.log(NEXT_YEAR)
+console.log(String(NEXT_YEAR)) //string(num) 함수
+console.log(NEXT_YEAR + '') //빈문자열 더하기
+console.log(NEXT_YEAR.toString()) //num.toString(radix?)
+
 
 // 출력 결과: 2027 → '2027년'
+console.log(2027 + '년')
 
+// 빈 문자 더하기를 활용한 실생활 활용 예시
+const temperature = 25
+const humidity = 60
+console.log(temperature + '°C')  // '25°C'
+console.log(humidity + '%')      // '60%'
+
+
+// * num.toString(radix?): Method (진법 변환 가능)
 // 출력 결과: 255 → '11111111' (2진수)
+const number = 255
+// 숫자 -> 문자열 변환(기본기능)
+console.log(number.toString())     // '255' (10진수)
 
+// 진법 변환 (2진수)
+console.log(number.toString(2))    // '11111111' (2진수)
+
+console.log(number.toString(16))    // 'ff' (16진수) (진법 변환을 활용해 색깔을 설정할 수도 있음)
+console.log(number.toString())     // '255' (10진수)
+
+// 색상 값(일상, 10진수) → 색상 코드(컴퓨터, 16진수) 변환
+const red = 255, green = 120, blue = 30
+
+let hexCode = '#'
+const redHexValue = red.toString(16).padStart(2,'0')
+console.log(redHexValue)
+const greenHexValue = green.toString(16).padStart(2,'0')
+console.log(greenHexValue)
+const blueHexValue = blue.toString(16).padStart(2,'0')
+console.log(blueHexValue)
+
+// 복합 할당 연산자 (+=)
+// hexCode = hexCode + redHexValue
+hexCode += redHexValue
+hexCode += greenHexValue
+hexCode += blueHexValue
+
+// 출력 결과 (예시): '#ff8000'
+console.log(hexCode)
 // 출력 결과: 255 → 'ff' (16진수)
 
+// 다른 방법
+//const tempHexCode = '#' + red.toString(16).padStart(2, '0') + green.toString(16).padStart(2, '0') + blue.toString(16).padStart(2, '0')
+//console.log(tempHexCode)
 
 // --------------------------------------------------------------------------
 // 숫자 → 불리언 변환
