@@ -109,8 +109,9 @@ console.log(number.toString(2))    // '11111111' (2진수)
 console.log(number.toString(16))    // 'ff' (16진수) (진법 변환을 활용해 색깔을 설정할 수도 있음)
 console.log(number.toString())     // '255' (10진수)
 
-// 색상 값(일상, 10진수) → 색상 코드(컴퓨터, 16진수) 변환
-const red = 255, green = 120, blue = 30
+// toString을 활용한 프로그래밍 색상 코드 변환
+
+const red = 255, green = 128, blue = 0
 
 let hexCode = '#'
 const redHexValue = red.toString(16).padStart(2,'0')
@@ -134,6 +135,13 @@ console.log(hexCode)
 //const tempHexCode = '#' + red.toString(16).padStart(2, '0') + green.toString(16).padStart(2, '0') + blue.toString(16).padStart(2, '0')
 //console.log(tempHexCode)
 
+// 색상 값(일상, 10진수) → 색상 코드(컴퓨터, 16진수) 변환
+const redHex = 'ff', greenHex = '80', blueHex = '00'
+
+console.log(parseInt(redHex, 16))
+console.log(parseInt(greenHex, 16))
+console.log(parseInt(blueHex, 16))
+
 // --------------------------------------------------------------------------
 // 숫자 → 불리언 변환
 // --------------------------------------------------------------------------
@@ -141,14 +149,18 @@ console.log(hexCode)
 // --------------------------------------------------------------------------
 
 // 출력 결과: 0 → false
-
+console.log(Boolean(0))     // false
 // 출력 결과: 1 → true
+console.log(Boolean(1))     // true
 
 // 출력 결과: -1 → true
+console.log(Boolean(-1))    // true
 
 // 출력 결과: 0.1 → true
+console.log(Boolean(0.1))   // true
 
 // 출력 결과: -0.1 → true
+console.log(Boolean(-0.1))  // true
 
 
 // --------------------------------------------------------------------------
@@ -158,11 +170,15 @@ console.log(hexCode)
 // --------------------------------------------------------------------------
 
 // 출력 결과: '' → false
+console.log(Boolean(''))      // false (빈 문자열)
 
 // 출력 결과: ' ' → true
-
+console.log(Boolean(' '))      // false (빈 문자열)
+console.log(!!(' ')) 
 // 출력 결과: '0' → true
-
+console.log(Boolean('0'))
+console.log(!!('0'))
+console.log(Boolean('false')) // true (문자 'false'도 참)
 
 // --------------------------------------------------------------------------
 // 숫자가 아님(NaN): 숫자 연산 실패 시, 생성
@@ -176,24 +192,33 @@ console.log(hexCode)
 // * Infinity - Infinity
 // --------------------------------------------------------------------------
 
+// NaN이 발생하는 상황
 // 출력 결과: Math.sqrt(-1) → NaN
+console.log( Math.sqrt(-1))
 
 // 출력 결과: 숫자 + NaN → NaN
+console.log(5 + NaN) 
 
 // 출력 결과: undefined + undefined → NaN
+console.log(undefined + undefined)
 
 // 출력 결과: 문자 / 숫자 → NaN
+console.log('abc' / 1)
 
 // 출력 결과: Number(str) → NaN
+console.log(Number('abc'))
 
 // 출력 결과: parseInt(str) → NaN
+console.log(parseInt('abc')) 
 
 // 출력 결과: parseFloat(str) → NaN
+console.log(parseFloat('abc')) 
 
 // 출력 결과: 0 / 0 → NaN
+console.log(0 / 0) 
 
 // 출력 결과: Infinity - Infinity → NaN
-
+console.log(Infinity - Infinity)
 
 // --------------------------------------------------------------------------
 // NaN 확인
