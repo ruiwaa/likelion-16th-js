@@ -219,7 +219,7 @@ dance()
 // 2. 함수 표현식 호출
 //let,const 변수는 tdz 형성때문에, 
 // 변수 초기화 전에 호출하여 실행 할 수 없다.
-sing() 
+//  sing() 
 
 function dance() {
   console.log('춤을 춥니다! 💃')
@@ -232,3 +232,4 @@ function dance() {
 
 
 // 4. 안전한 코드로 리팩토링
+

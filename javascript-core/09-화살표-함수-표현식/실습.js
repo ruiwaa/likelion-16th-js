@@ -232,3 +232,10 @@ console.log(pxtoRem(16))
 //4번
 const percentage = (num1, num2) => num1 / num2 * 100 + '%'
 console.log(percentage(360, 1280))
+
+//5번
+
+const convertUsdTokrw = (priceInUs, koreanExchangeRate) => parseFloat(priceInUs) * parseFloat(koreanExchangeRate) + '원'
+console.log(convertUsdTokrw(120.50, 1480))
+console.log(convertUsdTokrw('120.50', '1480') )
+
