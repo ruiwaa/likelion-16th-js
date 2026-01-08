@@ -179,6 +179,64 @@ console.log(substract_result(9,2))
 // 2. `return`을 만나면 함수는 그 즉시 종료되고 값을 반환합니다.
 // 3. 함수에 수식이나 다른 함수를 넣으면, 먼저 계산(평가)된 뒤에 결과값이 전달됩니다.
 
+//예제
+// 함수 정의
+// 1. 함수 선언문
+function logger(nth) {
+  // 암묵적으로 undefined 반환
+  // return
+
+  // 명시적으로 결과 값 반환
+  return '멋사 프론트엔드 부트캠프 ' + parseInt(nth, 10) + '기 여러분 화이팅!'
+}
+
+// 함수 실행(사용, 호출)
+console.log(logger('16기'))
+console.log(logger(14))
+console.log(logger(12))
+
+
+
+//2. 함수 표현식
+//const 변수 = 함수(값)
+const myLogger = function(nth, message){
+  let resultMessage = ''
+  resultMessage += '멋사 ' + parseInt(nth, 10) + '기 여러분!'
+  resultMessage += ' '
+  resultMessage += message
+  resultMessage += '🥳'
+
+  return resultMessage
+}
+console.log(myLogger(16, '화이팅입니다!'))
+
+//할당 연산자를 활용한 함수 문제 
+// 표 생성하는 함수(기능)
+// JavaScript를 사용해 마크업 (구조 설계)
+function 표_만들기(표_제목) {
+  // const 표_마크업 = '<table><caption>' + 표_제목 + '</caption><tr><th scope="col">셀 제목 1</th><th scope="col">셀 제목 2</th></tr><tbody><tr><td>셀 내용 1</td><td>셀 내용 2</td></tr></tbody></table>'
+  
+  let 표_마크업 = ''
+  표_마크업 += '<table>'
+  표_마크업 += '  <caption>' + 표_제목 + '</caption>'
+  표_마크업 += '  <tr>'
+  표_마크업 += '    <th scope="col">셀 제목 1</th>'
+  표_마크업 += '    <th scope="col">셀 제목 2</th>'
+  표_마크업 += '  </tr>'
+  표_마크업 += '  <tbody>'
+  표_마크업 += '    <tr>'
+  표_마크업 += '      <td>셀 내용 1</td>'
+  표_마크업 += '      <td>셀 내용 2</td>'
+  표_마크업 += '    </tr>'
+  표_마크업 += '  </tbody>'
+  표_마크업 += '</table>'
+
+  return 표_마크업
+}
+
+console.log(표_만들기('JavaScript로 마크업하기!'))
+console.log(표_만들기('HTML로 마크업하기!'))
+
 //실습 문제
 //1. logger 이름의 함수를 선언하고, logMessage 매개변수로 받아 콘솔 패널에 출력하도록 작성합니다.
 function logger(logMessage){
@@ -208,10 +266,10 @@ console.log(pxToRem('30px'))
 
 // 4. 피자 한 판 가격 계산 함수 만들기
 // 피자 한 판이 얼마인지 알고 있고, 몇 판을 살 건지도 알 때, 총 금액을 계산하는 함수
-const pizza_total_price = function (pizzaPie) {
-  return pizzaPie * 20000 + '원'
+const pizza_total_price = function (pizzaPie, pizzaQuantity) {
+  return pizzaPie * parseFloat(pizzaQuantity) + '원'
 }
-console.log(pizza_total_price(3))
+console.log(pizza_total_price(3, 2000))
 
 //5. 주차 요금 계산 함수 만들기
 //주차장에 몇 시간 있었는지를 입력하면, 1시간에 1,000원씩 계산하는 함수
