@@ -185,7 +185,7 @@ console.log(createPerson('구름이',9,'간식 먹기'))
 
 //중요!!!//
 //createHouse() 함수 정의 / 반환할 값의 타입이 객체인 경우
-//  함수의 블록({)과 객체의 블록({) 표현 문제로 오류가 발생하는 것을 해결하려면 값을 소괄호로 감싸면 된다.
+//  함수의 블록과 객체의 블록 표현 문제로 오류가 발생하는 것을 해결하려면 값을 소괄호()로 감싸면 된다.
 const createHouse = (이름, 유형, 면적, 빌트인_여부) => ({
     name: 이름,
     type: 유형,
@@ -215,3 +215,20 @@ console.log(길음동_오피스텔)
 // 2. 매개변수가 1개면 소괄호 생략 가능, 0개거나 2개 이상이면 필수입니다.
 // 3. 중괄호 {}를 생략하면 return 없이도 값이 자동으로 반환(암묵적 반환)됩니다.
 // 4. 객체를 바로 반환할 때는 소괄호 ()로 감싸주어야 합니다.
+
+// 실습
+//1번
+const ten = () => 10
+console.log(ten(10))
+
+//2번
+const logger = message => message
+console.log('반복만이 살 길이다!')
+
+//3번
+const pxtoRem = value => value / 16 + 'rem'
+console.log(pxtoRem(16))
+
+//4번
+const percentage = (num1, num2) => num1 / num2 * 100 + '%'
+console.log(percentage(360, 1280))
