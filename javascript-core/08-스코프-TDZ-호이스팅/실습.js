@@ -150,6 +150,19 @@ function sayHello(){
 const sayBye = function(){
   return '잘 가! JavaScript 👋'
 }
+// var 키워드를 사용해 sayBye 변수에 함수 표현식 할당 ('잘 가! JavaScript 👋' 출력)
+// var sayBye가 상단 부분으로 호이스팅됨
+// 상단에서 var 변수의 할당된 값이 없는 것처럼 보이므로, 
+// 자바스크립트 엔진에서 'undefined' 값 할당됨
+// 위에서부터 밑에서 해석이 진행되기 때문에, var sayBye()를 콘솔 출력 시
+// sayBye는 'undefined'가 할당되어 있기 때문에 함수 표현식이 출력되지 않음.
+// console.log(sayGo()) // 이렇게 sayGo는 함수가 아니다 라고 오류메시지 뜸
+var sayGo = function(){
+  return '잘 가! JavaScript 👋' 
+}
+
+
+
 // 함수 표현식 선언 후 sayBye 호출
 console.log(sayBye()) 
 
