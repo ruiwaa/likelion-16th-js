@@ -72,13 +72,15 @@ let payment_summary = `상품 합계: ${cart_total}원, 배송비: ${SHIPPING_FE
 console.log(payment_summary)
 
 // 잘못된 계산 예시 (주의!)
-// PRODUCT_1_PRICE, PRODUCT_1_QUANTITY 덧셈: 문자열 연결이 일어나는 경우 
-// 출력 결과: '350002' (string) - 잘못된 계산!
-let wrong_calculation_1
+// PRODUCT_1_PRICE, PRODUCT_3_PRICE 덧셈: 문자열 연결이 일어나는 경우 
+// 출력 결과: '3500025000' (string) - 잘못된 계산!
+let wrong_calculation_1 = PRODUCT_1_PRICE + PRODUCT_3_PRICE
+console.log('wrong_calculation_1 =', wrong_calculation_1, typeof wrong_calculation_1)
 
 // 올바른 계산 방법
-// 출력 결과: 37000 (number)
-let correct_calculation_1
+// 출력 결과: 60000 (number)
+let correct_calculation_1 = Number(PRODUCT_1_PRICE) + Number(PRODUCT_3_PRICE)
+console.log('correct_calculation_1 =', correct_calculation_1, typeof correct_calculation_1)
 
 // NaN이 발생하는 경우
 const INVALID_PRICE = 'abc'
