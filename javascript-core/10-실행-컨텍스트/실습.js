@@ -189,7 +189,7 @@ console.log(makePasta('알리오 올리오'))
 
 // 전역 변수 선언
 // chefName 변수에 '김셰프' 할당
-
+const chefName = '김셰프'
 
 // cookDish 함수 선언
 // 매개변수: dish
@@ -198,19 +198,42 @@ console.log(makePasta('알리오 올리오'))
 //   - serveDish 함수 선언 (내부 함수)
 //     - 기능: '[chefName]님이 [dish]를 [cookingTime]분만에 완성했습니다!' 출력
 //   - serveDish 함수 호출
+function cookDish(dish) {
+  const cookingTime = 30
 
+  function serveDish() {
+    // return '[chefName]님이 [dish]를 [cookingTime]분만에 완성했습니다!'
+    let message = chefName
+        message += '님이 '
+        message += dish
+        message += '를 '
+        message += cookingTime
+        message += '분만에 완성했습니다!'
+    
+    return message
+  }
+
+  console.log(serveDish())
+
+  // 암묵적 반환
+  // return undefined
+}
 
 // cookDish 함수 호출 ('스파게티' 전달)
+console.log(cookDish('스파게티')) 
+// 반환된 값을 설정하지 않았으므로, undefined로 JS엔진이 암묵적인 반환을 함
 
+/** 바깥의 콘솔값이 내부의 콘솔값에 적용되는 이유
+ * function serveDish() {
+....
+}
+console.log(cookDish('스파게티'))
 
-// 설명:
-// 내부 함수(serveDish)는 자신의 스코프에 없는 변수를 찾을 때
-// 외부 함수(cookDish)와 전역 스코프를 차례로 확인합니다.
-// 이를 스코프 체인이라고 합니다.
-
-// 출력 결과:
-// '김셰프님이 스파게티를 30분만에 완성했습니다!'
-
+이렇게 바깥쪽에서 콘솔값을 입력을 하면, 
+JS엔진이 메모리 기억 순서에 따라서 
+세프이름 - 요리 - 요리시간 이렇게 저장이 되므로 
+내부에 있는 콘솔값인 console.log(serveDish())에 '스파게티' 가 적용
+ */
 
 // --------------------------------------------------------------------------
 // 복잡한 실행 컨텍스트 흐름
