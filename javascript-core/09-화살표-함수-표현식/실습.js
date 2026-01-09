@@ -234,8 +234,19 @@ const percentage = (num1, num2) => num1 / num2 * 100 + '%'
 console.log(percentage(360, 1280))
 
 //5번
+// 1번 방법: 화살표 함수 표현식에 바로 parseInt 적용
+const convertUsdToKrw = (priceInUs, koreanExchangeRate) => parseInt(parseFloat(priceInUs) * parseFloat(koreanExchangeRate), 10 )+ '원'
+//케이스 준수하기, 정수 처리 안됐음
+// 코드를 작성하고, 상황에 따른 테스트 코드도 함께 추가해주는 것이 좋다!!!
+console.log(convertUsdToKrw(131.11, 1480))
+console.log(convertUsdToKrw('120.50', '1480') )
 
-const convertUsdTokrw = (priceInUs, koreanExchangeRate) => parseFloat(priceInUs) * parseFloat(koreanExchangeRate) + '원'
-console.log(convertUsdTokrw(120.50, 1480))
-console.log(convertUsdTokrw('120.50', '1480') )
-
+//2번 방법: 화살표 함수 표현식 안에 다시 변수를 선언하여 값을 반환
+{
+  const convertUsdToKrw = (priceInUs, koreanExchangeRate) => {
+   const calculation = parseFloat(priceInUs) * parseFloat(koreanExchangeRate) 
+    const result = parseInt(calculation, 10) + '원'
+    return result
+  }
+  console.log(convertUsdToKrw(131.11, 1480));
+}
