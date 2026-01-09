@@ -16,7 +16,13 @@
 // '결제' 속성: '대금을 주고받아 매매 당사자 사이의 거래 관계를 끝맺는 일'
 // '결재' 속성: '결정할 권한이 있는 상관이 부하가 제출한 안건을 검토하여 허가하거나 승인'
 // 객체 출력
-
+const 국어사전 = {
+  //국어사전은 객체이기때문에, 객체가 가지고 있는 키값은 문자여도 ''을 생략할 수 있다.
+  결제: '대금을 주고받아 매매 당사자 사이의 거래 관계를 끝맺는 일',
+  결재: '결정할 권한이 있는 상관이 부하가 제출한 안건을 검토하여 허가하거나 승인'
+}
+console.log(국어사전.결재)
+console.log(국어사전.결제)
 
 // macbookPro 객체 생성
 // processor 속성: '2.4 GHz 8코어 Intel Core i9'
@@ -24,6 +30,15 @@
 // macOS 속성: 'Sequoia 15.4'
 // 객체 출력
 
+const macbookPro = {
+processor_속성: '2.4 GHz 8코어 Intel Core i9',
+memory_속성: '64GB 2667 DDR4',
+macOS_속성: 'Sequoia 15.4',
+
+
+}
+console.log(macbookPro);
+console.log(macbookPro.macOS_속성);
 
 // 설명:
 // 객체는 중괄호 {} 안에 키-값 쌍을 쉼표(,)로 구분하여 작성합니다.
@@ -46,7 +61,17 @@
 // aFunction 속성: function() {} (함수)
 // anArray 속성: [] (빈 배열)
 // 객체 출력
-
+const obj = {
+  string: '객체',
+  number: 2026,
+  boolean: false,
+  nestedObj:{
+    x:10,
+    y:-4,
+  },
+  nestedFn:function (){console.log('중첩된 함수 실행됨')
+  }
+}
 
 // 설명:
 // 객체는 JavaScript에서 유효한 모든 값을 포함할 수 있습니다.
@@ -62,9 +87,10 @@
 
 // macbookPro 객체의 processor 속성 값을 점 표기법으로 읽어 변수에 저장
 // processor 변수 출력
-
+console.log(macbookPro.processor_속성)
 
 // macbookPro 객체의 memory 속성 값을 점 표기법으로 읽어 출력
+console.log(macbookPro.memory_속성)
 
 
 // 설명:
@@ -82,7 +108,8 @@
 
 // macbookPro 객체의 macOS 속성 값을 대괄호 표기법으로 읽어 변수에 저장
 // macOS 변수 출력
-
+const os = macbookPro['macOS_속성'] // macbookPro.macOS_속성(. 표기법)
+console.log(os)
 
 // 설명:
 // 대괄호([]) 표기법은 객체['속성_이름'] 형태로 사용합니다.
@@ -117,15 +144,23 @@
 // --------------------------------------------------------------------------
 
 // propertyName 변수에 'processor' 문자열 할당
+// 사용자가 <select> 요소를 사용한 드롭다운 메뉴에서 <option>을 선택 (값 변경 가능)
+let selectedPropName = 'macOS_속성'
+
+// 이렇게 값을 변경하여 다르게 객체의 변수를 출력할 수 있음
+console.log(selectedPropName)
 
 
 // macbookPro 객체의 속성을 propertyName 변수를 사용해 읽어 출력
+// 변수를 속성으로 읽어야 할 경우 []로 불러온다.
+console.log(macbookPro[selectedPropName])
 
 
 // propertyName 변수 값을 'memory'로 변경
-
+selectedPropName = 'memory_속성'
 
 // macbookPro 객체의 속성을 변경된 propertyName 변수를 사용해 읽어 출력
+console.log(macbookPro[selectedPropName])
 
 
 // 설명:
@@ -142,19 +177,20 @@
 // --------------------------------------------------------------------------
 
 // macbookPro 객체에 storage 속성 추가 (값: '2TB')
-
+macbookPro.storage = '2TB'
+console.log(macbookPro.storage)
 
 // macbookPro 객체에 usbPorts 속성 추가 (값: 4)
-
+macbookPro.usbPorts = 4
 
 // macbookPro 객체 출력
-
+console.log(macbookPro)
 
 // macbookPro 객체의 memory 속성 값을 '32GB 2667 DDR4'로 수정
-
+macbookPro.memory_속성 = '32GB 2667 DDR4'
 
 // macbookPro 객체 출력
-
+console.log(macbookPro)
 
 // 설명:
 // 점 표기법이나 대괄호 표기법으로 속성 값을 설정할 수 있습니다.
@@ -170,17 +206,28 @@
 // 객체 속성 삭제
 // --------------------------------------------------------------------------
 
+/**
+ * CRUD
+ * Create(추가)
+ * Read(읽기)
+ * Update(수정)
+ * Delete(삭제)
+ */
 // macbookPro 객체의 storage 속성 삭제
-
+delete macbookPro.storage
 
 // macbookPro 객체 출력
-
+console.log(macbookPro)
 
 // macbookPro 객체의 usbPorts 속성 삭제 (대괄호 표기법 사용)
-
+delete macbookPro['usbPorts']
 
 // macbookPro 객체 출력
+console.log(macbookPro)
 
+
+// 객체의 없는 속성 삭제 (오류 아님!)
+console.log(macbookPro.unKnown)
 
 // 설명:
 // delete 키워드를 사용하여 객체의 속성을 삭제할 수 있습니다.
@@ -192,22 +239,40 @@
 
 
 // --------------------------------------------------------------------------
-// 객체의 메서드 (Method)
+// 객체의 메서드 (Method, 객체의 속성 중 함수 타입을 포함하는 속성을 메서드라 부른다.)
 // --------------------------------------------------------------------------
 
 // macbookPro 객체에 getMemory 메서드 추가
 // getMemory 메서드는 memory 속성 값을 반환하는 함수
+macbookPro.getMemory = function (){
+  // 민지(macbookPro)
+  // - (민지: macbookPro)는요. 저거 갖고 싶어요.
+  // - (저: this)는요. 저거 갖고 싶어요.
+  // 객체 자신을 가리키는 특별한 키워드: this
+  return this.memory_속성
+}
+
+macbookPro.getProcessor = function(){
+  return this.processor_속성
+}
+console.log(macbookPro.getMemory())
+console.log(macbookPro.getProcessor())
+
 
 
 // macbookPro 객체에 playMusic 메서드 추가
 // playMusic 메서드는 songTitle 매개변수를 받아
 // '"[노래 제목]" 재생을 시작합니다. 🎵' 형태로 출력하는 함수
-
+macbookPro.playMusic =function(songTitle){
+  return '"' + songTitle + '"' + '재생을 시작합니다. 🎵'
+}
 
 // getMemory 메서드 호출 및 결과 출력
+console.log(macbookPro.getMemory())
 
 
 // playMusic 메서드 호출 ('첫 눈처럼 너에게 가겠다.' 전달)
+console.log(macbookPro.playMusic('첫 눈처럼 너에게 가겠다.'))
 
 
 // 설명:
@@ -225,19 +290,21 @@
 // --------------------------------------------------------------------------
 
 // cache 함수 선언 (빈 함수)
+function cache(){}
+
 
 
 // cache 함수에 data 속성 추가 (값: '캐싱된 데이터')
-
+cache.data = '캐싱된 데이터'
 
 // cache 함수의 data 속성 값 출력
-
+console.log(cache.data)
 
 // cache 함수의 타입 출력 (typeof 연산자 사용)
-
+console.log(typeof cache)
 
 // 설명:
-// JavaScript의 함수는 객체 타입입니다.
+// JavaScript의 함수는 객체의 특징을 가진다.
 // 따라서 함수에도 속성을 추가할 수 있습니다.
 
 // 출력 결과:
@@ -246,23 +313,31 @@
 
 
 // --------------------------------------------------------------------------
-// 함수는 값으로 취급 - 변수에 할당
+// 함수는 값으로 취급 - 변수에 할당, 함수를 다른 함수의 인자로 할당 할 수 있음.
 // --------------------------------------------------------------------------
 
 // sayHello 함수를 함수 표현식으로 작성 ('안녕! ' 반환)
-
+const sayHello = function(){
+  return '안녕!'
+}
+console.log(sayHello())
 
 // greeting 함수를 함수 표현식으로 작성
 // 매개변수: helloMessage (함수), name (문자열)
 // 기능: helloMessage 함수를 호출한 결과와 name을 연결하여 출력
-
+const greeting =function(helloMessage, name){
+  // 매개변수는 함수 값을 담고 있으니 실행 가능
+  return helloMessage() +  name
+}
 
 // greeting 함수 호출 (sayHello 함수와 '🌈 자바스크립트' 전달)
+console.log(greeting(sayHello,'🌈 자바스크립트' ));
 
 
 // 설명:
 // 함수는 값으로 취급되므로 변수에 할당할 수 있습니다.
 // 함수를 다른 함수의 인자로 전달할 수도 있습니다.
+// 매개변수에 함수를 담을 수 있다.
 
 // 출력 결과:
 // '안녕! 🌈 자바스크립트'
@@ -275,21 +350,29 @@
 // createGreeting 함수 선언
 // 매개변수: message (문자열)
 // 반환: name을 매개변수로 받아 'message + name'을 출력하는 함수
+function createGreeting(message){
 
+  // 화살표 함수 표현식
+  const displayMessage = (name) => message + name
+  // 함수 내부에 정의된 함수(값)을 밖으로 내보낸다. (반환)
+  return displayMessage
+}
 
 // createGreeting 함수를 호출하여 반환된 함수를 greet 변수에 저장
 // (인자로 '안녕하세요, ' 전달)
-
+const greet = createGreeting('멋사 프론트엔드 16기 수강생 여러분 화이팅!')
 
 // greet 함수 호출 ('자바스크립트' 전달)
+console.log(greet('야무와 함께!'))
 
 
 // 설명:
 // 함수는 값으로 취급되므로 함수에서 함수를 반환할 수 있습니다.
+// 함수는 외부에서 내부로, 내부에서 외부로 전달이 가능하다.
 // 이를 고차 함수(Higher-order Function)라고 부릅니다.
 
 // 출력 결과:
-// '안녕하세요, 자바스크립트'
+// '멋사 프론트엔드 16기 수강생 여러분 화이팅! 야무와 함께!'
 
 
 // --------------------------------------------------------------------------
@@ -301,6 +384,19 @@
 // 4. JavaScript의 함수는 객체 타입이며 값으로 취급됩니다.
 // 5. 함수를 변수에 할당하거나, 인자로 전달하거나, 반환할 수 있습니다.
 
+// 객체의 특징
+// 객체는 키:값 쌍으로 구성된 데이터를 관리하는 구조
+// 객체는 키(key)라고 쓰고 속성(property)이라 읽는다.
+// 객체의 속성에는 모든 JavaScript의 데이터 값을 참조할 수 있다.
+// 객체의 속성에 함수 타입이 설정되면 특별히 "메서드(method)"라 부른다.
+// 객체의 메서드는 결국, 함수이므로 실행 가능하다. (매개변수, 인자도 가능)
+
+// 함수 특징
+// 함수는 이름으로 호출 가능하다.
+// 호출할 때는 실행 연산자 ()를 붙인다.
+// 함수는 매개변수, 인자로 확장(변형) 가능하다.
+// 함수는 선언, 표현식 등으로 정의할 수 있다.
+// 함수는 절차에 따른 코드 블록을 재사용한다.
 
 // --------------------------------------------------------------------------
 // 추가 연습 예제
