@@ -69,7 +69,7 @@ console.log(myRoom)
 }
 
 // - 내부 함수 inner 호출
-inner ()
+inner()
 }
 // 함수 outer 호출
 outer()

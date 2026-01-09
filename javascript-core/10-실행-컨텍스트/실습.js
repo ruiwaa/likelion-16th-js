@@ -34,12 +34,14 @@
 
 // 전역 변수 선언
 // restaurantName 변수에 '이탈리안 키친' 할당
+const restaurantName = '이탈리안 키친'
 // isOpen 변수에 true 할당
-
+const isOpen = true
 
 // 전역 변수 출력
 
-
+console.log('restaurantName:', restaurantName)
+console.log('isOpen:', isOpen)
 // 설명:
 // 브라우저가 JavaScript 파일을 로드하면 전역 실행 컨텍스트가 생성됩니다.
 // 전역 변수는 프로그램이 종료될 때까지 메모리에 유지됩니다.
@@ -56,12 +58,15 @@
 // makePasta 함수 선언
 // 매개변수: pastaType
 // 기능: '[pastaType] 파스타를 만들고 있습니다.' 출력
-
+function makePasta(pastaType) {
+  return pastaType + '파스타를 만들고 있습니다.'
+}
 
 // makePasta 함수 호출 ('까르보나라' 전달)
-
+console.log(makePasta('까르보나라'))
 
 // makePasta 함수 호출 ('알리오 올리오' 전달)
+console.log(makePasta('알리오 올리오'))
 
 
 // 설명:
@@ -260,7 +265,7 @@
 
 // 전역 변수 선언
 // restaurantType 변수에 '이탈리안' 할당
-
+const restaurantType = '이탈리안'
 
 // orderFood 함수 선언
 // 매개변수: foodName, quantity
@@ -270,7 +275,10 @@
 //     - 기능: '[restaurantType] 레스토랑 - [foodName] [quantity]개 주문, 총 [totalPrice]원' 출력
 //   - printReceipt 함수 호출
 
-
+const orderFood= (foodName, quantity) =>{
+  let totalPrice = parseInt(quantity, 10) * 15000
+ 
+}
 // orderFood 함수 호출 ('피자', 2 전달)
 
 
@@ -280,3 +288,7 @@
 
 // 출력 결과:
 // '이탈리안 레스토랑 - 피자 2개 주문, 총 30000원'
+
+
+//실습 예제
+
