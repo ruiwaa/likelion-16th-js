@@ -67,6 +67,7 @@ console.log(livingRoom)
 console.log(myRoom)
 
 }
+console.log(livingRoom) //outer 함수 내부여서 지역 변수 livingRoom 접근 가능
 
 // - 내부 함수 inner 호출
 inner()
