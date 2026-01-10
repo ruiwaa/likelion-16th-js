@@ -126,10 +126,13 @@ console.log(os)
 // 자바스크립트_구문 객체 생성
 // '함수 선언' 속성: 'function 키워드를 사용해 함수를 선언'
 // '화살표 함수 표현식' 속성: '=> 기호를 사용해 함수 표현식을 변수에 할당'
-
+const 자바스크립트_구문 = {
+  '함수 선언 속성': 'function 키워드를 사용해 함수를 선언',
+  '화살표 함수 표현식 속성': '=> 기호를 사용해 함수 표현식을 변수에 할당'
+}
 
 // 대괄호 표기법으로 '화살표 함수 표현식' 속성 값 읽어 출력
-
+console.log(자바스크립트_구문['화살표 함수 표현식 속성'])
 
 // 설명:
 // 속성 이름에 공백이나 특수문자가 포함된 경우 반드시 따옴표로 묶어야 합니다.
@@ -331,7 +334,7 @@ const greeting =function(helloMessage, name){
 }
 
 // greeting 함수 호출 (sayHello 함수와 '🌈 자바스크립트' 전달)
-console.log(greeting(sayHello,'🌈 자바스크립트' ));
+console.log(greeting(sayHello,'🌈 자바스크립트' ))
 
 
 // 설명:
@@ -353,7 +356,7 @@ console.log(greeting(sayHello,'🌈 자바스크립트' ));
 function createGreeting(message){
 
   // 화살표 함수 표현식
-  const displayMessage = (name) => message + name
+  const displayMessage = (name) => message + name 
   // 함수 내부에 정의된 함수(값)을 밖으로 내보낸다. (반환)
   return displayMessage
 }
@@ -363,7 +366,7 @@ function createGreeting(message){
 const greet = createGreeting('멋사 프론트엔드 16기 수강생 여러분 화이팅!')
 
 // greet 함수 호출 ('자바스크립트' 전달)
-console.log(greet('야무와 함께!'))
+console.log(greet(' 야무와 함께!'))
 
 
 // 설명:
@@ -406,18 +409,27 @@ console.log(greet('야무와 함께!'))
 // name 속성: '김철수'
 // age 속성: 25
 // introduce 메서드: '안녕하세요, 저는 [name]이고 [age]살입니다.' 출력
-
+const person = {
+  name: '김철수',
+  age: 25,
+  introduce: function(){
+    return '안녕하세요, ' + '저는 ' + this.name + '이고 ' + this.age  + '살입니다.'
+  }
+  
+}
+console.log(person.introduce())
 
 // person 객체 출력
-
+console.log(person)
 
 // introduce 메서드 호출
-
+person.introduce()
 
 // person 객체에 hobby 속성 추가 (값: '독서')
-
-
+person.hobby = '독서'
+console.log(person)
 // person 객체의 age 속성 삭제
-
+delete person.age
 
 // person 객체 출력
+console.log(person)
