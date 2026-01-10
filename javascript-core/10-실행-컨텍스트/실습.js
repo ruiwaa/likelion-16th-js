@@ -92,22 +92,24 @@ console.log(makePasta('알리오 올리오'))
 // - finalPrice : <Uninitialized> (TDZ 진입)
 
 // menuPrice 변수에 50000 할당
-
+const memuPrice = 50000 
 
 // discount 변수에 0.1 할당
-
+const discountRate = 0.1
 
 // calculatePrice 함수 선언
 // 매개변수: price, discountRate
 // 기능: price에서 할인을 적용한 금액을 계산하여 반환
-// 지역 변수 discountedPrice 사용
-
+ 
+function calculatePrice(price,discountRate){
+  return price - (price * discountRate)
+}
 
 // finalPrice 변수에 calculatePrice 함수 호출 결과 할당 (menuPrice, discount 전달)
-
+const finalPrice = calculatePrice(memuPrice,discountRate)
 
 // finalPrice 출력
-
+console.log(finalPrice)
 
 // 설명:
 // 1단계(메모리 생성)에서 변수는 등록되지만 초기화되지 않습니다. (TDZ)
@@ -147,13 +149,15 @@ console.log(makePasta('알리오 올리오'))
 
 // 함수 선언은 호이스팅되어 선언 전에 호출 가능
 // greet 함수 호출 ('손님' 전달)
-
-
+greet('손님')
+console.log(greet('손님'))
 // greet 함수 선언
 // 매개변수: name
 // 기능: '어서오세요, [name]님!' 반환
 
-
+function greet(name){
+  return '어서오세요, ' + name + '님!'
+}
 // 설명:
 // 함수 선언은 메모리 생성 단계에서 전체 코드가 저장되므로
 // 선언 전에 호출해도 정상 작동합니다. (호이스팅)
@@ -170,10 +174,10 @@ console.log(makePasta('알리오 올리오'))
 // console.log(dishName) // ReferenceError: Cannot access 'dishName' before initialization
 
 // dishName 변수에 '라자냐' 할당
-
+const dishName = '라자냐'
 
 // dishName 출력
-
+console.log(dishName)
 
 // 설명:
 // let, const로 선언된 변수는 메모리에 등록되지만 초기화되지 않습니다.
@@ -211,14 +215,16 @@ function cookDish(dish) {
         message += '분만에 완성했습니다!'
     
     return message
+  
   }
-
   console.log(serveDish())
+  // serveDish 함수는 cookDish 함수 내부에 정의되어 있으므로,
+  //  같은 스코프 내에서 serceDish 함수를 호출 및 실행 가능
+  
 
   // 암묵적 반환
-  // return undefined
+  // return undefined (cookDish 함수의 반환값을 할당하지 않았기때문에, 암묵적 반환값(undefined) 출력
 }
-
 // cookDish 함수 호출 ('스파게티' 전달)
 console.log(cookDish('스파게티')) 
 // 반환된 값을 설정하지 않았으므로, undefined로 JS엔진이 암묵적인 반환을 함
@@ -240,23 +246,25 @@ JS엔진이 메모리 기억 순서에 따라서
 // --------------------------------------------------------------------------
 
 // x 변수에 100 할당
-
+const x = 100
 
 // y 변수에 50 할당
-
+const y = 50
 
 // getSum 함수 선언
 // 매개변수: n1, n2
 // 기능:
 //   - 지역 변수 sum에 n1 + n2 할당
 //   - sum 반환
-
+function getSum(n1, n2){
+  return n1 + n2
+}
 
 // result 변수에 getSum 함수 호출 결과 할당 (x, y 전달)
-
+const result = getSum(x,y)
 
 // result 출력
-
+console.log(result)
 
 // 설명:
 // 실행 흐름:
@@ -312,6 +320,4 @@ const orderFood= (foodName, quantity) =>{
 // 출력 결과:
 // '이탈리안 레스토랑 - 피자 2개 주문, 총 30000원'
 
-
-//실습 예제
 
