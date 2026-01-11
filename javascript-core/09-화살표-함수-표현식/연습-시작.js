@@ -14,7 +14,11 @@
 // }
 
 // [작성 공간]
-let makeUrl
+let makeUrl = (domain, path) =>{
+return 'https://' + domain + '/' + path
+}
+console.log(makeUrl('google.com', 'maps')) 
+// 출력: https://google.com/maps
 
 
 // --------------------------------------------------------------------------
@@ -27,8 +31,9 @@ let makeUrl
 // 2. 중괄호{}와 return 생략 (코드가 한 줄)
 
 // [작성 공간]
-let calculateVat
+let calculateVat = price => price * 0.1
 
+console.log(calculateVat(10000)) 
 
 // --------------------------------------------------------------------------
 // 연습 문제: 버튼 컴포넌트 속성 만들기 (객체 반환)
@@ -41,4 +46,9 @@ let calculateVat
 // 2. 객체를 반환할 때 소괄호()로 감싸는 것을 잊지 마세요.
 
 // [작성 공간]
-let createButtonProps
+let createButtonProps = (label, color ) =>({
+  label: label,
+  color: color,
+  type: 'button'
+})
+console.log(createButtonProps('로그인', 'blue'))
