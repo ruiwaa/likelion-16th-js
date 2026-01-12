@@ -233,19 +233,19 @@ console.log('24' !== 24 )
 // Number() 함수를 사용하여 다양한 값을 숫자로 변환
 
 // '24'를 Number() 함수에 전달하여 결과 출력
-
+console.log(Number('24'))
 
 // true를 Number() 함수에 전달하여 결과 출력
-
+console.log(Number(true))
 
 // false를 Number() 함수에 전달하여 결과 출력
-
+console.log(Number(false))
 
 // null을 Number() 함수에 전달하여 결과 출력
-
+console.log(Number(null))
 
 // undefined를 Number() 함수에 전달하여 결과 출력
-
+console.log(Number(undefined))
 
 // 설명:
 // Number() 함수는 값을 숫자로 변환합니다.
@@ -302,14 +302,16 @@ else {
 
 // 서버에서 사용자 포인트를 가져왔지만 네트워크 오류로 null이 들어옴
 // userPoint 변수에 null 할당
-
+let userPoint = null
 
 // ❌ 나쁜 예 - 느슨한 비교 사용
 // if 문 작성
 // 조건: userPoint == 0 (느슨한 비교)
 //   - '🎉 첫 구매이군요. 포인트 결제가 가능합니다!' 출력
 //   - (실제로는 데이터 오류인데 결제가 가능하다고 판단하는 버그 발생)
-
+if(userPoint == 0){
+  console.log('🎉 첫 구매이군요. 포인트 결제가 가능합니다!')
+}
 
 // 설명:
 // null == 0은 false이지만, null == false는 true입니다.
@@ -321,7 +323,7 @@ else {
 // --------------------------------------------------------------------------
 
 // userPoint 변수에 0 할당 (정상 데이터)
-
+userPoint = 0
 
 // ✅ 좋은 예 - 엄격한 비교 사용
 // if 문 작성
@@ -330,11 +332,23 @@ else {
 // 그 외의 경우
 //   - '⚠️ 데이터를 불러오지 못했습니다. 다시 시도해 주세요.' 출력
 
+if(userPoint === 0){
+  console.log('🎉 첫 구매이군요. 포인트 결제가 가능합니다!' )
+}
+else{
+  console.log('⚠️ 데이터를 불러오지 못했습니다. 다시 시도해 주세요.')
+}
 
 // userPoint 변수에 null 할당 (네트워크 오류)
-
+userPoint = null
 
 // 위의 if 문을 다시 실행하여 결과 확인
+if(userPoint === 0){
+  console.log('🎉 첫 구매이군요. 포인트 결제가 가능합니다!' )
+}
+else{
+  console.log('⚠️ 데이터를 불러오지 못했습니다. 다시 시도해 주세요.')
+}
 
 
 // 설명:
@@ -366,7 +380,6 @@ else {
 // 나이에 따른 입장료 계산
 // age 변수에 15 할당
 
-
 // if … else if … else 문 작성
 // 조건 1: age가 7 미만인 경우
 //   - '입장료: 무료' 출력
@@ -376,7 +389,19 @@ else {
 //   - '입장료: 10,000원' 출력
 // 그 외의 경우
 //   - '입장료: 7,000원' 출력
-
+let age = 30
+if (age < 7){
+  console.log('입장료: 무료')
+}
+else if (7 <= age && age < 19 ){
+  console.log('입장료: 5,000원')
+}
+else if (19 <= age && age < 65){
+  console.log('입장료: 10,000원')
+}
+else {
+  console.log('입장료: 7,000원')
+}
 
 // 설명:
 // 여러 조건을 순차적으로 검사하여 나이에 따른 입장료를 계산합니다.
@@ -388,6 +413,7 @@ else {
 // 온도에 따른 옷차림 추천
 // temperature 변수에 25 할당
 
+let temperature = 5
 
 // if … else if … else 문 작성
 // 조건 1: temperature가 28 이상인 경우
@@ -399,7 +425,18 @@ else {
 // 그 외의 경우
 //   - '두꺼운 외투를 입으세요.' 출력
 
-
+if(temperature >= 28){
+  console.log('반팔과 반바지를 입으세요.')
+}
+else if(20 <= temperature && temperature < 28){
+  console.log('긴팔 티셔츠를 입으세요.')
+}
+else if(10 <= temperature && temperature < 20){
+  console.log('가디건이나 자켓을 챙기세요.')
+}
+else {
+  console.log('두꺼운 외투를 입으세요.')
+}
 // 설명:
 // 온도에 따라 적절한 옷차림을 추천합니다.
 
@@ -409,17 +446,22 @@ else {
 
 // 로그인 상태 확인
 // isLoggedIn 변수에 false 할당
-
+let isLoggedIn = false
 
 // username 변수에 null 할당
-
+let username = null
 
 // if 문 작성
 // 조건: isLoggedIn === true이고 username !== null인 경우
 //   - '[username]님, 환영합니다!' 출력
 // 그 외의 경우
 //   - '로그인이 필요합니다.' 출력
-
+if (username !== null && isLoggedIn === true){
+  console.log('[username]님, 환영합니다!')
+}
+else{
+  console.log('로그인이 필요합니다.')
+}
 
 // 설명:
 // 엄격한 비교(===)를 사용하여 로그인 상태를 정확히 확인합니다.
