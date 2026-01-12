@@ -11,7 +11,12 @@
 // 2. laptop 객체 출력
 
 // [작성 공간]
-let laptop
+let laptop = {
+  brand: 'Apple',
+  model: 'MacBook Air',
+  year: 2024
+}
+console.log(laptop.brand)
 
 
 // --------------------------------------------------------------------------
@@ -28,7 +33,13 @@ let laptop
 // 3. 대괄호 표기법으로 'favorite subject' 속성 값 출력
 
 // [작성 공간]
-let student
+let student = {
+  name: '이수현',
+  grade: 3,
+  'favorite subject': '수학'
+}
+console.log(student.name)
+console.log(student['favorite subject'])
 
 
 // --------------------------------------------------------------------------
@@ -48,4 +59,14 @@ let student
 // 7. phone 객체 출력
 
 // [작성 공간]
-let phone
+let phone = {
+  brand:'Samsung',
+  model:'Galaxy S24'
+}
+phone.color = 'Black'
+console.log(phone)
+phone.model = 'Galaxy S24 Ultra'
+delete phone.color
+console.log(phone)
+
+
