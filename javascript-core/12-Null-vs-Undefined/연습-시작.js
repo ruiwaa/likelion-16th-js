@@ -12,9 +12,14 @@
 // 6. book 객체의 author 속성 출력 (존재하지 않는 속성)
 
 // [작성 공간]
-let myVariable
+let myVariable 
+console.log(myVariable, typeof(myVariable))
 
-let book
+
+let book = {
+  'title 속성': '자바스크립트 입문'
+}
+console.log(book.author)
 
 
 // --------------------------------------------------------------------------
@@ -34,9 +39,19 @@ let book
 // 6. product 객체 출력
 
 // [작성 공간]
-let selectedItem
+let selectedItem = null
 
-let product
+selectedItem = '노트북'
+console.log(selectedItem)
+
+let product = {
+    name: '노트북',
+    price: 1500000,
+    discount: null 
+}
+
+console.log(product)
+
 
 
 // --------------------------------------------------------------------------
@@ -53,5 +68,11 @@ let product
 // 6. value1과 value2를 === 연산자로 비교한 결과 출력
 
 // [작성 공간]
-let value1
-let value2
+let value1 
+let value2 = null
+console.log(typeof(value1))
+console.log(typeof(value2))
+
+console.log(value1 == value2)
+console.log(value1 === value2)
+

@@ -10,8 +10,13 @@
 //    - 그 외의 경우 '미성년자입니다.' 출력
 
 // [작성 공간]
-let age
-
+let age = 17
+if (18<= age){
+  console.log('성인입니다.')
+}
+else{
+console.log('미성년자입니다.')
+}
 
 // --------------------------------------------------------------------------
 // 연습 문제: else if 문 활용
@@ -27,7 +32,22 @@ let age
 //    - 그 외의 경우 '학점: F' 출력
 
 // [작성 공간]
-let score
+let score = 85
+if(90 <= score){
+  console.log('학점: A')
+}
+else if(80 <= score && score < 90){
+  console.log('학점: B')
+  
+}
+else if(70 <= score && score < 80){
+  console.log('학점: C' )
+  
+}
+else {
+  console.log('학점: F')
+  
+}
 
 
 // --------------------------------------------------------------------------
@@ -44,4 +64,16 @@ let score
 // 3. userInput 변수를 null로 변경하고 다시 테스트
 
 // [작성 공간]
-let userInput
+let userInput = 0
+
+if(userInput === null){
+  console.log('입력 값이 없습니다.' )
+  
+}
+else if(userInput === 0){
+  console.log('입력 값이 0입니다.')
+}
+else{
+  console.log('입력 값: [userInput]')
+  
+}
