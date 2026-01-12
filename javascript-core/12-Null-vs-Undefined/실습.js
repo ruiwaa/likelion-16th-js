@@ -142,16 +142,19 @@ console.log(greet('현정'))
 // 소드마스터 객체 생성
 // 이름 속성: '요하네스 리히테나워'
 // 무기 속성: null (의도적으로 "무기가 없음"을 표현)
-
+const 소드마스터 = {
+  이름: '요하네스 리히테나워',
+  무기:null
+}
 
 // 소드마스터 객체의 무기 속성 출력
-
+console.log(소드마스터.무기)
 
 // 소드마스터 객체의 무기 속성을 '츠바이헨더'로 변경
-
+소드마스터.무기 = '츠바이헨더'
 
 // 소드마스터 객체의 무기 속성 출력
-
+console.log(소드마스터.무기)
 
 // 설명:
 // null은 개발자가 의도적으로 "값이 비어있음"을 명시할 때 사용합니다.
@@ -166,17 +169,22 @@ console.log(greet('현정'))
 // --------------------------------------------------------------------------
 
 // currentUser 변수에 null 할당 (아직 로그인하지 않음을 명시)
-
+let currentUser = null
 
 // currentUser 변수 출력
+console.log(currentUser, Boolean(currentUser))
 
 
 // 로그인 후 currentUser 변수에 객체 할당
 // name 속성: 'jee'
 // email 속성: 'jee@example.com'
-
+currentUser = {
+  name: 'jee',
+  email: 'jee@example.com'
+}
 
 // currentUser 변수 출력
+console.log(currentUser, Boolean(currentUser))
 
 
 // 설명:
@@ -192,9 +200,10 @@ console.log(greet('현정'))
 // --------------------------------------------------------------------------
 
 // currentUser 변수를 null로 초기화 (로그아웃)
-
+currentUser = null
 
 // currentUser 변수 출력
+console.log(currentUser, !!currentUser)
 
 
 // 설명:
@@ -213,10 +222,25 @@ console.log(greet('현정'))
 // age 속성: 21
 // profileImage 속성: null (프로필 이미지가 없음)
 // bio 속성: null (자기소개가 없음)
+{
+  const user = {
+    name: 'jee',
+  email: 'jee@example.com',
+  profileImage: null,
+  bio: null
+  }
+  // user 객체 출력
+  console.log(user)
 
+  //HTML 폼을 사용해 프로필 이미지 파일을 서버에 업로드 할 경우
+  user.profileImage = 'https://images.pexels.com/photos/1446948/pexels-photo-1446948.jpeg'
 
-// user 객체 출력
-
+  // HTML 폼을 사용해 자기소개를 입력한 후 서버의 데이터베이스에 저장 할 경우
+  user.bio = '멋사 프론트엔드 부트캠프 16기 수강생으로 열심히 공부중입니다!'
+  
+  console.log(user)
+  
+}
 
 // 설명:
 // null은 데이터베이스에서 "값이 없음"을 명시적으로 표현할 때 사용합니다.
@@ -236,6 +260,33 @@ console.log(greet('현정'))
 //   - find 메서드로 id가 일치하는 사용자 찾기
 //   - 사용자를 찾으면 해당 객체 반환, 못 찾으면 null 반환
 
+// 배열도 객체이므로, 메서드를 가질 수 있다.
+// 배열의 능력(메서드) 중 하나가 "찾기"입니다.
+const users =  [
+ { id: 1, name: '재민' }, 
+ { id: 2, name: '상우' }
+]//users = [user0, user1]
+
+const findUser = (id) => {
+  // 배열도 객체, 객체는 메서드를 가질 수 있다.
+  // 배열의 능력(메서드, method) 중 하나가 "찾는 것(find)"입니다.
+  // 배열.찾는다(id 값이 일치하는 사용자를)
+  // [...].find()
+  // 찾은 사용자 (finded user)
+  const findedUser =  users.find(function(user/* 사용자: id, name */) {
+    // return user.id == id
+    return user.id === Number(id)
+  })
+
+  // 논리 연산자 (조건에 따른 값 반환)
+  return findedUser || null // 값 또는 (표현식 평가 -> 값)
+}
+
+// findUser 함수 호출 (id: 1 전달) 및 결과 출력
+console.log(findUser(1))
+
+// findUser 함수 호출 (id: 99 전달) 및 결과 출력
+console.log(findUser(99))
 
 // findUser 함수 호출 (id: 1 전달) 및 결과 출력
 
