@@ -40,22 +40,22 @@ if (isLightColorRed) {
 // Boolean() 함수를 사용하여 다양한 값의 참/거짓 확인
 
 // false를 Boolean() 함수에 전달하여 결과 출력
-
+console.log(Boolean(false))
 
 // undefined를 Boolean() 함수에 전달하여 결과 출력
-
+console.log(Boolean(undefined))
 
 // null을 Boolean() 함수에 전달하여 결과 출력
-
+console.log(Boolean(null))
 
 // 0을 Boolean() 함수에 전달하여 결과 출력
-
+console.log(Boolean(0))
 
 // 빈 문자열('')을 Boolean() 함수에 전달하여 결과 출력
-
+console.log(Boolean(''))
 
 // NaN을 Boolean() 함수에 전달하여 결과 출력
-
+console.log(Boolean(NaN))
 
 // 설명:
 // JavaScript에서 거짓(Falsey)으로 평가되는 값은 6가지입니다.
@@ -72,18 +72,22 @@ if (isLightColorRed) {
 // Boolean() 함수를 사용하여 Truthy 값 확인
 
 // true를 Boolean() 함수에 전달하여 결과 출력
-
+console.log(Boolean(true))
 
 // 1을 Boolean() 함수에 전달하여 결과 출력
+console.log(Boolean(1))
 
 
 // '안녕'을 Boolean() 함수에 전달하여 결과 출력
+console.log(Boolean('안녕'))
 
 
 // 빈 배열([])을 Boolean() 함수에 전달하여 결과 출력
+console.log(Boolean([]))
 
 
 // 빈 객체({})를 Boolean() 함수에 전달하여 결과 출력
+console.log(Boolean({}))
 
 
 // 설명:
@@ -468,3 +472,15 @@ else{
 
 // 출력 결과:
 // '로그인이 필요합니다.'
+
+// 실습
+let hisAge = 25 
+if(hisAge < 23){
+  console.log('성현이는 명호보다 나이가 적습니다.')
+}
+else if(25 <= hisAge && hisAge < 27){
+console.log('성현이는 아현이보다 나이가 적습니다.')
+}
+else{
+  console.log('재웅이는 나이가 제일 많습니다. ')
+}
