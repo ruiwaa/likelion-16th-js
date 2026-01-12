@@ -66,7 +66,7 @@ const user = {
 }
 
 // user 객체의 name 속성 출력
-console.log(user.name);
+console.log(user.name)
 
 
 // user 객체의 email 속성 출력 (존재하지 않는 속성)
@@ -120,7 +120,6 @@ console.log(fruits[2])
 // 기능: name과 age를 각각 출력
 function greet(name, age){
   return 'name =' + name + ' / age =' + age 
- 
 
 }
 
@@ -260,8 +259,9 @@ console.log(currentUser, !!currentUser)
 //   - find 메서드로 id가 일치하는 사용자 찾기
 //   - 사용자를 찾으면 해당 객체 반환, 못 찾으면 null 반환
 
-// 배열도 객체이므로, 메서드를 가질 수 있다.
-// 배열의 능력(메서드) 중 하나가 "찾기"입니다.
+// 변수를 매번 함수 안에서 반복적으로 실행되어야 할 필요가 없다면, 
+// 밖으로 뺴내서 사용한다.
+
 const users =  [
  { id: 1, name: '재민' }, 
  { id: 2, name: '상우' }
@@ -276,6 +276,9 @@ const findUser = (id) => {
   const findedUser =  users.find(function(user/* 사용자: id, name */) {
     // return user.id == id
     return user.id === Number(id)
+
+    //화살표 함수 표현식으로 변환하면?
+    //const findedUser = users.find(u => u.id === Number(id))
   })
 
   // 논리 연산자 (조건에 따른 값 반환)
@@ -284,15 +287,10 @@ const findUser = (id) => {
 
 // findUser 함수 호출 (id: 1 전달) 및 결과 출력
 console.log(findUser(1))
+console.log(findUser(2))
 
 // findUser 함수 호출 (id: 99 전달) 및 결과 출력
 console.log(findUser(99))
-
-// findUser 함수 호출 (id: 1 전달) 및 결과 출력
-
-
-// findUser 함수 호출 (id: 99 전달) 및 결과 출력
-
 
 // 설명:
 // 함수에서 "값을 찾지 못했음"을 명시적으로 표현할 때 null을 반환합니다.
@@ -307,9 +305,10 @@ console.log(findUser(99))
 // --------------------------------------------------------------------------
 
 // undefined의 타입 출력 (typeof 연산자 사용)
-
+console.log(typeof undefined)
 
 // null의 타입 출력 (typeof 연산자 사용)
+console.log(typeof null)
 
 
 // 설명:
@@ -326,7 +325,7 @@ console.log(findUser(99))
 // --------------------------------------------------------------------------
 
 // null과 undefined를 == 연산자로 비교한 결과 출력
-
+console.log(null == undefined)
 
 // 설명:
 // == 연산자는 타입을 자동 변환한 후 비교합니다.
@@ -341,7 +340,7 @@ console.log(findUser(99))
 // --------------------------------------------------------------------------
 
 // null과 undefined를 === 연산자로 비교한 결과 출력
-
+console.log(null === undefined)
 
 // 설명:
 // === 연산자는 타입까지 엄격하게 비교합니다.
@@ -358,15 +357,19 @@ console.log(findUser(99))
 
 // ✅ 좋은 예 - undefined
 // data1 변수 선언 (값 할당하지 않음)
+let data1 
+console.log(data1)
 
 
 // ❌ 나쁜 예 - undefined를 명시적으로 할당하지 마세요
 // data2 변수에 undefined 할당 (불필요)
+let data2 = undefined
+console.log(data2)
 
 
 // ✅ 좋은 예 - null
 // currentUser2 변수에 null 할당 (아직 로그인하지 않음을 명시)
-
+let currentUser2 = null
 
 // product 객체 생성
 // name 속성: '랩탑'
@@ -398,25 +401,41 @@ console.log(findUser(99))
 // 레벨 속성: 1
 // 무기 속성: null (초기에는 무기가 없음)
 // 방어구 속성: null (초기에는 방어구가 없음)
+const 마법사 = {
+이름: '멀린',
+레벨: 9,
+무기: null,
+방어구:null
+}
 
-
+const 난쟁이 = {
+  이름: '스머프',
+  레벨: 12,
+  무기: null,
+  방어구:null
+}
 // 캐릭터 객체 출력
 
+console.log(마법사)
 
 // 캐릭터가 무기를 획득
 // 무기 속성을 '강철 검'으로 변경
-
+마법사.무기 = '마법의 지팡이'
 
 // 캐릭터 객체 출력
+console.log(마법사)
 
 
 // getWeaponName 함수 선언
 // 매개변수: character
 // 기능: character의 무기가 null이면 '무기 없음' 반환, 아니면 무기 이름 반환
-
+function getWeaponName(character){
+  return character.무기 || '무기 없음'
+}
 
 // getWeaponName 함수 호출 (캐릭터 객체 전달) 및 결과 출력
-
+console.log(getWeaponName(마법사))
+console.log(getWeaponName(난쟁이))
 
 // 설명:
 // null을 사용하여 "값이 없음"을 명시적으로 표현하고,
@@ -426,3 +445,22 @@ console.log(findUser(99))
 // { 이름: '전사', 레벨: 1, 무기: null, 방어구: null }
 // { 이름: '전사', 레벨: 1, 무기: '강철 검', 방어구: null }
 // '강철 검'
+
+
+// &&, || 조건 처리
+
+//표현식
+// - 계산 후 값을 구하는 과정(평가)
+
+// 표현식에서의 논리곱(&&) 연산자
+// 거짓값 만나면 참이 나올때 까지 이동
+// 모두 거짓/참 일 경우 맨 오른쪽 값을 반환
+
+//-첫 번째 거지 같은 값(falsy)를 찾는 연산자 (예시)
+let result1 = 1 && {} && ' ' && -1 && 10n && [0, 1, 2]
+console.log(result1)
+
+// 표현식에서의 논리합(||) 연산자
+//- 첫번째 참 같은 값(truthy)를 찾는 연산자
+let result2 = 0 || '' || null || undefined || Symbol()
+console.log(result2)
