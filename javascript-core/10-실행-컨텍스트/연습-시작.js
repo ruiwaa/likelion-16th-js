@@ -10,7 +10,11 @@
 // 3. 함수를 두 번 호출 ('아메리카노', '카페라떼')
 
 // [작성 공간]
-let orderDrink
+let orderDrink = function(drinkName){
+  return [drinkName] + ' 주문이 접수되었습니다.'
+}
+console.log(orderDrink('아메리카노'))
+console.log(orderDrink('카페라떼'))
 
 
 // --------------------------------------------------------------------------
@@ -28,10 +32,14 @@ let orderDrink
 // 5. totalAmount 출력
 
 // [작성 공간]
-let itemPrice
-let itemQuantity
-let calculateTotal
-let totalAmount
+let itemPrice = 8_000
+let itemQuantity =3
+let calculateTotal = function(price, quantity){
+  const total = price * quantity
+  return total
+}
+let totalAmount = calculateTotal(itemPrice, itemQuantity)
+console.log(totalAmount)
 
 
 // --------------------------------------------------------------------------
@@ -54,6 +62,30 @@ let totalAmount
 //    - ('카페라떼', 'venti')
 
 // [작성 공간]
-let cafeName
+let cafeName = '스타벅스'
 
-let makeOrder
+let makeOrder = function(drink, size){
+  let price
+  if (size === 'tall') {
+    price = 4000
+  } else if (size === 'grande') {
+    price = 4500
+  } else {
+    price = 5000
+  }
+  function printOrder () {
+    let message = cafeName
+        message += '에서 '
+        message += size
+        message += ' 사이즈 '
+        message += drink
+        message += ' 주문 - '
+        message += price
+        message += '원'
+
+  console.log(message)
+  }
+  printOrder()
+}
+makeOrder('아메리카노', 'tall')
+makeOrder('아메리카노', 'venti')

@@ -306,12 +306,15 @@ const restaurantType = '이탈리안'
 //     - 기능: '[restaurantType] 레스토랑 - [foodName] [quantity]개 주문, 총 [totalPrice]원' 출력
 //   - printReceipt 함수 호출
 
-const orderFood= (foodName, quantity) =>{
+const orderFood= (foodName, quantity) => {
   let totalPrice = parseInt(quantity, 10) * 15000
- 
+ function printOrder(){
+  return restaurantType + ' 레스토랑' + ' -' + foodName + quantity + '개 주문, 총' +  totalPrice + '원'
+ }
+ return printOrder()
 }
 // orderFood 함수 호출 ('피자', 2 전달)
-
+console.log(orderFood('피자', 2 ))
 
 // 설명:
 // 이 예제는 전역 컨텍스트, 함수 컨텍스트, 스코프 체인을 모두 포함합니다.
