@@ -116,10 +116,10 @@ console.log(window.document === document)
 console.log('현재 웹 페이지의 제목:\n', window.document.title)
 
 // 2. 현재 문서의 전체 URL 주소를 출력하세요.
-console.log('현재 문서의 전체 URl:')
+console.log('현재 문서의 전체 URl:', window.document.URL)
 
 // 3. 현재 문서의 도메인(domain) 정보를 출력하세요.
-
+console.log(document.domain)
 
 // 4. [수정] 브라우저 상단 탭의 제목(title)을 '학습 중인 새로운 제목'으로 변경해 보세요.
 
