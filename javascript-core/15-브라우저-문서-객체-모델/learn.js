@@ -42,20 +42,20 @@ console.log(typeof location)
 
 // 1. 사용자에게 '유튜브 페이지로 이동할까요?'라고 묻는 
 //    확인창(confirm)을 띄우고 결과를 변수 `userConfirm`에 담으세요.
-const moveToYoutube = window.confirm('유튜브 페이지로 이동할까요?')
+//const moveToYoutube = window.confirm('유튜브 페이지로 이동할까요?')
 // console.log(moveToYoutube) // Boolean
 
 // 2. 조건문을 작성하세요.
 //    - [참일 때]: '네. 유튜브 페이지로 이동할게요!' 경고창(alert)을 띄우고,
 //      `window.location.href`를 'https://www.youtube.com'으로 변경하세요.
-if (moveToYoutube) {
-  window.alert('네. 유튜브 페이지로 이동할게요!')
-  window.location.href = 'https://www.youtube.com'
-}
-//    - [거짓일 때]: '네. 유튜브 페이지로 이동을 취소할게요!' 경고창을 띄우세요.
-else {
-  window.alert('네. 유튜브 페이지로 이동을 취소할게요!')
-}
+// if (moveToYoutube) {
+//   window.alert('네. 유튜브 페이지로 이동할게요!')
+//   window.location.href = 'https://www.youtube.com'
+// }
+// //    - [거짓일 때]: '네. 유튜브 페이지로 이동을 취소할게요!' 경고창을 띄우세요.
+// else {
+//   window.alert('네. 유튜브 페이지로 이동을 취소할게요!')
+// }
 
 // 설명:
 // confirm()은 확인 시 true, 취소 시 false를 반환합니다.
@@ -67,12 +67,15 @@ else {
 // --------------------------------------------------------------------------
 
 // 1. 현재 로드된 문서를 나타내는 document 객체를 콘솔에 출력하세요.
+console.log(window.document)
 
 
 // 2. document 객체를 객체 내부 구조(속성 등)까지 포함하여 자세히(dir) 출력하세요.
-
+console.dir(document)
 
 // 3. document 객체와 window.document 객체가 동일한지 비교(===)한 결과를 출력하세요.
+console.log(window.document === document)
+
 
 
 // 설명:
@@ -83,6 +86,7 @@ else {
 // true
 
 // 모델링(Modeling)이란?
+// html 문서를 파싱(해석)해서 만든 모형(모델링)
 // - 실물을 조작하기 좋게 만든 모형
 // - 실제 사물의 특징과 구조를 뽑아, 컴퓨터가 조작하기 쉬운 형태(객체)로 만드는 것
 //   * HTML → 건물
@@ -109,10 +113,10 @@ else {
 // --------------------------------------------------------------------------
 
 // 1. 현재 페이지의 제목(title)을 가져와 '현재 페이지 제목' 문구와 함께 출력하세요.
-
+console.log('현재 웹 페이지의 제목:\n', window.document.title)
 
 // 2. 현재 문서의 전체 URL 주소를 출력하세요.
-
+console.log('현재 문서의 전체 URl:')
 
 // 3. 현재 문서의 도메인(domain) 정보를 출력하세요.
 
@@ -122,7 +126,7 @@ else {
 
 // 설명:
 // DOM 객체의 속성에 새로운 값을 할당하면 실제 브라우저의 렌더링 상태가 즉시 변경됩니다.
-
+document.title = '멋사 FE.16 JavaScript 학습' // 웹페이지 제목 쓰기
 
 // --------------------------------------------------------------------------
 // 핵심 요약!
