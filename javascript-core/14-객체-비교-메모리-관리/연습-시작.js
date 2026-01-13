@@ -11,8 +11,12 @@
 // 5. num2 변수 출력
 
 // [작성 공간]
-let num1
-let num2
+let num1 = 100
+let num2 = num1
+num1 = 200
+console.log(num1)
+console.log(num2)
+
 
 
 // --------------------------------------------------------------------------
@@ -28,9 +32,14 @@ let num2
 // 5. car2 객체 출력
 
 // [작성 공간]
-let car1
-let car2
-
+let car1 = {
+  'brand 속성': 'Tesla', 
+  'model 속성': 'Model 3'
+}
+let car2 = car1
+console.log(car1)
+console.log(car2)
+console.log(car1 === car2)
 
 // --------------------------------------------------------------------------
 // 연습 문제: 객체 비교하기
@@ -45,6 +54,12 @@ let car2
 // 5. obj1과 obj3를 === 연산자로 비교한 결과 출력
 
 // [작성 공간]
-let obj1
-let obj2
-let obj3
+let obj1 = {
+  value: 10
+}
+let obj2 = {
+  value: 10
+}
+let obj3 = obj1
+console.log(obj1 === obj2) //false (동일한 값, 독립된 주소)
+console.log(obj1 === obj3) // true (동일한 주소 공유)
