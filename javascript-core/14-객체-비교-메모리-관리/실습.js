@@ -41,14 +41,16 @@
 
 // 야무 객체 생성
 // isHavingFun 속성: true
-
+const 야무 = { isHavingFun: true }
 
 // 지니 객체 생성
 // isHavingFun 속성: true
+const 지니 = { isHavingFun: true }
 
 
 // 야무와 지니를 === 연산자로 비교한 결과 출력
-
+console.log(야무 === 지니) // false
+console.log('0x0010101010' === '0x0010101011')
 
 // 설명:
 // 두 객체의 내용은 같지만, 메모리의 서로 다른 위치에 저장되어 있습니다.
@@ -59,23 +61,28 @@
 
 
 // --------------------------------------------------------------------------
-// 기본 타입 저장 방식 (Stack) - 값 복사
+// 기본 타입 저장 방식 (Stack) - 값 복사 (고정)
 // --------------------------------------------------------------------------
 
 // name 변수에 '네무' 할당
+const name = '네무'
 
 
 // new_name 변수에 name 값 복사
+let new_name = name // name의 값을 복사함 
+console.log(new_name)
 
 
 // new_name 변수를 '야무'로 변경
+new_name = '야무'
 
 
 // name 변수 출력
-
-
 // new_name 변수 출력
+console.log(name)
+console.log(new_name)
 
+console.log(name === new_name)
 
 // 설명:
 // 기본 타입은 스택(Stack)에 값 자체가 저장됩니다.
@@ -87,24 +94,30 @@
 
 
 // --------------------------------------------------------------------------
-// 객체 타입 저장 방식 (Heap) - 주소 복사
+// 객체 타입 저장 방식 (Heap) - 주소 복사(동적)
 // --------------------------------------------------------------------------
 
+//Heep에 저장( 크고 변경 가능한 데이터: 객체)
 // person 객체 생성
 // name 속성: '성준일'
 // age 속성: 57
-
+const person = { name: '성준일', age: 57 }
 
 // new_person 변수에 person 객체 할당 (주소 복사)
+const new_person = person //주소(참조)만 복사 (실제 데이터의 크기가 크기때문)
+
+// person 객체의 age 속성 출력
+person
 
 
 // new_person 객체의 age 속성을 21로 변경
-
-
-// person 객체의 age 속성 출력
-
-
 // new_person 객체의 age 속성 출력
+// 변형 가능한 객체를 참조하고 있는 변수를 통해 데이터 값을 변경함
+// 객체의 주소를 공유하는 다른 변수 또한 동일한 객체를 참조하므로 
+// 다른 변수를 통해 접근해도 동일 대상이므로 값이 변경되어 있다.
+new_person.age = 21 
+console.log(new_person.age)
+console.log(person === new_person) // 주소를 비교하는 것이기 떄문에
 
 
 // 설명:
@@ -123,14 +136,14 @@
 
 // 야무2 객체 생성
 // isHavingFun 속성: true
-
+const yamoo2 = {isHavingFun: true}
 
 // 지니2 객체 생성
 // isHavingFun 속성: true
-
+const jini2= {isHavingFun: true}
 
 // 야무2와 지니2를 === 연산자로 비교한 결과 출력
-
+console.log(yamoo2 === jini2)
 
 // 설명:
 // 두 객체는 내용이 같지만, 힙 메모리에 각각 별도로 생성되었습니다.
@@ -146,12 +159,13 @@
 
 // 야무3 객체 생성
 // isHavingFun 속성: true
-
+const yamoo3 = {isHavingFun: true}
 
 // 지니3 변수에 야무3 객체 할당 (주소 복사)
-
+const jini3 = yamoo3
 
 // 야무3와 지니3를 === 연산자로 비교한 결과 출력
+console.log(yamoo3 === jini3)
 
 
 // 설명:
@@ -167,18 +181,20 @@
 // --------------------------------------------------------------------------
 
 // a 변수에 10 할당
-
+let a = 10
 
 // b 변수에 a 값 복사
-
+const b = a
 
 // a 변수를 20으로 변경
-
+a = 20
 
 // a 변수 출력
+console.log(a)
 
 
 // b 변수 출력
+console.log(b)
 
 
 // 설명:
@@ -196,18 +212,23 @@
 // obj1 객체 생성
 // x 속성: 10
 // y 속성: 24
-
+const obj1 = {
+  x: 10,
+  y: 24
+}
 
 // obj2 변수에 obj1 객체 할당 (주소 복사)
-
+const obj2 = obj1
 
 // obj1 객체의 x 속성을 40으로 변경
-
+obj1.x = 40
 
 // obj1 객체 출력
+console.log(obj1)
 
 
 // obj2 객체 출력
+console.log(obj2)
 
 
 // 설명:
@@ -224,9 +245,11 @@
 // --------------------------------------------------------------------------
 
 // null과 undefined를 == 연산자로 비교한 결과 출력
+console.log(null == undefined)
 
 
 // null과 undefined를 === 연산자로 비교한 결과 출력
+console.log(null === undefined)
 
 
 // 설명:
@@ -257,18 +280,20 @@
 // 배열도 객체 타입입니다 - 주소 복사 확인
 
 // arr1 배열 생성 [1, 2, 3]
-
+const arr1 = [1, 2, 3]
 
 // arr2 변수에 arr1 배열 할당 (주소 복사)
-
+const arr2 = arr1
 
 // arr1 배열의 0번 인덱스를 100으로 변경
-
+arr1[0] = 100
 
 // arr1 배열 출력
+console.log(arr1)
 
 
 // arr2 배열 출력
+console.log(arr2)
 
 
 // 설명:
@@ -286,18 +311,21 @@
 // 매개변수: name
 // 기능: 'Hello, [name]!' 반환
 
-
+const greet = function(name){
+  return 'Hello ' + name + '!'
+}
 // greet2 변수에 greet 함수 할당 (주소 복사)
-
+let greet2 =greet
 
 // greet 함수 호출 ('Alice' 전달) 및 결과 출력
-
+console.log(greet('Alice'))
 
 // greet2 함수 호출 ('Bob' 전달) 및 결과 출력
-
+console.log(greet2('Bob'))
 
 // greet와 greet2를 === 연산자로 비교한 결과 출력
 
+console.log(greet === greet2)
 
 // 설명:
 // 함수도 객체 타입이므로 주소가 복사됩니다.
@@ -315,18 +343,29 @@
 // name 속성: '철수'
 // age 속성: 25
 
+const original = {
+  name : '철수',
+  age : 25
+}
 
 // copy 변수에 original 객체를 스프레드 연산자로 복사
 // const copy = { ...original }
-
+const copy = { ...original }
 
 // copy 객체의 age 속성을 30으로 변경
-
+copy.age = 30
 
 // original 객체 출력
+console.log(original)
 
 
 // copy 객체 출력
+console.log(copy)
+
+
+console.log(original === copy)
+//스프레드 연산자를 사용하여, 독립된 객체 생성하였기 때문에
+// 두 변수의 주소는 일치하지 않음
 
 
 // 설명:
@@ -336,3 +375,4 @@
 // 출력 결과:
 // { name: '철수', age: 25 } (원본은 변경되지 않음)
 // { name: '철수', age: 30 }
+
