@@ -6,11 +6,31 @@
 // * element.querySelector() : 특정 요소 내부에서만 탐색합니다.
 // --------------------------------------------------------------------------
 
+// <html> 요소(객체) 선택
+console.log(document.documentElement)
+// console.log(document.querySelector('html'))
 
+// <head> 요소(객체) 선택
+console.log(document.head)
+// console.log(document.querySelector('head'))
 
+// <title> 요소(객체) 선택
+// console.log(document.querySelector('title'))
+
+// <meta /> 요소(객체) 선택
+// console.log(document.querySelector('meta'))
+
+// <body> 요소(객체) 선택
+console.log(document.body)
+// console.log(document.querySelector('body'))
+
+//<article> 요소 (객체) 선택
+//console.log(document.querySelector('article'))
+console.log(document.querySelector('#content'))
 // --------------------------------------------------------------------------
 // document.querySelector - 전체 문서 탐색
 // --------------------------------------------------------------------------
+
 
 // 1. ID 선택자를 사용하여 '#chapter' 요소를 선택하고 콘솔에 출력하세요.
 
