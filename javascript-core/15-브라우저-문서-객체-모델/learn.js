@@ -5,19 +5,31 @@
 // * DOM : 웹 문서 내부의 내용 관리 (집 안 가구) - document 객체
 // --------------------------------------------------------------------------
 
+// 각 환경의 전역 객체
+//Node.js - globalm (자바스크립트 언어 + node.js 환경에 내장된 다양한 기능 (API)
+//Browser - window (자바스크립트 언어 + Browser 환경에 내장된 다양한 기능 (API)
+
+// Browser 에서 console.log(window) 하면 출력 가능
+// node.js 에서 console.log(global) 하면 출력 가능
+// 각 환경에 반대로 출력하면 오류가 발생 ❌
+
 
 // --------------------------------------------------------------------------
 // BOM - Window 객체 탐색
 // --------------------------------------------------------------------------
 
-// 1. 최상위 객체인 window를 콘솔에 출력하세요.
+// 1. 최상위(root) 객체인 window를 콘솔에 출력하세요.
+console.log(window) //Window {}
 
-
+// * 객체의 속성 접근하는 법 * (점 표기법, 대괄호 표기법 사용) 
 // 2. window 객체의 navigator 속성을 통해 브라우저 정보를 출력하세요. (점 표기법 사용)
+console.log(window.navigator) //Navigator {} (점 표기법 사용)
+console.log(window[location]) //Location {} (대괄호 표기법 사용)
 
 
 // 3. 위와 동일한 정보를 window를 생략하고 출력해 보세요. (전역 객체의 특징)
-
+console.log(typeof navigator.userAgent)
+console.log(typeof location) 
 
 // 설명:
 // window 객체는 BOM의 뿌리(root)이자 JavaScript 전역 객체입니다.
