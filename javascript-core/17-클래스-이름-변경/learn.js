@@ -66,7 +66,10 @@ proseHeading.classList.replace('color-silver', 'font-bold')
 
 
 // [연습] 'is-danger' 클래스를 'is-success' 클래스로 교체하세요.
-
+const messageElement = prose.querySelector('.message')
+console.log(messageElement)
+const replacement = messageElement.classList.replace('is-danger', 'is-success')
+console.log('교체 여부:',replacement)
 
 // 설명:
 // remove()와 add()를 각각 실행하는 것보다 훨씬 간결하고 안전하게 스타일을 전환합니다.
@@ -75,9 +78,22 @@ proseHeading.classList.replace('color-silver', 'font-bold')
 // --------------------------------------------------------------------------
 // 4. 클래스 포함 여부 확인 (contains)
 // --------------------------------------------------------------------------
+const is_already_contained = proseHeading.classList.contains('font-bold')
+console.log('font-bold 포함 여부:',is_already_contained)
 
 // [연습] target 요소가 'text-primary' 클래스를 가지고 있는지 조건문(if)으로 확인하세요.
 // 클래스가 있다면 제거하고, 없다면 추가하는 로직을 작성해 보세요.
+const target = document.querySelector('.target')
+
+  if(target.classList.contains('text-primary')){
+  target.classList.remove('text-primary')
+}
+else{
+  target.classList.add('text-primary')
+}
+
+
+
 
 
 // 설명:

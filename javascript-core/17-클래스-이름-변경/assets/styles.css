@@ -98,6 +98,8 @@ body {
   & abbr:not(dfn abbr) {
     font-weight: 500;
   }
+  & .is-danger { color: red; }
+  & .is-success { color: green; }
   & .color-gold { color: #ffd700; } 
   & .color-silver { color: #c0c0c0; }
 
