@@ -98,4 +98,21 @@ body {
   & abbr:not(dfn abbr) {
     font-weight: 500;
   }
+  & .color-gold { color: #ffd700; } 
+  & .color-silver { color: #c0c0c0; }
+
+  & .size-xl { font-size: 4rem; }
+  & .size-lg { font-size: 2rem; }
+  & .size-normal { font-size: 1rem; }
+  & .size-sm { font-size: 0.8rem; }
+  & .size-xs { font-size: 0.6rem; }
+
+  & .text-primary { color: #35afbc; }
+  & .font-bold { font-weight: 700; }
 }
+
+
+
+
+
+

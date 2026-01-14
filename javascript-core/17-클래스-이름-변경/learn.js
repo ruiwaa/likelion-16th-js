@@ -11,10 +11,27 @@
 // --------------------------------------------------------------------------
 
 // [연습] 'text-primary' 클래스를 추가하세요.
+//.prose 요소 찾기
+const prose =document.querySelector('.prose')
+console.log(prose) // main class  -> HTMLElement
 
+
+//prose 요소 안에서 h1 요소 찾기
+const proseHeading = prose.querySelector('h1')
+console.dir(proseHeading)
+
+//element.style     // CSS declaration {item, length, ...}
+//element.classList //DOMTokenList {add, remove, replace, contains, toggle}
+console.log(proseHeading.classList) 
+
+// 클래스 이름 추가
+proseHeading.classList.add('color-gold')
+
+// [연습] 'text-primary' 클래스를 추가하세요.
+//proseHeading.classList.add('text-primary')
 
 // [연습] 'text-primary'와 'font-bold' 클래스를 동시에 추가하세요.
-
+proseHeading.classList.add('text-primary','font-bold')
 
 // 설명:
 // classList.add()는 기존 클래스를 유지하면서 새로운 클래스를 덧입힙니다.
@@ -25,9 +42,11 @@
 // --------------------------------------------------------------------------
 
 // [연습] 위에서 추가했던 'text-primary' 클래스를 제거하세요.
-
+console.log(proseHeading.classList)
+// proseHeading.classList.remove('text-primary')
 
 // [연습] 'text-primary'와 'font-bold' 클래스를 한 번에 제거하세요.
+proseHeading.classList.remove('text-primary', 'font-bold')
 
 
 // 설명:
@@ -37,6 +56,11 @@
 // --------------------------------------------------------------------------
 // 3. 클래스 이름 교체 (replace)
 // --------------------------------------------------------------------------
+
+
+//proseHeading 참조 객체 (HTMLHeadingElement)
+// 클래스 이름 속성 값을 교체 가능 (elment.classlist.replace())
+proseHeading.classList.replace('color-silver', 'font-bold')
 
 // 실습 HTML 예시: <p class="message is-danger">오류 발생</p>
 
