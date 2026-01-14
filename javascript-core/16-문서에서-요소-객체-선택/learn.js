@@ -6,6 +6,15 @@
 // * element.querySelector() : 특정 요소 내부에서만 탐색합니다.
 // --------------------------------------------------------------------------
 
+console.log(document.getElementById('content')) // 왜 null 값이 나올까?
+// Element (찾은 경우) 또는 null (못찾은 경우)
+// 브라우저에서 하는 일
+// * HTML 파서(해석 프로그램) 
+//   - *.html 파일 파싱(해석) -> DOM 생성
+// * JavaScript 엔진 
+//   - *.js 파일 처리 -> DOM에 접근/조작
+//   - *.js 파일 처리하는 동안 HTML 파서는 대기 상태가 됨. (동기식: 일을 안하고 대기 중...)
+// 해결방법 html <script> 요소를 바디 끝 부분에 옮겨주기
 // <html> 요소(객체) 선택
 console.log(document.documentElement)
 // console.log(document.querySelector('html'))
