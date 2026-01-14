@@ -1,7 +1,6 @@
 <!-- DTD(Document Type Definition (문서 형식 정의)) -->
 <!DOCTYPE html>
 <html lang="ko-KR">
-
   <head>
     <meta charset="UTF-8" />
     <title>DOM 요소 선택하기 (Selecting Elements)</title>
@@ -10,29 +9,44 @@
     <link rel="stylesheet" href="./assets/styles.css" />
     <link rel="icon" href="./assets/es-logo.png" />
     <script defer src="./learn.js"></script>
-    
   </head>
 
   <body>
-
     <main class="prose">
-      <article id="content">
+      <article id="chapter">
         <h1>DOM 요소 선택</h1>
         <p>
-          자바스크립트라는 마법 지팡이로 웹 페이지를 바꾸기 전, 가장 먼저 해야 할 일은 <strong>대상을 정확히 가리키는 것</strong>입니다.
-          브라우저는 이를 위해 <dfn><code title="querySelectorAll">querySelector</code></dfn>라는 강력한 주문(API)을 제공합니다.
+          자바스크립트라는 마법 지팡이로 웹 페이지를 바꾸기 전, 가장 먼저 해야
+          할 일은 <strong>대상을 정확히 가리키는 것</strong>입니다. 브라우저는
+          이를 위해
+          <dfn><code title="querySelectorAll">querySelector</code></dfn
+          >라는 강력한 주문(API)을 제공합니다.
         </p>
         <section>
           <h2>핵심 요약</h2>
           <p>
-            전체 문서에서 요소를 찾을 때는 <code>document.querySelector</code>를 사용하며,
-            이미 선택된 요소 내부로 범위를 좁혀 찾을 때는 <code>element.querySelector</code>를 활용합니다.
-            이는 마치 도서관 전체를 뒤지는 대신 <strong>특정 서가</strong>에서 책을 찾는 것과 같아 훨씬 효율적입니다.
+            전체 문서에서 요소를 찾을 때는 <code>document.querySelector</code>를
+            사용하며, 이미 선택된 요소 내부로 범위를 좁혀 찾을 때는
+            <code>element.querySelector</code>를 활용합니다. 이는 마치 도서관
+            전체를 뒤지는 대신 <strong>특정 서가</strong>에서 책을 찾는 것과
+            같아 훨씬 효율적입니다.
           </p>
         </section>
       </article>
+      <table>
+        <!-- 스크린 리더 지원 -->
+        <caption class="sr-only">접근 가능한 데이터 레이블</caption>
+        <thead>
+          <tr>
+            <th scope="col">표 셀 제목</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>표 셀 내용</td>
+          </tr>
+        </tbody>
+      </table>
     </main>
-
   </body>
-
 </html>

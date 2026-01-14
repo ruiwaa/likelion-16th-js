@@ -35,21 +35,38 @@ console.log(document.body)
 
 //<article> 요소 (객체) 선택
 //console.log(document.querySelector('article'))
-console.log(document.querySelector('#content'))
+console.log(document.querySelector('#chapter'))
 // --------------------------------------------------------------------------
 // document.querySelector - 전체 문서 탐색
 // --------------------------------------------------------------------------
+// 공통적인 함수 만들기
+// const elmentNotExist = function(selector){
+//   if(selector === null){
+//     console.warn(selector + '선택자로 요소를 찾을 수 없습니다.')
+//   }
+//   return elmentNotExist
+// }
 
+function checkElWarning(element, selector){
+  if(element === null){
+    console.warn(selector + '선택잘 문서에서 요소를 찾을 수 없습니다.')
+  }
+}
 
 // 1. ID 선택자를 사용하여 '#chapter' 요소를 선택하고 콘솔에 출력하세요.
-
+const chapterElement = document.querySelector('#chapter')
+console.log(chapterElement) //Element 또는 null
+// 조건 처리(문서에 요소가 존재하는지 검토)
+checkElWarning(chapterElement, '#chapter' )
 
 // 2. 클래스 선택자를 사용하여 '.sr-only' 요소를 선택하고 콘솔에 출력하세요.
-
+// sr-only = screen reader only
+const screenReaderOnlyEl = document.querySelector('.sr-only')
+checkElWarning(screenReaderOnlyEl, '.sr-only')
 
 // 3. 속성 선택자를 사용하여 title에 'Model'이 포함된([title*="Model"]) 요소를 선택하세요.
-
-
+const modelElement = document.querySelector('[title*="Model"]')
+checkElWarning(modelElement, '[title*="Model"]' )
 // 설명:
 // querySelector는 CSS와 동일한 선택자 방식을 사용하여 요소를 선택합니다.
 // 일치하는 대상이 여러 개여도 '가장 먼저 발견된 첫 번째' 요소만 반환합니다.
