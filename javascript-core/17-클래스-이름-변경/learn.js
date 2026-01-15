@@ -123,9 +123,10 @@ console.log(hasTextPrimaryClass)
 // 조건문을 사용할 경우
 // classlist.contains, classList.remove , classList.add
 
+//const targetElement = prose.querySelector('.target')
 let activeClassName = 'active'
 const hasActiveClass = targetElement.classList.contains(activeClassName)
-
+console.log(hasActiveClass)
 // if (hasActiveClass) {
 //   targetElement.classList.remove(activeClassName)
 // } else {
@@ -148,7 +149,9 @@ let methodName = 'remove'
 if (!hasActiveClass) {
   // 메서드 이름을 add로 변경
   methodName = 'add'
+
 }
+console.log(methodName)
 // 메서드 이름은 가지고 있을 경우 'remove'
 // 가지고 있지 않을 경우에는 'add'
 targetElement.classList[methodName](activeClassName)
