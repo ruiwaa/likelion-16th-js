@@ -69,6 +69,12 @@ proseHeading.classList.replace('color-silver', 'font-bold')
 const messageElement = prose.querySelector('.message')
 console.log(messageElement)
 const replacement = messageElement.classList.replace('is-danger', 'is-success')
+if(replacement){
+  console.log('교체 성공!')
+  
+}else {
+  console.warn('교체 실패!')
+}
 console.log('교체 여부:',replacement)
 
 // 설명:
@@ -78,19 +84,24 @@ console.log('교체 여부:',replacement)
 // --------------------------------------------------------------------------
 // 4. 클래스 포함 여부 확인 (contains)
 // --------------------------------------------------------------------------
-const is_already_contained = proseHeading.classList.contains('font-bold')
-console.log('font-bold 포함 여부:',is_already_contained)
+const targetElement = prose.querySelector('.target')
+// console.log(targetElement)
 
-// [연습] target 요소가 'text-primary' 클래스를 가지고 있는지 조건문(if)으로 확인하세요.
-// 클래스가 있다면 제거하고, 없다면 추가하는 로직을 작성해 보세요.
-const target = document.querySelector('.target')
+// target 요소에 text-primary 클래스 값을 가지고 있는 지 확인
+const hasTextPrimaryClass = targetElement.classList.contains('text-primary')
 
-  if(target.classList.contains('text-primary')){
-  target.classList.remove('text-primary')
+// console.log(hasTextPrimaryClass)
+  // 만약 해당 클래스 이름이 있다면
+if (hasTextPrimaryClass) {
+  // 해당 클래스 이름 제거
+  targetElement.classList.remove('text-primary')
 }
-else{
-  target.classList.add('text-primary')
+// 만약 해당 클래스 이름이 없다면
+else {
+  // 해당 클래스 이름 추가
+  targetElement.classList.add('text-primary')
 }
+
 
 
 
