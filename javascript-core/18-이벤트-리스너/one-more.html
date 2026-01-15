@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이벤트 리스너</title>
+</head>
+<body>
+  <section>
+    <h2>요즘 이벤트 모델</h2>
+    <input type="button" value="click me" />
+  </section>
+    <script>
+    // 문서 요소(객체) 선택 (css 선택자)
+    const clickMeButton = document.querySelector('input[type="button"]')
+
+    // 1. 요즘 이벤트 모델
+    // 문서객체(요소).addEvenListener('이벤트 타입', 리스너 또는 핸들러)
+    clickMeButton.addEventListener('click', (event) => {
+     const mood = window.prompt('당신의 기분을 알려주세요.', '맑음!')
+     if(mood !== null){
+       console.log('그렇군요! 당신의 오늘 기분은 ' + mood + '이군요!')
+     } 
+    })
+    // 여러 이벤트 리스너 연결 (많은 이벤트 리스너 연결 가능)
+    clickMeButton.addEventListener('click', () => console.log('안녕'))
+    clickMeButton.addEventListener('click', () => console.log('반가워'))
+    clickMeButton.addEventListener('click', () => console.log('파이팅'))
+
+  </script>
+
+  <section>
+    <h2>옛날 이벤트 모델</h2>
+   <button type="button" onclick="sayHi()">클릭 미!</button>
+   <button type="button" onclick="handleGreet()">무드</button>
+  </section>
+  <script>
+    function sayHi(){
+      window.alert('안녕하세요')
+    }
+
+    function handleGreet(){
+      const condition = window.prompt('오늘의 기분은 어때?','싱숭생숭')
+      if(condition !== null){
+        console.log('와우 오늘 기분이 ' + condition + '하군요!!');
+      }
+    }
+  </script>
+
+
+
+
+</body>
+</html>

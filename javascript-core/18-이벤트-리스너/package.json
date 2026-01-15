@@ -1,6 +1,7 @@
 {
   "scripts": {
     "dev": "bun learn.html",
-    "practice": "bun practice.html"
+    "practice": "bun practice.html",
+    "onemore": "bunx live-server --host=localhost --port=3000 --entry-file=one-more.html"
   }
 }
