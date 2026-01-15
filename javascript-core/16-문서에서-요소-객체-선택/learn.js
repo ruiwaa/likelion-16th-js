@@ -100,7 +100,7 @@ console.log(allGames)
 
 // 여러 요소를 선택하는 방법 (뮤지션 목록)
 const allMusians = musicianList.querySelectorAll('li')
-console.log(allMusians);
+console.log(allMusians)
 
 // 설명:
 // 특정 서가(부모 요소)를 지정하고 그 안에서 책(자식 요소)을 찾는 방식입니다.
@@ -151,10 +151,10 @@ console.log(document.querySelector('#exorcist-characters'))
 
 
 // 2번
-const characterlist = document.querySelector('#exorcist-characters')
+const exorcistcharacters = document.querySelector('#exorcist-characters')
 // 2-1번
 // 1-1 태그 또는 선택자 이름으로 찾기
-let findYohan = characterlist.getElementsByTagName('li').item(0)
+let findYohan = exorcistCharaters.getElementsByTagName('li').item(0)
 console.log(findYohan) // <li> HTMLLiElment(DOM Object)로 만들어짐
 // 1-2 선택자로 찾기
 findYohan = exorcistCharaters.querySelector('li:first-child')
@@ -163,8 +163,8 @@ console.log(findYohan)
 findYohan = exorcistCharaters.getElementsByClassName('character').item(0)
 console.log(findYohan)
 // 1-4 속성 이름과 값으로 찾기(class, data-type)
-findYohan = exorcistCharaters.querySelector('[class= "character yo-han')
-findYohan = exorcistCharaters.querySelector('[data-type= "hero')
+findYohan = exorcistCharaters.querySelector('[class= "character yo-han"]')
+findYohan = exorcistCharaters.querySelector('[data-type= "hero]')
 
 // 2-2번
 let findMaseterChoi = null
@@ -175,12 +175,25 @@ findMaseterChoi = exorcistCharaters.querySelector('li:nth-child(2)')
 // 1-3 클래스 이름으로 찾기
 findMaseterChoi = exorcistCharaters.getElementsByClassName('character').item(1)
 // 1-4 속성 이름과 값으로 찾기
-
+findMaseterChoi = exorcistCharaters.querySelector('[class="character master-choi"]')
+console.log(findMaseterChoi)
+findMaseterChoi = exorcistCharaters.querySelector('[data-type= "master"]')
 console.log(findMaseterChoi)
 
 // 2-3번
 let findvillainGhost =null
 // 1-1 태그 또는 선택자 이름으로 찾기
+findvillainGhost = exorcistCharaters.getElementsByTagName('li').item(2)
+console.log(findvillainGhost)
 // 1-2 선택자로 찾기
+findvillainGhost = exorcistCharaters.getElementsByClassName('character').item(2)
+console.log(findvillainGhost)
+
 // 1-3 클래스 이름으로 찾기
+findvillainGhost = exorcistCharaters.querySelector('li:nth-child(3)')
+console.log(findvillainGhost)
+
 // 1-4 속성 이름과 값으로 찾기
+  findvillainGhost = exorcistCharaters.querySelector('[class="character villain-ghost"]')
+  findvillainGhost = exorcistCharaters.querySelector('[data-type="villain"]')
+  console.log(findvillainGhost)
