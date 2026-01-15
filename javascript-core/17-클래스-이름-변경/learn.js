@@ -153,8 +153,13 @@ if (!hasActiveClass) {
 // 가지고 있지 않을 경우에는 'add'
 targetElement.classList[methodName](activeClassName)
 
-// 편의를 위한 토글 메서드를 사용하는 경우
-// targetElement.classList.toggle(activeClassName)
+// 편의를 위한 토글 메서드를 사용하는 경우 (껐다 켰다 반복)
+//targetElement.classList.toggle(activeClassName) //on
+//targetElement.classList.toggle(activeClassName) //off
+//targetElement.classList.toggle(activeClassName)
+//targetElement.classList.toggle(activeClassName)
+
+
 
 // 설명:
 // 다크모드 스위치나 아코디언 메뉴처럼 켰다 껐다(On/Off) 하는 UI 구현 시 가장 많이 쓰입니다.
