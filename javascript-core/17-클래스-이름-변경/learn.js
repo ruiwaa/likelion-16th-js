@@ -87,23 +87,24 @@ console.log('교체 여부:',replacement)
 const targetElement = prose.querySelector('.target')
 // console.log(targetElement)
 
+// 검토할 클래스 이름을 기억하는 변수
+let checkClassName = 'text-primary'
+
 // target 요소에 text-primary 클래스 값을 가지고 있는 지 확인
-const hasTextPrimaryClass = targetElement.classList.contains('text-primary')
+const hasTextPrimaryClass = targetElement.classList.contains(checkClassName)
 
 // console.log(hasTextPrimaryClass)
   // 만약 해당 클래스 이름이 있다면
 if (hasTextPrimaryClass) {
   // 해당 클래스 이름 제거
-  targetElement.classList.remove('text-primary')
+  targetElement.classList.remove(checkClassName)
 }
 // 만약 해당 클래스 이름이 없다면
 else {
   // 해당 클래스 이름 추가
-  targetElement.classList.add('text-primary')
+  targetElement.classList.add(checkClassName)
 }
-
-
-
+console.log(hasTextPrimaryClass)
 
 
 
@@ -117,6 +118,44 @@ else {
 
 // [연습] target 요소에 'active' 클래스를 토글 처리하세요.
 
+//토글 on -> off, off -> on
+
+// 조건문을 사용할 경우
+// classlist.contains, classList.remove , classList.add
+
+let activeClassName = 'active'
+const hasActiveClass = targetElement.classList.contains(activeClassName)
+
+// if (hasActiveClass) {
+//   targetElement.classList.remove(activeClassName)
+// } else {
+//   targetElement.classList.add(activeClassName)
+// }
+
+
+
+// 기본 메서드 이름은 remove
+let methodName = 'remove'
+
+// 대상 요소(객체)의 클래스 이름을 제어
+// methodName 변수에 설정된 이름(문자열)의 기능 실행
+// targetElement.classList[methodName](activeClassName)
+// targetElement.classList // DOMTokenList { add, remove, ... }
+// DOMTokenList.add()    // 객체.속성
+// DOMTokenList['add']() // 객체['속성이름']
+
+// 만약 요소가 활성 클래스 이름을 포함하고 있다면
+if (!hasActiveClass) {
+  // 메서드 이름을 add로 변경
+  methodName = 'add'
+}
+
+// 메서드 이름은 가지고 있을 경우 'remove'
+// 가지고 있지 않을 경우에는 'add'
+targetElement.classList[methodName](activeClassName)
+
+// 편의를 위한 토글 메서드를 사용하는 경우
+// targetElement.classList.toggle(activeClassName)
 
 // 설명:
 // 다크모드 스위치나 아코디언 메뉴처럼 켰다 껐다(On/Off) 하는 UI 구현 시 가장 많이 쓰입니다.
