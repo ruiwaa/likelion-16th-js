@@ -49,21 +49,32 @@ itemMultiple.classList.add(
 // --------------------------------------------------------------------------
 // 4. "text-red-500"을 "text-green-500"으로 교체해 보세요! (교체)
 // --------------------------------------------------------------------------
-
+const itmeReplace = practice.querySelector('.item-replace')
+itmeReplace.classList.replace('text-red-500', 'text-green-500')
 
 
 // --------------------------------------------------------------------------
 // 5. 없는 클래스를 다른 클래스로 바꾸려 하면 어떻게 될까요? (안정성)
 // --------------------------------------------------------------------------
-
-
+const itemSafeReplace = practice.querySelector('.item-safe-replace')
+const result = itemSafeReplace.classList.replace('unknown-class', 'text-blue-500')
+if(!result){
+  console.log('⚠️ 해당 요소에 없는 클래스 이름입니다. ')
+}
 
 // --------------------------------------------------------------------------
 // 6. "text-indigo-600" 클래스가 있는지 확인하세요! (포함 여부 확인)
 // --------------------------------------------------------------------------
+const itemCotains = practice.querySelector('.item-contains')
+const hasTextIndigo600Color = itemCotains.classList.contains('text-indigo-600')
+console.log(hasTextIndigo600Color)
 
 
 
 // --------------------------------------------------------------------------
 // 7. "text-indigo-600" 클래스가 있다면 제거하고, 없다면 추가해보세요. (토글)
 // --------------------------------------------------------------------------
+const itemCotainsTarget = practice.querySelector('.item-contains-target')
+itemCotainsTarget.classList.toggle('text-indigo-600')
+itemCotainsTarget.classList.toggle('text-indigo-600')
+itemCotainsTarget.classList.toggle('text-indigo-600')
