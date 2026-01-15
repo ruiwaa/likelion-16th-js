@@ -149,7 +149,6 @@ if (!hasActiveClass) {
   // 메서드 이름을 add로 변경
   methodName = 'add'
 }
-
 // 메서드 이름은 가지고 있을 경우 'remove'
 // 가지고 있지 않을 경우에는 'add'
 targetElement.classList[methodName](activeClassName)
