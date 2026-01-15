@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이벤트 리스너</title>
+  <style>
+    .bg-dark {
+      min-height: 100vh;
+      background-color: #101010;
+      color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <button type="button" class="magic-button">배경색 전환</button>
+  <button type="button" onclick="handleChangeBGColor()">배경색 전환 (Legacy)</button>
+
+  <script>
+    const body = document.body
+    const magicButton = document.querySelector('.magic-button')
+    
+    magicButton.addEventListener('click', handleChangeBGColor)
+    
+    function handleChangeBGColor() {
+      console.log('마법 발동!')
+      body.classList.toggle('bg-dark')
+    }
+  </script>
+</body>
+</html>
