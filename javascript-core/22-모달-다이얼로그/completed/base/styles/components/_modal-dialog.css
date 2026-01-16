@@ -8,6 +8,8 @@
 }
 
 .modal-overlay {
+  /* & 엔퍼센드 선택자(본래 이 선택자는 css의 것이 아니었다.  */
+  /*  조상 결합자*/
    .modal-dialog-is-open & {
     opacity: 1;
     z-index: 10;
