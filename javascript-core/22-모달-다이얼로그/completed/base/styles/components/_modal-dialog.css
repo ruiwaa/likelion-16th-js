@@ -8,7 +8,16 @@
 }
 
 .modal-overlay {
-  display: none;
+   .modal-dialog-is-open & {
+    opacity: 1;
+    z-index: 10;
+  }
+  opacity: 0;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 1em;
@@ -51,9 +60,4 @@
     }
   }
 }
-
-.modal-overlay.is-open {  
-  display: flex;
-}
-
 
