@@ -12,3 +12,11 @@
   padding-left: 2.5rem;
   max-width: 43rem;
 }
+/* 바디 부분에 메뉴바가 나왔을 때의 스타일링 설정
+translate 를 이용하여 메뉴가 나오도록함 */
+.off-canvas-is-open {
+  .offsite-container,
+  .site-container {
+    translate: 14rem 0;
+  }
+}
