@@ -118,3 +118,22 @@ function codeBlockingDemo() {
   while (Date.now() - start < 5000) {}
   addLog('5초가 지나서야 다음 일을 할 수 있습니다.')
 }
+
+// --------------------------------------------------------------------------
+//실습 문제
+// 1. add 함수를 작성하세요.
+function add(a, b, printResult) {
+  const result = a + b
+  // callback 함수에 result를 전달해 실행해야 합니다.
+  // 여기에 코드를 작성하세요.
+  printResult(result)
+}
+add(3,100,printResult)
+// 2. 콜백 함수로 사용할 printResult 함수입니다.
+function printResult(result) {
+  console.log(`결과값은 ${result}입니다.`)
+}
+
+// 3. 실행 코드
+// add 함수 실생 코드에 printResult 함수를 콜백으로 설정하세요.
+// 여기에 코드를 작성하세요.
