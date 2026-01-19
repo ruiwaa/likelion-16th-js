@@ -35,7 +35,7 @@
 // 실습 1
 const button = document.querySelector('.button')
 
-button.addEventListener('click', e => {
+button.addEventListener('click', () => {
   console.log('버튼 클릭!')
 })
 
@@ -102,20 +102,26 @@ calcButton.addEventListener('click', () => {
 
 // [시나리오 01] 존재하지 않는 변수 사용 (ReferenceError 예방)
 // 아래 코드에서 'userName'에 빨간 줄이 뜬다면, 린터가 "선언되지 않았어요!"라고 외치는 중입니다.
+const userName = '예지'
 function greetUser() {
   // ⚠️ 린터가 'no-undef' 오류를 표시합니다.
-  // console.log('안녕하세요, ' + userName + '님!') 
+   console.log('안녕하세요, ' + userName + '님!') 
 }
+greetUser()
 
 // [시나리오 02] 선언만 하고 사용하지 않는 변수 (리소스 정리)
 // 'isLoggedIn' 변수 밑에 노란색 또는 빨간색 줄이 있나요? 
 // 린터는 "안 쓸 거면 지워서 코드를 가볍게 만드세요"라고 조언합니다.
-const isLoggedIn = true 
+//const isLoggedIn = true 
+//console.log(isLoggedIn)
+
 
 // [시나리오 03] 전역 변수(Global) 처리법
 // 브라우저 환경이 아닌 곳에서 'window'나 'document'를 쓰면 린터가 당황할 수 있습니다.
 // 그럴 때 상단에 주석을 달아 안심시켜주세요. (/* global document */)
+
 const title = document.querySelector('h1')
+title.textContent = '린터 좋은 친구'
 
 
 // --------------------------------------------------------------------------
