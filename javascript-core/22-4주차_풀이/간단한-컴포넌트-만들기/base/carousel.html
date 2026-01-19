@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>추천 게임 - 캐러셀 컴포넌트</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/fonts/noto-sans-kr.css" />
+    <link rel="stylesheet" href="/assets/styles/main.css" />
+    <script src="/assets/scripts/main.js" defer></script>
+  </head>
+
+  <body>
+    <main>
+      <h1 class="sr-only">카카오게임즈 추천 게임 캐러셀 실습</h1>
+
+      <article class="carousel" aria-labelledby="carousel__title">
+
+        <div class="carousel__header">
+          <a
+            class="carousel__header-link"
+            aria-label="카카오게임즈 웹사이트 바로가기 (새 창)"
+            href="https://kakaogames.com/"
+            rel="noopener noreferrer"
+            target="_blank">
+            <img src="/assets/images/icon-game-stick.png" alt="" class="carousel__header-icon" />
+            <h2 id="carousel__title" class="carousel__header-title">추천 게임</h2>
+            <svg
+              class="carousel__header-arrow"
+              width="7"
+              height="12"
+              viewBox="0 0 7 12"
+              fill="none"
+              aria-hidden="true">
+              <path d="M0.256286 0.251054C0.598002 -0.0836847 1.1519 -0.0836847 1.49361 0.251054L6.74371 5.39397C7.08543 5.72871 7.08543 6.27129 6.74371 6.60603L1.49361 11.7489C1.1519 12.0837 0.598002 12.0837 0.256286 11.7489C-0.0854288 11.4142 -0.0854288 10.8716 0.256286 10.5369L4.88772 6L0.256286 1.46312C-0.0854288 1.12838 -0.0854288 0.585793 0.256286 0.251054Z" fill="#858585" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="carousel__body">
+          <div class="carousel__container">
+            <ul class="carousel__list">
+              <li
+                class="carousel__item"
+                role="group"
+                aria-roledescription="슬라이드"
+                aria-labelledby="game-1-title">
+                <a
+                  class="carousel__card"
+                  aria-label="'크로노 오디세이' 웹사이트 바로가기 (새 창)"
+                  href="https://shorturl.at/Opdc9"
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  <div class="carousel__image-group">
+                    <img src="/assets/images/game-1-character.png" alt="" data-type="character" />
+                    <img src="/assets/images/game-1-background.png" alt="" data-type="background" />
+                  </div>
+                  <h3 id="game-1-title" class="carousel__game-title">크로노 오디세이</h3>
+                  <p class="carousel__game-desc">멈춰 있던 시간이 흐른다</p>
+                  <dfn class="carousel__game-genre"><abbr title="Massively Multiplayer Online Role-Playing Game">MMORPG</abbr></dfn>
+                </a>
+              </li>
+              <li
+                class="carousel__item"
+                role="group"
+                aria-roledescription="슬라이드"
+                aria-labelledby="game-2-title">
+                <a
+                  class="carousel__card"
+                  aria-label="'아키에이지 워' 웹사이트 바로가기 (새 창)"
+                  href="https://shorturl.at/eVqCO"
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  <div class="carousel__image-group">
+                    <img src="/assets/images/game-2-character.png" alt="" data-type="character" />
+                    <img src="/assets/images/game-2-background.png" alt="" data-type="background" />
+                  </div>
+                  <h3 id="game-2-title" class="carousel__game-title">아키에이지 워</h3>
+                  <p class="carousel__game-desc">시대의 전설을 향해</p>
+                  <abbr class="carousel__game-genre">MMORPG</abbr>
+                </a>
+              </li>
+              <li
+                class="carousel__item"
+                role="group"
+                aria-roledescription="슬라이드"
+                aria-labelledby="game-3-title">
+                <a
+                  class="carousel__card"
+                  aria-label="'패스 오브 엑자일 2' 웹사이트 바로가기 (새 창)"
+                  href="https://shorturl.at/4EBez"
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  <div class="carousel__image-group">
+                    <img src="/assets/images/game-3-character.png" alt="" data-type="character" />
+                    <img src="/assets/images/game-3-background.png" alt="" data-type="background" />
+                  </div>
+                  <h3 id="game-3-title" class="carousel__game-title">패스 오브 엑자일 2</h3>
+                  <p class="carousel__game-desc">얼리 액세스 오픈!</p>
+                  <dfn class="carousel__game-genre"><abbr title="Hack and Slash">핵앤슬래시</abbr></dfn>
+                </a>
+              </li>
+              <li
+                class="carousel__item"
+                role="group"
+                aria-roledescription="슬라이드"
+                aria-labelledby="game-4-title">
+                <a
+                  class="carousel__card"
+                  aria-label="'오딘: 발할라 라이징' 웹사이트 바로가기 (새 창)"
+                  href="https://shorturl.at/MxAHb"
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  <div class="carousel__image-group">
+                    <img src="/assets/images/game-4-character.png" alt="" data-type="character" />
+                    <img src="/assets/images/game-4-background.png" alt="" data-type="background" />
+                  </div>
+                  <h3 id="game-4-title" class="carousel__game-title">오딘 : 발할라 라이징</h3>
+                  <p class="carousel__game-desc">신의 영역을 차지하라</p>
+                  <abbr class="carousel__game-genre">MMORPG</abbr>
+                </a>
+              </li>
+              <li
+                class="carousel__item"
+                role="group"
+                aria-roledescription="슬라이드"
+                aria-labelledby="game-5-title">
+                <a
+                  class="carousel__card"
+                  aria-label="'롬: 리멤버 오브 마제스티' 웹사이트 바로가기 (새 창)"
+                  href="https://rom.kakaogames.com/kr/"
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  <div class="carousel__image-group">
+                    <img src="/assets/images/game-5-character.png" alt="" data-type="character" />
+                    <img src="/assets/images/game-5-background.png" alt="" data-type="background" />
+                  </div>
+                  <h3 id="game-5-title" class="carousel__game-title">롬: 리멤버 오브 마제스티</h3>
+                  <p class="carousel__game-desc">세계는 하나의 전장이 된다</p>
+                  <abbr class="carousel__game-genre">MMORPG</abbr>
+                </a>
+              </li>
+              <li
+                class="carousel__item"
+                role="group"
+                aria-roledescription="슬라이드"
+                aria-labelledby="game-6-title">
+                <a
+                  class="carousel__card"
+                  aria-label="'배틀그라운드' 웹사이트 바로가기 (새 창)"
+                  href="https://pubg.game.daum.net/pubg/index.daum"
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  <div class="carousel__image-group">
+                    <img src="/assets/images/game-6-character.png" alt="" data-type="character" />
+                    <img src="/assets/images/game-6-background.png" alt="" data-type="background" />
+                  </div>
+                  <h3 id="game-6-title" class="carousel__game-title">배틀그라운드</h3>
+                  <p class="carousel__game-desc">최후까지 생존하라!</p>
+                  <dfn class="carousel__game-genre"><abbr title="Battle Royale">배틀로얄</abbr></dfn>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="carousel__footer">
+          <output
+            class="carousel__indicator"
+            aria-live="polite"
+            aria-label="현재 1페이지 (전체 3페이지)">
+            <span data-current>1</span> / <span data-total>3</span>
+          </output>
+          <button
+            type="button"
+            class="carousel__button"
+            data-direction="previous"
+            aria-label="이전 슬라이드 탐색">
+            <svg
+              width="8"
+              height="14"
+              viewBox="0 0 8 14"
+              fill="none"
+              aria-hidden="true">
+              <path d="M7.70695 0.292893C7.31643 -0.0976311 6.68342 -0.0976311 6.29289 0.292893L0.292892 6.29289C-0.0976324 6.68342 -0.0976324 7.31643 0.292892 7.70696L6.29289 13.707C6.68342 14.0975 7.31643 14.0975 7.70695 13.707C8.09748 13.3164 8.09748 12.6834 7.70695 12.2929L2.41399 6.99992L7.70695 1.70696C8.09748 1.31643 8.09748 0.683418 7.70695 0.292893Z" fill="#474747" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="carousel__button"
+            data-direction="next"
+            aria-label="다음 슬라이드 탐색">
+            <svg
+              width="8"
+              height="14"
+              viewBox="0 0 8 14"
+              fill="none"
+              aria-hidden="true">
+              <path d="M0.292893 0.292893C0.683418 -0.0976311 1.31643 -0.0976311 1.70696 0.292893L7.70696 6.29289C8.09748 6.68342 8.09748 7.31643 7.70696 7.70696L1.70696 13.707C1.31643 14.0975 0.683418 14.0975 0.292893 13.707C-0.0976311 13.3164 -0.0976311 12.6834 0.292893 12.2929L5.58586 6.99992L0.292893 1.70696C-0.0976311 1.31643 -0.0976311 0.683418 0.292893 0.292893Z" fill="#474747" />
+            </svg>
+          </button>
+        </div>
+
+      </article>
+
+    </main>
+  </body>
+
+</html>
