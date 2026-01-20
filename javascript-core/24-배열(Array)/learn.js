@@ -124,7 +124,32 @@ console.log(hotelGuest[2])
 // 린터(Linter) 점검 실습: 아래 코드의 '빨간 줄' 원인을 찾아보세요.
 // --------------------------------------------------------------------------
 
-// const shoppingCart = ['두부', '양파', '대파']
+const Cart = ['두부', '양파', '대파']
 
 // // ⚠️ 여기서 린터가 'no-const-assign' 경고를 보냅니다.
-// shoppingCart = ['계란', '우유']
+// shoppingCart = ['계란', '우유'] // 상수에 재할당 불가능
+
+console.log(Cart)
+// 배열 값 비우기
+Cart.length= 0
+console.log(Cart)
+
+// 새 값으로 채우기 ('계란', '우유')
+Cart[0] = '계란'
+Cart[1] = '우유'
+console.log(Cart)
+
+
+// --------------------------------------------------------------------------
+// 실습
+// --------------------------------------------------------------------------
+const instructors = ['야무', '슬비']
+let yamoo9 = instructors[0]
+console.log(yamoo9)
+instructors[1] = '김데레사'
+console.log(instructors)
+
+
+
+
+
