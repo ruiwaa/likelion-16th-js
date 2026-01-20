@@ -135,9 +135,12 @@ console.log(numbers)
 // --------------------------------------------------------------------------
 
 const originalLog = ['데이터1', '데이터2', '데이터3']
-let backupLog // 원본과 똑같은 사본 생성
+let backupLog = originalLog.slice(0)// 원본과 똑같은 사본 생성
+
+originalLog.splice(originalLog.length - 2, 2)
 
 // 사본(배열)에 끝에 '데이터4' 추가
+backupLog.push('데이터4')
 
 // 사본을 수정해도 원본은 안전합니다. (불변성 유지)
 console.log('원본 장부:', originalLog) 
