@@ -14,9 +14,64 @@ console.log(shoppingCart)
 
 // 자바스크립트 생성자 함수 (객체 생성하는 함수)
 // 배열 객체를 생성하고 싶을 때, 
-// 정상적인 방법: Array 키워드를 사용하기 
+// 정상적인 방법: new 생성자_함수 -> 생생된 배열 객체
+// 하지만 보편적으로 쓰는 방법이 아님, 바로 배열을 만들면 되므로.
 const weekDay = new Array('월', '화', '수', '목', '금')
 console.log(weekDay)
+const likeLionMembers = new Array('구름', '치즈', '시루', '하늘', '까미')
+console.log(likeLionMembers)
+
+
+// --------------------------------------------------------------------------
+// 배열이 포함하는 항목의 총 개수
+// --------------------------------------------------------------------------
+// length 속성을 이용하여 배열 내부에 항목이 몇 개인지 알 수 있다.
+const objectArray = [
+	{ name: '상연', email: 'sangyoun@naver.com' }, 
+	{ name: '지율', email: 'jeeyoul@kakao.com' },
+]
+
+console.log(objectArray.length) 
+
+
+// --------------------------------------------------------------------------
+// 배열 항목 꺼내기 (항복의 위치를 인덱스로 가져옴)
+// --------------------------------------------------------------------------
+
+const firstData = objectArray[0]
+console.log(firstData)
+
+const secondData = objectArray[3 - 2]
+console.log(secondData)
+
+
+// --------------------------------------------------------------------------
+// 마지막 항목에 접근하는 방법
+// --------------------------------------------------------------------------
+// 전통적인 방법
+const lastItem = shoppingCart[shoppingCart.length -1]
+console.log(lastItem)
+
+// 오늘날의 방법
+const firstLastItem = shoppingCart.at(-1) // '계란'
+const secondLastItem = shoppingCart.at(-2) // '부추'
+const thirdLastItem = shoppingCart.at(-3) // '대파'
+console.log(firstLastItem, secondLastItem, thirdLastItem)
+
+// --------------------------------------------------------------------------
+// 배열 인덱스의 항목 수정
+// --------------------------------------------------------------------------
+const numberList = [1, 2, 3, 4] 
+// 상수의 설정된 값을 바꾸는 것은 안되지만, 배열 또는 객체 안의 내용을 바꿀 수 있음
+
+// 인덱스를 사용해 항목 추가
+numberList[numberList.length] = 5 //length의 숫자 값을 받아서 뒤에 객체를 추가할 수 있음
+console.log(numberList)
+
+
+// 인덱스를 사용해 항목 수정
+numberList[1] = '둘'
+console.log(numberList) // [1, '둘', 3, 4]
 
 // --------------------------------------------------------------------------
 // [시나리오 01] 손님 체크인과 방 배정
@@ -27,6 +82,7 @@ const hotelGuest = ['1번방 투숙객', '2번방 투숙객', '3번방 투숙객
 // [퀴즈] 지율 지배인이 첫 번째 손님을 부르려면 어떻게 해야 할까요?
 console.log(hotelGuest[0])
 console.log(hotelGuest[2])
+
 
 
 // --------------------------------------------------------------------------
