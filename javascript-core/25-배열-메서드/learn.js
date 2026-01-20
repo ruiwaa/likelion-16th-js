@@ -212,3 +212,188 @@ console.log(people);
 people.splice(people.length - 4, 2)
 console.log(people)
 
+
+// --------------------------------------------------------------------------
+// 연습 문제
+// --------------------------------------------------------------------------
+
+/**
+1. push() 연습 문제
+초급: 빈 배열 colors를 만들고, push를 사용해 "red", "blue"를 순서대로 추가한 뒤의 배열 상태를 적으세요.
+중급 1: const nums = [1, 2, 3]; 이 있을 때, nums.push(4, 5)를
+실행한 후 변수 nums의 값과 이 식 자체가 반환하는 값(Return value)은 각각 무엇일까요?
+
+ */
+// Q1
+const color = []
+color.push("red", "blue")
+console.log(color)
+
+// Q2
+const nums = [1, 2, 3]
+nums.push(4,5)
+console.log(nums)
+
+/*
+ * unshift() 연습 문제
+초급: const grades = ["B", "C"]; 배열 맨 앞에 "A"를 추가하는 코드를 작성하세요.
+중급 1: const site = ["Naver"];에 unshift("Google", "Daum")을 실행하면 배열의 순서가 어떻게 될까요? ("Google"과 "Daum" 중 무엇이 맨 앞일까요?)
+중급 2: unshift는 요소를 추가한 후 무엇을 반환하는지 적어보세요.
+ */
+
+// Q3
+const grades = ['B', 'C']
+grades.unshift('A')
+console.log(grades)
+
+const site = ['Naver']
+site.unshift( 'Google', 'Daum')
+console.log(site)
+
+
+/*
+ * 4. shift() 연습 문제
+초급: ["월", "화", "수"] 배열에서 맨 앞의 "월"을 제거하세요.
+중급 1: const queue = ["1번", "2번", "3번"];에서 맨 앞 요소를 꺼내 nowServing이라는 변수에 담고, 남은 배열의 길이를 확인하세요.
+중급 2: shift()와 pop()의 공통점과 차이점을 "인덱스 변화"의 관점에서 설명해보세요.
+ */
+
+// Q4
+const week = ["월", "화", "수"] 
+week.shift('월')
+console.log(week)
+
+// Q5
+const queue = ["1번", "2번", "3번"]
+const queueFirstItem = queue.shift('1번')
+console.log(queueFirstItem)
+
+console.log(queue)
+
+// Q6
+// pop(): 항목의 끝 부분 제거
+//shift(): 항목의 첫 부분 제거
+
+
+/*
+ * 5. splice() 연습 문제
+초급: const fruits = ["apple", "banana", "cherry", "orange"];에서 인덱스 1번부터 2개의 요소를 제거하세요.
+중급 1: const hobby = ["축구", "농구", "야구"];에서 "농구"를 지우고 그 자리에 "배구", "테니스"를 동시에 추가해보세요.
+중급 2: splice를 사용하여 배열의 중간에 요소를 삭제하지 않고 추가만 하고 싶을 때, 두 번째 인자(삭제 개수)에 어떤 값을 넣어야 할까요?
+ */
+
+// Q7
+const fruits_1 = ["apple", "banana", "cherry", "orange"]
+fruits_1.splice(0,2)
+console.log(fruits_1)
+
+// Q8
+const hobby = ["축구", "농구", "야구"]
+hobby.splice(1, 1, '배구', '테니스')
+console.log(hobby)
+
+// ============================================
+// 배열 메서드 연습 문제
+// ============================================
+
+// 문제 1: 할일(Todo) 목록 관리
+// 상황: 간단한 할일 앱을 만들고 있습니다.
+// 요구사항:
+// - todoList 배열을 생성하세요. (초기값: ["숙제하기", "운동하기"])
+// - "쇼핑가기"를 목록 맨 뒤에 추가하세요.
+// - "숙제하기"를 목록에서 삭제하세요.
+// - 현재 todoList를 출력하세요.
+
+// 여기에 코드를 작성하세요
+const todoList =['숙제하기', '운동하기']
+todoList.push('쇼핑하기')
+todoList.pop('숙제하기')
+
+console.log("===== 문제 1: 할일 목록 관리 =====")
+console.log(todoList)
+
+// 문제 2: 로그인한 사용자 목록 관리
+// 상황: 채팅 앱에서 로그인한 사용자를 관리합니다.
+// 요구사항:
+// - users 배열을 생성하세요. (초기값: ["철수", "영희", "민준"])
+// - "새로운 사용자가 로그인했습니다" → "준호"를 배열 맨 앞에 추가하세요.
+// - "준호"가 배열의 어느 위치에 있는지 확인하세요. (indexOf 사용)
+// - 다시 "준호"가 로그인을 해제해서 배열 맨 앞 요소를 삭제하세요.
+// - 최종 users 배열을 출력하세요.
+
+console.log("===== 문제 2: 로그인한 사용자 목록 =====")
+// 여기에 코드를 작성하세요
+const users = ['철수', '영희', '민준']
+users.unshift('준호')
+console.log(users.indexOf('준호'))
+users.shift('준호')
+console.log(users)
+
+
+
+// 문제 3: 콘텐츠 댓글 관리
+// 상황: SNS 게시물의 댓글 목록을 관리합니다.
+// 요구사항:
+// - comments 배열을 생성하세요. (초기값: ["좋아요!", "공감합니다", "멋져요"])
+// - "스팸입니다"라는 댓글을 2번째 위치에 추가하세요. (splice 사용)
+// - 최종 comments 배열을 출력하세요.
+// - "공감합니다"가 배열의 어디에 있는지 찾아서 출력하세요.
+
+console.log("\n===== 문제 3: 댓글 관리 =====")
+// 여기에 코드를 작성하세요
+const comments = ['좋아요!', '공감합니다', '멋져요']
+comments.splice(1, 0 , '스팸입니다.')
+console.log(comments)
+console.log(comments.indexOf('공감합니다'))
+
+
+
+// 문제 4: 장바구니 상품 관리
+// 상황: 온라인 쇼핑몰 장바구니입니다.
+// 요구사항:
+// - cart 배열을 생성하세요. (초기값: ["노트북", "마우스", "키보드"])
+// - "모니터"를 맨 뒤에 추가하세요.
+// - 실수로 맨 뒤에 추가한 "모니터"를 삭제하세요.
+// - 맨 앞의 "노트북"을 다른 상품으로 교체합니다. 맨 앞을 삭제하고 "헤드폰"을 맨 앞에 추가하세요.
+// - 최종 cart 배열을 출력하세요.
+// - "마우스"의 위치를 찾아서 출력하세요.
+
+console.log("\n===== 문제 4: 장바구니 관리 =====")
+// 여기에 코드를 작성하세요
+const cart = ['노트북', '마우스', '키보드']
+cart.push('모니터')
+cart.splice(0,1, '헤드폰')
+console.log(cart)
+
+
+
+// ============================================
+// 배열 메서드를 활용한 함수 구현 문제
+// ============================================
+
+// 문제: 배열에서 특정 항목 제거하기
+// 상황: 할일 목록에서 완료한 항목을 제거하는 함수를 만들어야 합니다.
+// 요구사항:
+// - removeItem(array, item) 함수를 만드세요
+// - 배열에서 item과 일치하는 첫 번째 요소를 찾아서 제거하세요
+// - 제거되었으면 true, 없었으면 false를 반환하세요
+// 
+// 사용 예시:
+// let todos = ["운동하기", "공부하기", "청소하기"];
+// console.log(removeItem(todos, "공부하기")); // true
+// console.log(todos); // ["운동하기", "청소하기"]
+// console.log(removeItem(todos, "밥먹기")); // false
+
+let todos = ['운동하기', '공부하기', '청소하기']
+function removeFirst(objectArray, item)  {
+  const findFirstArray = objectArray.indexOf(item)
+  if(findFirstArray > -1){
+    todos.splice(0,1)
+    return true
+  }
+  return false
+}
+console.log(todos)
+console.log(removeFirst(todos, '밥먹기'))
+
+
