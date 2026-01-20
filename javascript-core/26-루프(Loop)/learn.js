@@ -6,12 +6,41 @@
 // * for...of : 배열 장부의 손님 이름을 하나씩 꺼냅니다.
 // * for...in : 객체 장부의 상세 정보(Key)를 확인합니다.
 // --------------------------------------------------------------------------
+const draw = (n) => n + '번 그려 그려'
+let count = 0
+count = count + 1
+
+// 화면에 n번째 드로잉 함수 호출하고 싶다
+console.log(draw(count++))
+console.log(draw(count++))
+console.log(draw(count++))
+console.log(draw(count++))
+console.log(draw(count++))
 
 
 // --------------------------------------------------------------------------
 // while 문
 // --------------------------------------------------------------------------
 
+//조건문 
+// 변수가 5보다 작을 경우 참
+// 조건이 참일 경우 조건문 실행
+let ifCount = 0
+if(ifCount < 5){
+  ifCount = ifCount + 1
+  console.log(ifCount)
+  
+}
+
+//while 문
+// 반복횟수가 5보다 작을 경우 참
+// 조건이 참일동안 코드 블록 실행 (1회))
+let iterationCount = 0
+while(iterationCount < 5){
+  // iterationCount = iterationCount + 1
+  console.log(++iterationCount)
+  
+}
 
 // --------------------------------------------------------------------------
 // do...while 문
