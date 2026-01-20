@@ -74,16 +74,61 @@ console.log(guestList)
 // 공식: splice(시작_인덱스, 제거_개수, 추가_할_항목)
 
 const numbers = [1, 2, 5]
-console.log(numbers)
-
 
 // 중간(인덱스 2)에 3, 4를 추가하고 싶다면?
-// console.log('장부 중간 수정 결과:', numbers) // [1, 2, 3, 4, 5]
+numbers.splice(2, 0, 3, 4) // (시작 인덱스: 2, 제거할 개수: 없음, 추가할 항목: 3,4)
+console.log(numbers)
+
+// const lastNumber = numbers.pop()
+// console.log(lastNumber)
+// numbers.push(3,4,lastNumber)
+// console.log(numbers)
+
+console.log('장부 중간 수정 결과:', numbers) // [1, 2, 3, 4, 5]
+
+// 배열의 끝에서 [n]개 제거하는 함수(기능) 구현
+// removeItemsFromLast
+// function removeItemsFromLast(count) {
+//   // 코드 로직 작성
+// }
+const removeItemsFromLast = function(objectArray, deleteNum){
+  const startIndex = objectArray.length - deleteNum // 항목 개수에서 - 삭제 숫자 = 끝 부분의 항목 순서이다. 
+  const removedItems = objectArray.splice(startIndex, deleteNum)
+  return removedItems
+}
+console.log(removeItemsFromLast(numbers, 1))
 
 // 특정 구간(인덱스 1부터 3개)의 손님을 배웅하려면?
 // [2, 3, 4] 제거
-// console.log('남은 장부:', numbers) // [1, 5]
+numbers.splice(1, 3)
+console.log('남은 장부:', numbers) // [1, 5]
 
+// 마지막 인덱스 제거 : [5] 제거
+numbers.splice(numbers.length -1, 1) // 안전하게 끝자리 순서 입력: length + (음수값) 활용
+console.log(numbers)
+
+
+
+ // 삭제된 항목이 포함된 새로운 배열 [2, 3, 4]
+
+// 처음과 끝부분의 제거 메서드를 사용해서 중간값 제거하는 방법
+// 0 인덱스부터 시작해서 2개 제거
+// numbers 배열에서 1, 2 항목(0, 1인덱스) 제거
+// numbers.shift()
+// console.log(numbers)
+// numbers.shift()
+// console.log(numbers)
+// const removedNumbers = numbers.splice(0, 2)
+// console.log(removedNumbers)
+// console.log(numbers)
+
+// 마지막 인덱스 - 3에서 3개 제거
+// numbers.pop()
+// console.log(numbers)
+// numbers.pop()
+// console.log(numbers)
+// numbers.pop()
+// console.log(numbers)
 
 // --------------------------------------------------------------------------
 // 안전한 백업 장부 만들기 (slice)
