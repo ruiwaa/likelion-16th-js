@@ -13,6 +13,7 @@
 // --------------------------------------------------------------------------
 
 const guestList = ['지율', '상연', '야무', '범쌤']
+console.log(guestList)
 
 // [퀴즈] '야무' 손님은 몇 번 방에 계실까요?
 
@@ -36,6 +37,8 @@ const guestList = ['지율', '상연', '야무', '범쌤']
 // 공식: splice(시작_인덱스, 제거_개수, 추가_할_항목)
 
 const numbers = [1, 2, 5]
+console.log(numbers)
+
 
 // 중간(인덱스 2)에 3, 4를 추가하고 싶다면?
 // console.log('장부 중간 수정 결과:', numbers) // [1, 2, 3, 4, 5]
@@ -73,6 +76,8 @@ console.log('백업 장부:', backupLog)
 // --------------------------------------------------------------------------
 
 const fruits = ['사과', '바나나']
+console.log(fruits)
+
 
 // ⚠️ 린터가 'no-unused-vars' 경고를 보낼 수 있습니다.
 // const lastFruit = fruits.pop()
