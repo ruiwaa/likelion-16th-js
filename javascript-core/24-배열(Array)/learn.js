@@ -143,9 +143,19 @@ console.log(Cart)
 // --------------------------------------------------------------------------
 // 실습
 // --------------------------------------------------------------------------
-const instructors = ['야무', '슬비']
+// 빈 배열 생성
+const instructors = []
+// 3개의 항목을 포함하는 배열 작성 (.length를 사용하면 안전하게 항목을 추가할 수 있음)
+instructors[instructors.length] = '야무'
+instructors[instructors.length] = '슬비'
+instructors[instructors.length] = '멋사'
+console.log(instructors)
+
+// instructors 배열에서 야무 항목을 가져와 yamoo9 변수에 할당
 let yamoo9 = instructors[0]
 console.log(yamoo9)
+
+// instructors 배열에서 "슬비" 항목 값을 "김데리사"로 변경
 instructors[1] = '김데레사'
 console.log(instructors)
 
