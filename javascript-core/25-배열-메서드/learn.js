@@ -13,9 +13,22 @@
 // --------------------------------------------------------------------------
 
 const guestList = ['지율', '상연', '야무', '범쌤']
-console.log(guestList)
 
 // [퀴즈] '야무' 손님은 몇 번 방에 계실까요?
+// [정답]: 2번방
+console.log(guestList.indexOf('야무'))
+console.log(guestList.indexOf('슬비'))
+
+// 사용자 정의 함수 hasItem 또는 hasElment
+function hasElment(arryObject, checkItem) {
+const value = arryObject.indexOf(checkItem)
+return value > -1 // -1이 나오는 것은 없다는 의미여서 -1이상이여야 값이 존재하는 것
+}
+
+// 테스트 코드
+console.log(hasElment(guestList,'야무'))
+console.log(hasElment(guestList,'슬비'))
+
 
 
 // --------------------------------------------------------------------------
