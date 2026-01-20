@@ -168,3 +168,44 @@ console.log(fruits)
 // const lastFruit = fruits.pop()
 
 // 만약 pop()을 한 번 더 실행한다면, fruits는 어떤 상태가 될까요?
+
+
+// --------------------------------------------------------------------------
+// 실습
+// --------------------------------------------------------------------------
+
+const people = [
+  '세종대왕',
+  '이순신',
+  '김구',
+  '유관순',
+  '장영실',
+  '신사임당',
+]
+
+// 1. people 배열에서 '이순신' 항목의 인덱스를 확인합니다.
+console.log(people.indexOf('이순신'))
+
+// 2. people 배열 시작 위치에 '정약용', '지석영'을 추가합니다. 
+// unshift() 활용
+people.unshift('정약용', '지석영')
+// splice() 활용
+//people.splice(people.length, 0 ,'정약용','지석영')
+//console.log(people)
+
+//3.people 배열 끝 위치에 '김유신', '을지문덕'을 추가합니다. 
+// push() 활용
+//people.push('김유신', '을지문덕')
+console.log(people)
+// splice() 활용
+people.splice(people.length, 0 , '정약용','을지문덕')
+console.log(people)
+
+// 4. people 배열 시작 위치에서 '세종대왕', '이순신'을 제거합니다.
+people.splice(people.length - 8, 2)
+console.log(people);
+
+// 5. people 배열 끝 위치에서 '장영실', '신사임당'을 제거합니다.
+people.splice(people.length - 4, 2)
+console.log(people)
+
