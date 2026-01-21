@@ -132,6 +132,9 @@ while (whileCount < TARGET_COUNT) {
     console.log(forCount) /* 3, 6 */
   }
 
+for (let i = 0, l = 10; i < l; ++i) {
+  console.log(i)
+}
 
 // for (
 //   // 변수 선언
@@ -177,8 +180,65 @@ while (whileCount < TARGET_COUNT) {
 // --------------------------------------------------------------------------
 // 배열 반복 (역순/정순)
 // --------------------------------------------------------------------------
+// 배열 반복 (정순:오름차순)
+const numbers = ['하나', '둘', '셋', '넷', '다섯', '여섯', '일곱']
 
+{ // while
+  let i = 0
+  while (i < numbers.length) {
+    const number = numbers[i]
+    console.log(number)
+    i++
+  }
 
+  {
+  // do...while
+  let i = 0
+  do {
+    const number = numbers[i]
+    console.log(number)
+    i++
+  } while(i < numbers.length)
+}
+{
+  // for
+  for (let i = 0; i < numbers.length; ++i) {
+    const number = numbers[i]
+    console.log(number)
+  }
+}
+
+// for 문 추가 예시
+{
+  const books = ['HTML 공장', 'CSS 드레스샵', 'JavaScript 트레이닝룸', '리액트 마스터']
+  // 도서 이름 출력 (반복)
+  
+  for (let i = 0; i < books.length; i++) {
+    const bookName = books[i]
+    console.log(bookName)
+  } 
+}
+}
+
+//배열 반복 (역순:내림차순)
+
+const webFrameworks = [
+  'react',   //0
+  'vue.js',   //1
+  'svelte',   //2
+  'angular',  //3
+  'solid.js'  //4
+]
+
+// for 문
+{for(let i = webFrameworks.length - 1; i >= 0; i = i -1){
+  const frameWorkName = webFrameworks[i]
+  console.log(i,frameWorkName)
+
+}
+
+// 다른 반복문
+}
 // --------------------------------------------------------------------------
 // for...of 문
 // --------------------------------------------------------------------------
