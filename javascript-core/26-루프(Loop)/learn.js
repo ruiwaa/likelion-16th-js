@@ -147,6 +147,33 @@ while (whileCount < TARGET_COUNT) {
 // }
 
 }
+
+// for문 -> while문 변신 단계: 0
+// for (let forCount = 0; forCount < TARGET_COUNT; forCount += 1) {
+//   console.log(forCount)
+// }
+
+// // for문 -> while문 변신 단계: 1
+// let forCount = 0;
+// for (forCount < TARGET_COUNT; forCount += 1) {
+//   console.log(forCount)
+// }
+
+// // for문 -> while문 변신 단계: 2
+// let forCount = 0
+// for (forCount < TARGET_COUNT) {
+//   console.log(forCount)
+//   forCount += 1
+// }
+
+// // for문 -> while문 변신 단계: 3
+// let forCount = 0
+// while (forCount < TARGET_COUNT) {
+//   console.log(forCount)
+//   forCount += 1
+// }
+
+
 // --------------------------------------------------------------------------
 // 배열 반복 (역순/정순)
 // --------------------------------------------------------------------------
