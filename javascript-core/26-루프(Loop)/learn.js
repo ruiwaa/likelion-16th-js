@@ -276,8 +276,8 @@ const message = '오늘 하루 너무 추워염!'
 // message 문자열을 하나 하나 순환(반복)해서 값을 출력해보고 싶어요.
 // while, do...while, for, for...of
 
-for (const character of message) {
-  console.log(character)
+for (const text of message) {
+  console.log(text)
 } 
 
 // length 속성 가짐
@@ -328,6 +328,34 @@ for (const property in teacher) {
   console.log(value)
 }
 
+
+{
+  // 배열도 for...in문 사용 가능! (권장 안함, 비교적 느려서)
+  const personList =[
+    { name: '박주영', age: 22 },
+    { name: '최한나', age: 31 },
+    { name: '김상준', age: 29 },
+  ] 
+
+  // for...of문
+  for (const person of personList) {
+    console.log(person)
+  }
+  
+  // for...in문
+  // 배열에서 for...in문 사용할 수 있지만,
+  // 성능이 좋지 않으니까 객체에 양보하세요.
+  for (const index in personList) {
+    // []
+    // 0: {...}
+    // 1: {...}
+    // 2: {...}
+    console.log(index)
+    const person = personList[index]
+    console.log(person)
+  }
+  
+}
 // --------------------------------------------------------------------------
 // 핵심 요약!
 // --------------------------------------------------------------------------
