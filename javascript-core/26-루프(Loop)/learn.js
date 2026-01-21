@@ -313,9 +313,6 @@ const teacher = {
 
 /// for ...in 문 사용하여 객체 순환
 // '속성' in 객체 (객체 안에 속성의 존재여부에 대한 검토할 때 사용)
-
-// '속성' in 객체
-
 console.log(teacher)
 console.log('name' in teacher)
 console.log('subjects' in teacher)
@@ -365,3 +362,65 @@ for (const property in teacher) {
 // 4. 객체의 속성을 훑을 때는 for...in을 사용합니다.
 // 5. break는 루프 탈출, continue는 이번 차례만 건너뛰기입니다.
 // --------------------------------------------------------------------------
+
+// 실습
+// {
+// //1 번
+// for(let i = 0; i <= 100; i += 2){
+//   if(i > 0){
+// console.log(i)
+//   }
+// }
+
+// 2번
+let countDown = 10
+while(countDown > 0)
+{
+  console.log(countDown)
+  countDown--
+  
+}
+// 3번
+const fruits = ['사과', '바나나', '귤', '복숭아']
+for(const allFruits of fruits )
+  console.log(allFruits)
+
+
+//4번
+{
+let i = 0
+let attempt // undefined
+
+const attempts = ['0124', '8291', '8259', '3001', '9073']
+const input = '3001'
+
+do {
+  attempt = attempts[i++]
+  console.log(attempt)
+} while(input !== attempt)
+
+console.log(attempt)
+} 
+
+
+//5번
+const student = {
+  name: '선호',
+  grade: 'A',
+  age: 22,
+}
+for (const key in student){
+  console.log(key)
+  console.log(student[key])
+  
+}
+
+//6번
+// for of 반복문
+  {let i = '1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20'.split(', ')
+  for (const i of numbers) {
+    if (i > 4 && i < 11) continue
+    if (i === 17) break
+    console.log(i)
+}
+  }
