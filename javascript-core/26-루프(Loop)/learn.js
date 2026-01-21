@@ -241,7 +241,7 @@ const webFrameworks = [
 // 다른 반복문 활용해서 배열 (역순) 반복문 만들어보기
 }
 // --------------------------------------------------------------------------
-// for...of 문
+// for...of 문 [배열 또는 문자열 반복]
 // --------------------------------------------------------------------------
 // 장점: 가독성 높음 단점:
 for (const frameworkName of webFrameworks) {
@@ -271,11 +271,62 @@ for (let i = 0; i < personList.length; i++) {
   console.log(person.age)
 }
 
+//.length 속성을 이용하여 문자열 반복
+const message = '오늘 하루 너무 추워염!'
+// message 문자열을 하나 하나 순환(반복)해서 값을 출력해보고 싶어요.
+// while, do...while, for, for...of
+
+for (const character of message) {
+  console.log(character)
+} 
+
+// length 속성 가짐
+// 각 요소의 인덱스를 가짐
+// for (const character /* character = '~' */ of '오늘 하루 너무 추워요~') {
+//   console.log(character)
+// }
+
+for (let i = 0; i < message.length; i += 1) {
+  const character = message[i]
+  console.log(character)
+}
 
 // --------------------------------------------------------------------------
 // for...in 문 (객체 반복)
 // --------------------------------------------------------------------------
+// for ...of는 반복 가능한 객체만 사용 가능
+// 일반 객체는 반복 가능하지 않아서 사용할 수 없음
 
+const teacher = {
+  name: '김데레사',
+  subjects: ['웹 표준/접근성', 'HTML', 'CSS', 'Tailwind CSS', 'Sass'],
+}
+
+ //const teachers = [teacher]
+
+// teacher 객체를 반복(속성 별, 값을 출력)
+// for...of 문 쉽던데? 이걸 써볼까?
+//for (const property of teacher) {
+//console.log(property)
+//}
+// 배열처럼 반복 가능한 객체만 for ... of 문을 사용할 수 있다. 
+
+/// for ...in 문 사용하여 객체 순환
+// '속성' in 객체 (객체 안에 속성의 존재여부에 대한 검토할 때 사용)
+
+// '속성' in 객체
+
+console.log(teacher)
+console.log('name' in teacher)
+console.log('subjects' in teacher)
+console.log('age' in teacher)
+console.log('career' in teacher)
+
+for (const property in teacher) {
+  const value = teacher[property]
+  console.log(property)
+  console.log(value)
+}
 
 // --------------------------------------------------------------------------
 // 핵심 요약!
