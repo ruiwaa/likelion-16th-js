@@ -214,7 +214,7 @@ const numbers = ['하나', '둘', '셋', '넷', '다섯', '여섯', '일곱']
   const books = ['HTML 공장', 'CSS 드레스샵', 'JavaScript 트레이닝룸', '리액트 마스터']
   // 도서 이름 출력 (반복)
   
-  for (let i = 0; i < books.length; i++) {
+  for (let i = 0; i < books.length; ++i) {
     const bookName = books[i]
     console.log(bookName)
   } 
@@ -365,14 +365,14 @@ for (const property in teacher) {
 
 // 실습
 // {
-// //1 번
+// 1 번 [짝수 출력] for 문을 사용해 1부터 100까지의 숫자 중, 짝수만 출력
 // for(let i = 0; i <= 100; i += 2){
 //   if(i > 0){
 // console.log(i)
 //   }
 // }
 
-// 2번
+// 2번 [카운트다운] while 문을 사용해 숫자 10부터 1까지 역순으로 출력
 let countDown = 10
 while(countDown > 0)
 {
@@ -380,13 +380,13 @@ while(countDown > 0)
   countDown--
   
 }
-// 3번
+// 3번 과일바구니] for … of 문을 사용해 다음 배열의 과일 출력
 const fruits = ['사과', '바나나', '귤', '복숭아']
 for(const allFruits of fruits )
   console.log(allFruits)
 
 
-//4번
+//4번 [비밀번호 찾기] do … while 문을 사용해 입력된 비밀번호('3001') 매칭 검토 후 결과 출력
 {
 let i = 0
 let attempt // undefined
@@ -403,7 +403,7 @@ console.log(attempt)
 } 
 
 
-//5번
+//5번 [성적표 출력] for … in 문을 사용해 객체의 key, value 출력
 const student = {
   name: '선호',
   grade: 'A',
@@ -415,12 +415,27 @@ for (const key in student){
   
 }
 
-//6번
+//6번 6. [까다로운 반복문] `1`부터 `20`까지 반복
+// 1. `5`부터 `10`까지는 건너띄고 나머지 출력
+// 2. `17`이 되면 반복 종료
 // for of 반복문
-  {let i = '1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20'.split(', ')
-  for (const i of numbers) {
-    if (i > 4 && i < 11) continue
-    if (i === 17) break
-    console.log(i)
-}
+  {
+  const numbers = '1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20'.split(', ')
+  for (const numString of numbers) {
+    const n = Number(numString)
+    if (n > 4 && n < 11) continue
+    if (n === 17) break
+    console.log(n)
+  }
+  }
+  //while 문 
+  {
+    const targetNum = 20
+    let i = 0
+    while(++i < targetNum){
+      if(i > 4 && i < 11) continue
+      if(i === 17) break
+      console.log(i)
+      
+    }
   }
