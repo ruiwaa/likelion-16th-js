@@ -72,9 +72,22 @@ Array.from(list.children).forEach((child)=>{
 // 3. 'textNode.textContent'를 이용해 내용을 "수정된 텍스트입니다"로 변경해 보세요.
 console.group('3. 텍스트 노드 직접 조작')
 // 이곳에 코드를 작성하세요.
+const firstpElment = document.querySelector('p')
 
-console.groupEnd()
+// object 타입
+const textNode = firstpElment.firstChild //첫번째 자식 노드
+const textNodeType = textNode.nodeType  // 첫번째 자식 노드 타입(유형)
+console.log(textNodeType, textNodeType === document.TEXT_NODE) // 노드 타입이 3과 일치한지 검사
 
+// string 타입
+const textNodeCotent = textNode.textContent //텍스트 노드의 값 읽기
+console.log('textNode:',textNodeCotent, typeof textNodeCotent)
+console.log('textContent:',textNode, typeof textNode)
+
+// 텍스트 노드의 textContent 속성을 사용해 값 쓰기
+setTimeout(() => {
+  textNode.textContent = '수정된 텍스트입니다'
+}, 3000)
 
 // [실습] 요소(Element)만의 특권 확인하기
 // 1. 위에서 찾은 'textNode'에 classList.add('test')를 시도해 보고 에러가 나는지 확인하세요.
