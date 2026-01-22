@@ -17,7 +17,7 @@
 
 // 각 요소들 모두 선택 
 const accodionList = document.querySelectorAll("div[data-theme]")
-console.log(accodionList)
+console.log(accodionList, typeof accodionList)
 
 //for of 문 활용
 

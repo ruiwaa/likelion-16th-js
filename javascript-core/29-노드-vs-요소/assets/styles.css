@@ -25,7 +25,10 @@ body {
   color: var(--text-color);
   font: 1rem/1.5 "Spoqa Han Sans Neo", ui-sans-serif, system-ui, sans-serif;
 }
-
+.is-active{
+  font-size: large;
+color: #ff2970;
+}
 .prose {
   max-width: 65ch;
   margin: 1.75rem;

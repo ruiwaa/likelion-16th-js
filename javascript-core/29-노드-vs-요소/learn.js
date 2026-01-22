@@ -74,12 +74,13 @@ console.group('3. 텍스트 노드 직접 조작')
 // 이곳에 코드를 작성하세요.
 const firstpElment = document.querySelector('p')
 
-// object 타입
+// object 타입 (nodeList)
 const textNode = firstpElment.firstChild //첫번째 자식 노드
 const textNodeType = textNode.nodeType  // 첫번째 자식 노드 타입(유형)
-console.log(textNodeType, textNodeType === document.TEXT_NODE) // 노드 타입이 3과 일치한지 검사
+console.log(textNode)
+console.log(textNodeType, textNodeType === document.TEXT_NODE) // 노드 타입이 3(텍스트 노드라는 뜻)과 일치한지 검사
 
-// string 타입
+// string 타입 
 const textNodeCotent = textNode.textContent //텍스트 노드의 값 읽기
 console.log('textNode:',textNodeCotent, typeof textNodeCotent)
 console.log('textContent:',textNode, typeof textNode)
@@ -94,6 +95,11 @@ setTimeout(() => {
 // 2. 반면, p 태그(Element)에는 classList.add('is-active')를 적용하여 스타일이 변하는지 확인하세요.
 console.group('4. 요소 전용 속성 확인')
 // 이곳에 코드를 작성하세요.
+//console.log(textNode.classlist.add('test')) // 오류 찾을 수 없음
+firstpElment.classList.add('is-active')
+const activeClassName = document.querySelector('.is-active')
+// 스타일을 바꿀 수 있음
+console.log(activeClassName)
 
 console.groupEnd()
 
