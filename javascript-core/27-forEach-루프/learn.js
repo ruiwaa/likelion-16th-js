@@ -62,7 +62,7 @@ for (let i = fruitBasket.length - 1; i >= 0; --i) {
 
 
 // --------------------------------------------------------------------------
-// for...of 문
+// for...of 문 (배열 반복)
 // --------------------------------------------------------------------------
 
 // 인덱스 없이 손님 이름만 깔끔하게 출력
@@ -115,7 +115,7 @@ for (const key in vipGuest) {
 const orders = ['아이스 아메리카노', '따뜻한 라떼', '자바칩 프라푸치노']
 
 orders.forEach((menu,order) => {
-  console.log('주문하신 "'+(order + 1) +'번째 '+ menu + '" 나왔습니다!')
+  console.log('주문하신 "'+(++order) +'번째 '+ menu + '" 나왔습니다!')
 })
 
 // 1. 기본 사용 (아이템만 사용)
@@ -232,8 +232,9 @@ const players = [
 ]
 // 1. players 배열에 포함된 각 선수 이름을 콘솔 패널에 출력
 players.forEach((player) => {
-  console.log(player.name)
-  
+  console.log(player['name'])
+  // 객체이므로, 객체 키값의 표기법으로 불러올 수 있음!(점 표기법, 대괄호 표기 모두 가능)
+  // 단, 대괄호 표기법을 사용할 경우 키값의 실제 형태와 일치 시켜야함
 })
 // 2. players 배열의 각 항목 중 name 값이 "안정환"인 정보가 위치하는 인덱스 출력
 players.forEach((player, index) => {
@@ -256,8 +257,9 @@ const goalkeepers = []
 
 players.forEach((player) => {
   if(player.position === '골키퍼') {
-    goalkeepers.unshift(player)
+    goalkeepers.unshift(player) // 기존 객체의 차례대로 가져올 때는 unshift 사용, 역순으로 가져올 경우 push로 가져옴
   }
 })
 
 console.log(goalkeepers)
+

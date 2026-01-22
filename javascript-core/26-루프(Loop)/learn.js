@@ -439,3 +439,60 @@ for (const key in student){
       
     }
   }
+  
+  //7번 [좋아요 누적] for … of 문을 사용해 각 게시물의 좋아요 수를 누적으로 출력
+const likes = [15, 23, 8, 42, 17]
+let likeCountCal = 0
+for(const likeCount of likes){
+  likeCountCal += likeCount
+  console.log('좋아요:',likeCountCal)
+}
+
+// 8번 [점수 평가] do … while 문을 사용해 점수 배열에서 60점 이상인 경우 "합격", 미만이면 "불합격" 출력
+const scores = [45, 78, 92, 55, 88]
+let scoreIndex = 0
+
+do{
+  // 현재 점수를 변수에 저장
+  const score = scores[scoreIndex]
+  
+  // 점수에 따라서 불/합격 판정
+  if(score >= 60){
+    console.log('합격:', score)
+  }else{console.log('불합격:', score)}
+
+  // 인덱스가 증가되어야만, 무한 루프에 빠지지 않음
+  scoreIndex++
+}while(scoreIndex < scores.length) // while 조건 바로 옆에 중괄호를 붙여야 함(do...while의 문법 규칙)
+
+// 9번 [도서 목록] for … in 문을 사용해 도서관 정보 객체의 모든 정보 출력
+const library = {
+  name: '시립 도서관',
+  location: '서울시 강남구',
+  openHour: '09:00',
+  closeHour: '22:00',
+  totalBooks: 50000
+}
+for(const libraryInfo in library){
+  console.log(`${libraryInfo}: ${library[libraryInfo]}`)
+}
+
+// 10번 [조건부 반복] 1부터 30까지 반복
+//    - 3의 배수는 건너띄기 (컨티뉴)
+//    - 25에 도달하면 반복 종료 (브레이크)
+
+{
+let i = 1
+while(i < 31){
+  if(i === 25) break // 25가 되었을때 비로소 중지시켜야함
+  if(i % 3 === 0){ 
+    // i가 3으로 나눴을 때 나머지값이 없으면 1씩 증가시키고, 그 값은 건너뛰어라
+    i++
+    continue
+  }
+  // 3의 배수가 아닌 값은 즉시 콘솔값에 출력 후에 1씩 증가 시켜라
+    console.log(i)
+    i++
+
+}
+}
