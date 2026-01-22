@@ -389,7 +389,7 @@ for(const allFruits of fruits )
 //4번 [비밀번호 찾기] do … while 문을 사용해 입력된 비밀번호('3001') 매칭 검토 후 결과 출력
 {
 let i = 0
-let attempt // undefined
+let attempt = null // undefined
 
 const attempts = ['0124', '8291', '8259', '3001', '9073']
 const input = '3001'
@@ -410,8 +410,8 @@ const student = {
   age: 22,
 }
 for (const key in student){
-  console.log(key)
-  console.log(student[key])
+  console.log(key) // 키
+  console.log(student[key]) //키값
   
 }
 
