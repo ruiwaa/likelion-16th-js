@@ -7,21 +7,65 @@
 console.group('1. 노드 타입 탐색')
 // 이곳에 코드를 작성하세요.
 
+// 키 이름에 'NODE'가 포함된 것만 콘솔에 출력
+// 객체 반복이므로 for in 반복문 사용
+for (const key in document) { // document['URL'], document['ELEMENT_NODE'], ...
+  if(key.includes('NODE')) {
+    // DOM에 존재하는 모든 노드의 타입 (상수)
+    console.log(key)
+  }
+}
 console.groupEnd()
 
 
-// [실습] 부모 및 자식 탐색하기
-// 1. '.life-tips' 요소를 변수 'list'에 할당하세요.
+// [실습] 부모 노드 및 자식 노드 탐색하기
+// 1. '.introduction-nodes' 요소를 변수 'list'에 할당하세요.
 // 2. 'list'의 부모 요소를 콘솔에 출력하세요. (Node.parentElement 사용)
 // 3. 'list'의 모든 '자식 노드(childNodes)'와 '자식 요소(children)'를 각각 출력하여 차이를 비교하세요.
 console.group('2. 탐색 메서드 비교')
-const list = null // null을 지우고 선택자를 작성하세요.
+const list = document.querySelector('.introduction-nodes')
+console.log(list)
 
 // 이곳에 부모와 자식들을 출력하는 코드를 작성하세요.
+// 모든 부모 노드들
+console.log('부모 노드:',list.parentNode)
+console.log('부모 요소 노드:',list.parentElement)
 
+// 모든 자식 노드들(NodeList)
+console.log('모든 자식 노드들:', list.childNodes)
+// 출력되는 값: [text, li, text, li, text, li, text]
+// 여기서 text는 문자(공백 포함)
+// childeNodes는 NodeList 를 반환하므로 forEach로 루프
+list.childNodes.forEach((node) => {
+  // 반복 현재 회차에서 노드의 타입이 요소 노드인가?
+  console.log('요소 노드?', node.nodeType === document.ELEMENT_NODE)
+  console.log('텍스트 노드?', node.nodeType === document.TEXT_NODE)
+  console.log('주석 노드?', node.nodeType === document.COMMENT_NODE)
+})
+
+//모든 자식 요소 노드들(HTMLCollection)(foreach 사용할 수 없음)
+console.log('모든 자식 요소 노드들:', list.children)
 console.groupEnd()
 
+// 방법 1. 다른 반복 처리 활용
+// for 문, for ...of 문
 
+// for of 문
+for(const child of list.children){
+  console.log(child)
+}
+
+// for 문
+for(let i =0, l=list.children.length; i<l; ++i){
+  const child = list.children[i]
+  console.log(child)
+}
+
+// 방법 2. 배열화
+Array.from(list.children).forEach((child)=>{
+  console.log(child)
+
+})
 // [실습] 텍스트 노드(Text Node) 조작하기
 // 1. 첫 번째 p 태그의 첫 번째 자식 노드를 찾아 변수 'textNode'에 할당하세요.
 // 2. 해당 노드의 nodeType을 출력하여 '3'이 나오는지 확인하세요.
