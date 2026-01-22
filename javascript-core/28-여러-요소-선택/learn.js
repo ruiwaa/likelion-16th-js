@@ -59,29 +59,7 @@ sectionList.forEach((section, key) => {
   console.log(key, section); // forEach(html요소,객체의 키(이름) )
 });
 
-//.prose header '요소들 수집', .prose header > (자식 선택자) + *
-const headerChildren = document.querySelectorAll(".prose header > *");
-console.log(headerChildren); // Nodelist [h1, p]
 
-//헤더 내부의 자식 요소들에 프라이머리 컬러 일괄 적용
-
-{
-  // for 문
-  for (let i = 0, l = headerChildren.length; i < l; ++i) {
-    const childElement = headerChildren.item(i);
-    console.log(i, childElement);
-    childElement.classList.add("color--primary");
-  }
-}
-
-{
-  // for...of 문
-  // eslint-disable-next-line no-unused-vars
-  for (const childElement of headerChildren) {
-    // console.log(childElement)
-    // childElement.classList.add('color--primary')
-  }
-}
 
 {
   // Array.from(ITERABLE) 메서드
@@ -110,6 +88,29 @@ console.groupEnd();
 console.group("2. NodeList 루프 수행");
 
 // 여기에 코드를 작성하세요.
+//.prose header '요소들 수집', .prose header > (자식 선택자) + *
+const headerChildren = document.querySelectorAll(".prose header > *");
+console.log(headerChildren); // Nodelist [h1, p]
+
+//헤더 내부의 자식 요소들에 프라이머리 컬러 일괄 적용
+
+{
+  // for 문
+  for (let i = 0, l = headerChildren.length; i < l; ++i) {
+    const childElement = headerChildren.item(i);
+    console.log(i, childElement);
+    childElement.classList.add("color--primary");
+  }
+}
+
+{
+  // for...of 문
+  // eslint-disable-next-line no-unused-vars
+  for (const childElement of headerChildren) {
+    // console.log(childElement)
+    // childElement.classList.add('color--primary')
+  }
+}
 
 console.groupEnd();
 
@@ -123,13 +124,13 @@ const allParagraph = document.querySelectorAll("main p");
 console.log(allParagraph); // NodeList
 
 // 배열 바꾸기 (NodeList -> Array.from() -> 새로운 Array 생성)
-const allParagraphArray = Array.from(allParagraph);
-console.log(Array.isArray(allParagraph)); // false
-console.log(typeof allParagraphArray); // Array
+const allParagraphArray = Array.from(allParagraph)
+console.log(Array.isArray(allParagraph)) // false
+console.log(typeof allParagraphArray) // Array
 
 // 배열인지 아닌지 정확히 감지하는 메서드
 // Array.isArray()
-console.log(Array.isArray(allParagraphArray)); // true
+console.log(Array.isArray(allParagraphArray))// true
 
 console.groupEnd();
 
@@ -165,6 +166,7 @@ for (let i = 0; i < allSectionElements.length; i++) {
 }
 
 // - ⚠️ for...in (객체 순환용)
+//HTMLCollection 이라서 forEach 지원 안함
 // - ❌ forEach (지원하지 않음) : 아... 이 방법 쓰고 싶은데...
 //   🌻 아하! Array.from() 메서드가 있었지!! 배열로 바꿔서 해보자!
 console.log(Array.isArray(allSectionElements)); // false
@@ -247,10 +249,10 @@ function manipulateDOM() {
   liveC.insertAdjacentHTML(
     "beforeend",
     "<li>나중에 추가된 요소 (클릭 시 반응 없음)</li>",
-  );
+  )
   console.log(
     "새 요소가 추가되었습니다. 하지만 클릭 이벤트는 작동하지 않습니다.",
-  );
+  )
 }
 
 // --------------------------------------------------------------------------
@@ -280,3 +282,28 @@ console.log(goodGuys)
 for(const guy of goodGuys){
   guy.classList.add('excellent')
 }
+
+// 3번 빌런(Villain)을 모두 선택하세요.
+const villainEl = document.querySelectorAll('[data-type = "villain"]')
+console.log(villainEl)
+
+// 4번 빌런 모두에게 naugthy 클래스 이름을 추가하세요
+villainEl.forEach((villainClassName) =>{
+  villainClassName.classList.add('naugthy')
+
+})
+// 5번 모든 캐릭터를 선택하세요.
+const allCharacter = document.querySelectorAll(".character")
+console.log(allCharacter)
+
+//6번 모든 캐릭터에 star-wars 클래스 이름을 추가하세요
+//for of 문
+// for(const charactersClassName of allCharacter){
+//   charactersClassName.classList.add('star-wars')
+//   console.log(charactersClassName)
+// }
+
+// forEach 문
+allCharacter.forEach((allCharacterClassName) =>{
+allCharacterClassName.classList.add('star-wars')
+})
