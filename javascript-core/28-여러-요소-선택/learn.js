@@ -273,7 +273,7 @@ function manipulateDOM() {
 const goodGuys = document.querySelectorAll('[data-type = "good-guy"]')
 console.log(goodGuys)
 
-// 2번 좋은 사람(Good Guy) 모두에게 excellent 클래스 이름을 추가하세요.
+// 2번 좋은 사람(Good Guy) 모두에게  excellent 클래스 이름을 추가하세요.
 // googGuysEl.forEach((guy) =>{
 //   guy.classList.add('excellent')
 // })

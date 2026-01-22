@@ -10,6 +10,15 @@
   position: relative;
   background-color: var(--background-color);
   color: var(--text-color);
+
+   &.is-open {
+    .accordion__indicator svg{
+      rotate: -45deg;
+    }
+   .accordion__content{
+      display: grid;
+    }
+  }
   
   &::before {
     content: "";
@@ -62,17 +71,18 @@
    * 아코디언 클릭 시, 콘텐츠가 펼쳐지는 것을 확인하기 위한 용도 
    * 실습 시에는 삭제하고 진행합니다.
    */
-  &:hover {
+  /* &:hover {
     .accordion__indicator > svg {
       rotate: -45deg;
     }
     .accordion__content {
       display: grid;
     }
-  }
+  } */
 
   .accordion__content {
 
+   
     display: none;
     grid-template-columns: 7.5rem 1fr;
     grid-column-gap: 2rem;
