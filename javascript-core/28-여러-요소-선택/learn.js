@@ -5,6 +5,68 @@
 // * NodeList         : 선택된 요소들의 집합이며, 배열과 유사한 특징을 가집니다.
 // * Live vs Static   : 장부가 실시간으로 업데이트되는지 여부를 결정합니다.
 // --------------------------------------------------------------------------
+const sectionList = document.querySelectorAll('section')
+console.log(sectionList)
+// NodeList 타입이 브라우저 콘솔창에 츨력됨. (배열과 유사한 객체, 배열 객체는 아님 ❌)
+
+//.prose header '요소들 수집', .prose header > (자식 선택자) + *
+const headerChildren =document.querySelectorAll('.prose header > *')
+console.log(headerChildren) // Nodelist [h1, p]
+
+// sectionList 반복문 만들기
+//while 문 (순방향/ 역방향 루프 정해서 만들기)
+let i = 0
+const sectionCount = sectionList.length
+
+while (i < sectionCount){
+  console.log(i)
+  i = i + 1
+  
+}
+
+{
+  // 역방향(역순) 루프
+  // 여기에 코드 작성
+  // let i = sectionList.length - 1 // 2 → 1 → 0
+  let i = sectionList.length // 3
+  
+  while (--i >= 0) {
+    const sectionItem = sectionList.item(i)
+    console.log(sectionItem)
+    // i -= 1
+  }
+}
+
+
+//for문
+{
+  // 순방향(정순)
+for (let i = 0, l = sectionList.length; i < l; ++i) {
+  const sectionItem = sectionList.item(i)
+  console.log(sectionItem)
+}
+
+  
+  // 역방향(역순)
+for (let i = sectionList.length - 1; i >= 0; --i) {
+  const sectionItem = sectionList[i] // 객체 표기법: 대괄호 표기법 사용
+  console.log(sectionItem)
+}
+}
+
+
+//for of 문
+// NodeList [section, section, section]
+  for (const sectionItem of sectionList) {
+    console.log(sectionItem)
+  }
+
+//forEach 메서드
+sectionList.forEach((section, key) => {
+    console.log(key, section) // forEach(html요소,객체의 키(이름) )
+  })
+
+
 
 
 // --------------------------------------------------------------------------
@@ -24,6 +86,8 @@
 // - 조건이 거짓이더라도 첫번째 요소는 배경색 변경
 // - 단 한 번만 실행되도록 설정
 const checkIndex = 0
+console.log(checkIndex)
+
 
 
 // --------------------------------------------------------------------------
@@ -66,6 +130,7 @@ const hotelInfo = {
   totalRooms: 100,
   isFull: false,
 }
+console.log(hotelInfo)
 
 // 호텔 정보 출력
 // - '호텔 정보 - ' + 키 + ' : ' + 키에 매칭되는 값 
