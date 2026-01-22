@@ -5,11 +5,10 @@
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "eslint": "^9.39.2",
-    "globals": "^17.0.0"
+    "globals": "^17.0.0",
+    "htmlhint": "^1.8.0"
   },
   "dependencies": {
-    "-": "^0.0.1",
-    "D": "^1.0.0",
-    "htmlhint": "^1.8.0"
+    "-": "^0.0.1"
   }
 }
