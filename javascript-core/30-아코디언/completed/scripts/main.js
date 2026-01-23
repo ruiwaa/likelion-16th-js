@@ -29,21 +29,21 @@ console.log(accodionList, typeof accodionList)
 
 
 //for 문 사용
-// for(let i = 0, l = accodionList.length;i < l; i++){
-//   const accodienItem = accodionList[i]
-//   console.log(accodienItem)
+for(let i = 0, l = accodionList.length;i < l; i++){
+  const accodienItem = accodionList[i]
+  console.log(accodienItem)
   
-//   accodienItem.addEventListener('click', () => {
-//   accodienItem.classList.toggle('is-open')
-// })
-// }
+  accodienItem.addEventListener('click', () => {
+  accodienItem.classList.toggle('is-open')
+})
+}
 
 
 //forEach 문 사용
 
-accodionList.forEach((item, index)=>{
-  item = accodionList[index]
-  item.addEventListener('click',() => {
-    item.classList.toggle('is-open')
-  })
-})
+// accodionList.forEach(accodienItem=>{
+  
+//   accodienItem.addEventListener('click',() => {
+//     accodienItem.classList.toggle('is-open')
+//   })
+// })
