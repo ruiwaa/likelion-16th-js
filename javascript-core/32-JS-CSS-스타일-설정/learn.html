@@ -8,11 +8,31 @@
     <meta name="description" content="자바스크립트를 사용해 CSS 스타일을 동적으로 제어합니다.">
     <link rel="stylesheet" href="./assets/styles.css" />
     <script src="./learn.js" defer></script>
+    <style>
+   .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        inline-size: 320px;
+        block-size: 142px;
+        margin-block: 20px;
+        border: 6px solid black;
+        border-radius: 12px;
+        font-size: 1.27rem;
+        font-weight: 600;
+        transition: all 0.4s ease-in-out;
+      }
+    </style>
   </head>
 
   <body>
 
     <main class="prose">
+      <button type="button" class="change-style-button">요소 스타일 조작</button>
+      <div class="box">
+        박스(BOX)
+
+      </div>
       <article>
         <header>
           <h1>인테리어 전문가의 도구: style 속성 제어하기</h1>
