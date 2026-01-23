@@ -58,6 +58,20 @@ changeStyleButton.addEventListener('click',()=>{
   // box.style['--border-color'] = 'red'
   //style 속성으로 지정할 수 없음
   box.style.setProperty('--border-color', 'red')
+  
+   // 요소에 설정된 인라인 스타일 값을 읽기 (Read)
+          console.log(box.style.cssText)
+          
+          // 요소에 인라인 스타일 값을 한 번에 쓰기 (Write)
+          box.style.cssText = `
+            --theme-color: #34a0cd;
+            border-width: 12px;
+
+            color: #fff;
+            background-color: #0752de;
+            width: calc(100vw - 20px);
+            height: 300px;
+          `
 
 })
 console.groupEnd()
