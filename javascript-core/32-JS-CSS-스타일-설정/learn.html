@@ -1,47 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko-KR">
-
   <head>
     <meta charset="UTF-8" />
     <title>스타일링 마스터: JavaScript로 CSS 제어하기</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="자바스크립트를 사용해 CSS 스타일을 동적으로 제어합니다.">
+    <meta
+      name="description"
+      content="자바스크립트를 사용해 CSS 스타일을 동적으로 제어합니다."
+    />
     <link rel="stylesheet" href="./assets/styles.css" />
     <script src="./learn.js" defer></script>
     <style>
-   .box {
+      .box {
+        --border-color: #191919;
+        --background-color: #fff;
+        --width: 320px;
+        --height: 142px;
         display: flex;
         justify-content: center;
         align-items: center;
         inline-size: 320px;
         block-size: 142px;
         margin-block: 20px;
-        border: 6px solid black;
+        border: 6px solid var(--border-color);
+        background-color: var(--background-color) !important;
         border-radius: 12px;
         font-size: 1.27rem;
         font-weight: 600;
         transition: all 0.4s ease-in-out;
       }
+       .box-1 {
+	      width: 100px;
+	      height: 100px;
+	      margin-bottom: 10px;
+	      border: 1px solid #ccc;
+	      padding: 20px;
+	      transition: all 0.3s;
+	    }
+      :root {
+	      --theme-color: #0652dd;
+	    }
+	
+	    .themed-box {
+	      background-color: var(--theme-color);
+	      color: #fff;
+	      padding: 20px;
+	      transition: background-color 0.3s;
+	    }
+      .progress-container {
+	      width: 100%;
+	      background-color: #e0e0e0;
+	      border-radius: 8px;
+	      overflow: hidden;
+	      margin-bottom: 20px;
+	    }
+	    
+	    .progress-bar {
+	      width: 10%; /* 초기값 */
+	      height: 30px;
+	      background-color: #4caf50;
+	      text-align: center;
+	      line-height: 30px;
+	      color: white;
+	      transition: width 0.5s ease;
+	    }
     </style>
   </head>
 
   <body>
-
     <main class="prose">
-      <button type="button" class="change-style-button">요소 스타일 조작</button>
-      <div class="box">
-        박스(BOX)
+      <button type="button" class="change-style-button">
+        요소 스타일 조작
+      </button>
+      <div class="box">박스(BOX)</div>
 
-      </div>
+      <p class="box-1" title="이 텍스트의 스타일이 바뀔 거예요!">BOX</p>
+	  <button type="button" class="change-style-button-1">스타일 변경</button>
+
+    <div class="themed-box">CSS 변수로 배경색을 설정했어요!</div>
+	  <button type="button" class="change-theme-button">색상 변경</button>
+
+    <h3>파일 다운로드 진행률</h3>
+	  
+	  <div class="progress-container">
+	    <div class="progress-bar">10%</div>
+	  </div>
+	
+	  <button type="button" id="button-50">50% 설정</button>
+	  <button type="button" id="button-100">100% 설정</button>
       <article>
         <header>
           <h1>인테리어 전문가의 도구: style 속성 제어하기</h1>
-          <p>호텔 방의 구조(HTML)를 잡았다면, 이제 벽지 색상이나 조명 밝기(CSS)를 자바스크립트로 동적으로 바꿔볼 차례입니다. <code>style</code> 속성은 실시간 인테리어를 위한 핵심 도구입니다.</p>
+          <p>
+            호텔 방의 구조(HTML)를 잡았다면, 이제 벽지 색상이나 조명 밝기(CSS)를
+            자바스크립트로 동적으로 바꿔볼 차례입니다. <code>style</code> 속성은
+            실시간 인테리어를 위한 핵심 도구입니다.
+          </p>
         </header>
 
         <section>
           <h2>1. CSS 스타일 설정의 기본</h2>
-          <p>요소의 스타일을 직접 변경할 때는 <code>style</code> 속성에 새 값을 할당합니다. 브라우저가 지원하는 모든 CSS 속성에 접근할 수 있습니다.</p>
+          <p>
+            요소의 스타일을 직접 변경할 때는 <code>style</code> 속성에 새 값을
+            할당합니다. 브라우저가 지원하는 모든 CSS 속성에 접근할 수 있습니다.
+          </p>
 
           <div class="code-example">
             <pre><code>const element = document.querySelector('.element');
@@ -54,18 +116,32 @@ element.style.fontWeight = '800';</code></pre>
 
           <aside class="tip-box warning">
             <h3>⚠️ 주의: 카멜 케이스(Camel Case) & 단위</h3>
-            <p>자바스크립트에서 <code>style</code> 속성을 사용할 때는 하이픈(<code>-</code>)을 제거하고 <strong>카멜 케이스</strong>로 작성해야 합니다.</p>
+            <p>
+              자바스크립트에서 <code>style</code> 속성을 사용할 때는
+              하이픈(<code>-</code>)을 제거하고 <strong>카멜 케이스</strong>로
+              작성해야 합니다.
+            </p>
             <ul>
               <li><code>user-select</code> → <code>userSelect</code></li>
-              <li><code>margin-block-start</code> → <code>marginBlockStart</code></li>
+              <li>
+                <code>margin-block-start</code> → <code>marginBlockStart</code>
+              </li>
             </ul>
-            <p>또한, 크기를 지정할 때는 반드시 <strong>문자열로 단위(px, rem, %)</strong>를 포함해야 정상 작동합니다.</p>
+            <p>
+              또한, 크기를 지정할 때는 반드시
+              <strong>문자열로 단위(px, rem, %)</strong>를 포함해야 정상
+              작동합니다.
+            </p>
           </aside>
         </section>
 
         <section>
           <h2>2. 유연한 스타일 제어: setProperty()</h2>
-          <p><code>setProperty()</code> 메서드는 더 세밀한 제어가 필요할 때 사용합니다. 특히 <strong>CSS 변수(사용자 정의 속성)</strong>를 다룰 때 필수적입니다.</p>
+          <p>
+            <code>setProperty()</code> 메서드는 더 세밀한 제어가 필요할 때
+            사용합니다. 특히 <strong>CSS 변수(사용자 정의 속성)</strong>를 다룰
+            때 필수적입니다.
+          </p>
 
           <div class="code-example">
             <pre><code>// 일반 속성 설정
@@ -76,14 +152,21 @@ element.style.fontWeight = '800';</code></pre>
           </div>
 
           <aside class="tip-box">
-            <p><strong>지배인 메모:</strong> <code>setProperty</code>를 쓸 때는 자바스크립트 방식(카멜 케이스)이 아니라 <strong>CSS 본래의 방식(하이픈 케이스)</strong>을 그대로 사용해야 한다는 점을 잊지 마세요!</p>
+            <p>
+              <strong>지배인 메모:</strong> <code>setProperty</code>를 쓸 때는
+              자바스크립트 방식(카멜 케이스)이 아니라
+              <strong>CSS 본래의 방식(하이픈 케이스)</strong>을 그대로 사용해야
+              한다는 점을 잊지 마세요!
+            </p>
           </aside>
         </section>
 
         <section>
           <h2>3. 스타일 제어 방법 요약</h2>
           <table>
-            <caption>스타일 설정 방식 비교</caption>
+            <caption>
+              스타일 설정 방식 비교
+            </caption>
             <thead>
               <tr>
                 <th scope="col">구분</th>
@@ -105,7 +188,9 @@ element.style.fontWeight = '800';</code></pre>
               <tr>
                 <th scope="row">setProperty()</th>
                 <td><code>style.setProperty('명', '값')</code></td>
-                <td><strong>하이픈 케이스</strong> 사용, !important 설정 가능</td>
+                <td>
+                  <strong>하이픈 케이스</strong> 사용, !important 설정 가능
+                </td>
               </tr>
               <tr>
                 <th scope="row">사용자 정의 속성</th>
@@ -115,10 +200,7 @@ element.style.fontWeight = '800';</code></pre>
             </tbody>
           </table>
         </section>
-
       </article>
     </main>
-
   </body>
-
 </html>
