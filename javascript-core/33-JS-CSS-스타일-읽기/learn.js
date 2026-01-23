@@ -10,6 +10,9 @@ console.groupCollapsed('1. 인라인 스타일 읽기 (style 속성)')
 
 // 이곳에 코드를 작성하세요.
 
+const prose = document.querySelector('.prose')
+const targetElement = prose.querySelector('section:first-of-type h2')
+console.log(targetElement.style.cssText)
 
 console.groupEnd()
 
@@ -22,7 +25,20 @@ console.groupEnd()
 console.groupCollapsed('2. 계산된 스타일 읽기 (getComputedStyle)')
 
 // 이곳에 코드를 작성하세요.
+const heading1 = prose.querySelector('h1')
+// console.log(heading1.style.cssText)
+const heading1ComputedStyle = getComputedStyle(heading1) // CSSStyleDeclaration
+// console.log(heading1ComputedStyle.getPropertyValue('font-size'))
+// console.log(heading1ComputedStyle.getPropertyValue('color'))
+// console.log(heading1ComputedStyle.getPropertyValue('letter-spacing'))
 
+const sizeUpButton = document.querySelector('.js-size-up-button')
+sizeUpButton.addEventListener('click', () => {
+  let currentFontSize = heading1ComputedStyle.getPropertyValue('font-size')
+  currentFontSize = parseInt(currentFontSize, 10)
+  const nextFontSize = currentFontSize + 8
+  heading1.style.setProperty('font-size', nextFontSize + 'px')
+})
 
 console.groupEnd()
 
