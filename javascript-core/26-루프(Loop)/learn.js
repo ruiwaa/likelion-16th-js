@@ -496,3 +496,339 @@ while(i < 31){
 
 }
 }
+
+// ============================================
+// while 문 집중 훈련 - 문제지 (7개)
+// ============================================
+
+// 1. [while + 조건부 증감] 까다로운 while 반복
+// 1부터 40까지 반복하면서:
+// - 5의 배수는 2씩 증가
+// - 나머지는 1씩 증가
+// - 30에 도달하면 반복 종료
+
+// 작성 공간
+{
+let i = 0
+while(i < 40){
+  console.log(i)
+  if(i % 5 === 0){
+    i += 2
+  }else{
+    i++
+  }
+  if(i === 30) break
+}
+}
+
+// 2. [while + continue 주의] 건너뛰는 수 누적
+// 1부터 50까지 반복하면서:
+// - 7의 배수는 건너띄기
+// - 나머지는 모두 더하기
+// - 누적값 매번 출력
+
+// 출력 예시:
+// 누적값: 1
+// 누적값: 3
+// 누적값: 6
+// (7은 건너띔)
+// 누적값: 15
+// ...
+
+// 작성 공간
+{
+  let i = 1
+  let sum = 0
+  while(i <= 50){
+    if(i % 7 === 0){
+      i++
+      continue
+    }
+    sum += i
+    console.log(`누적값: ${sum}`)
+    i++
+  }
+}
+
+
+// 3. [do…while + 탈출 조건] 검색 시뮬레이션
+// do…while을 사용해 배열에서 특정 값을 찾고:
+// - 찾으면: "찾았습니다! 인덱스: X"
+// - 못 찾으면: "검색 실패"
+
+const items = ['apple', 'banana', 'orange', 'grape', 'mango']
+const target = 'orange'
+
+// 출력 예시:
+// 검색 중: apple (0번 인덱스)
+// 검색 중: banana (1번 인덱스)
+// 검색 중: orange (2번 인덱스)
+// 찾았습니다! 인덱스: 2
+
+// 작성 공간
+{
+let searchIndex = 0
+let found = false
+  do{
+    console.log(`검색중: ${items[searchIndex]},(${searchIndex}번) 인덱스`)
+    if(items[searchIndex] === target){
+    console.log(`찾았습니다! 인덱스: ${searchIndex}`);
+    found = true
+    }
+    searchIndex++
+  }while(searchIndex <items.length && !found)
+    if(items[searchIndex] !== target){
+      console.log('검색 실패')
+    }
+}
+  
+
+
+// 4. [for…in + 조건부 출력] 객체 필터링
+// for…in을 사용해 객체에서 특정 값만 출력:
+// - 값이 숫자면: "숫자: X"
+// - 값이 문자면: "문자: X"
+
+// const product = {
+//   name: '노트북',
+//   price: 1500000,
+//   brand: 'Samsung',
+//   warranty: 24,
+//   color: '검정색'
+// };
+
+// 출력 예시:
+// 문자: 노트북
+// 숫자: 1500000
+// 문자: Samsung
+// 숫자: 24
+// 문자: 검정색
+
+// 작성 공간
+// for(const key in product) {
+//   
+// }
+
+
+// 5. [while + break 타이밍] 암호 해독
+// while 반복 중 암호를 찾으면 즉시 종료:
+// - 시도 횟수 표시
+// - 맞은 암호 표시
+
+// const password = 'secret123';
+// const attempts = ['hello', 'world', 'test', 'secret123', 'wrong'];
+// let tryCount = 0;
+
+// 출력 예시:
+// 시도 1: hello (틀림)
+// 시도 2: world (틀림)
+// 시도 3: test (틀림)
+// 시도 4: secret123 (맞음!)
+// 총 시도 횟수: 4
+
+// 작성 공간
+// let attemptIndex = 0;
+// while(attemptIndex < attempts.length) {
+//   
+// }
+
+
+// 6. [복합 while] 짝수와 홀수 분리 계산
+// while을 사용해 1부터 50까지:
+// - 짝수는 모두 더하기
+// - 홀수는 개수 세기
+
+// 출력 예시:
+// 짝수의 합: 650
+// 홀수의 개수: 25
+
+// 작성 공간
+// let i = 1;
+// let evenSum = 0;
+// let oddCount = 0;
+// while(i <= 50) {
+//   
+// }
+
+
+// 7. [응용] 중첩 반복문 - 구구단 필터링
+// for 문으로 2단부터 9단까지 출력하되:
+// - 각 단의 결과가 20 이상이면 출력 안 함
+// - 결과가 20 미만이면 "X × Y = Z" 형식으로 출력
+// - 각 단이 끝나면 빈 줄 삽입
+
+// 출력 예시:
+// 2 × 1 = 2
+// 2 × 2 = 4
+// ...
+// 2 × 9 = 18
+// (빈 줄)
+// 3 × 1 = 3
+// 3 × 2 = 6
+// ...
+// 3 × 6 = 18
+// (빈 줄)
+// ...
+
+// 작성 공간
+// for(let dan = 2; dan <= 9; dan++) {
+//   
+// }
+
+
+// 8. [forEach 기본] 배열의 모든 요소 출력
+// 다음 배열의 모든 과일 이름을 한 줄씩 출력하세요
+
+// const fruits = ['딸기', '포도', '귤', '수박', '바나나'];
+
+// 출력 예시:
+// 딸기
+// 포도
+// 귤
+// 수박
+// 바나나
+
+// 작성 공간
+// fruits.forEach((fruit) => {
+//   
+// })
+
+
+// 9. [forEach + index] 인덱스와 함께 출력
+// 다음 배열의 각 학생 정보를 "번호. 이름"으로 출력하세요
+
+// const students = ['김철수', '이영희', '박민준', '정수진'];
+
+// 출력 예시:
+// 1. 김철수
+// 2. 이영희
+// 3. 박민준
+// 4. 정수진
+
+// 작성 공간
+// students.forEach((student, index) => {
+//   
+// })
+
+
+// 10. [forEach + 조건문] 특정 조건만 출력
+// 다음 배열에서 가격이 5000 이상인 상품만 출력하세요
+
+// const products = [
+//   { name: '커피', price: 3000 },
+//   { name: '케이크', price: 7000 },
+//   { name: '쿠키', price: 2500 },
+//   { name: '샌드위치', price: 8000 },
+//   { name: '주스', price: 4500 }
+// ];
+
+// 출력 예시:
+// 케이크: 7000원
+// 샌드위치: 8000원
+
+// 작성 공간
+// products.forEach((product) => {
+//   
+// })
+
+
+// 11. [forEach + push] 새로운 배열 생성
+// 다음 배열에서 각 숫자를 2배씩 한 새로운 배열을 만드세요
+
+// const numbers = [1, 2, 3, 4, 5];
+// const doubledNumbers = [];
+
+// 출력 예시:
+// [2, 4, 6, 8, 10]
+
+// 작성 공간
+// numbers.forEach((number) => {
+//   
+// })
+// console.log(doubledNumbers);
+
+
+// 12. [forEach + 필터링] 객체 배열에서 필터링
+// 다음 배열에서 성적이 'A'인 학생들만 모아서 새로운 배열을 만드세요
+
+// const classmates = [
+//   { name: '최민호', grade: 'B' },
+//   { name: '박수진', grade: 'A' },
+//   { name: '김도연', grade: 'A' },
+//   { name: '이준혁', grade: 'C' },
+//   { name: '정지은', grade: 'A' }
+// ];
+// const aGradeStudents = [];
+
+// 출력 예시:
+// [ { name: '박수진', grade: 'A' },
+//   { name: '김도연', grade: 'A' },
+//   { name: '정지은', grade: 'A' } ]
+
+// 작성 공간
+// classmates.forEach((classmate) => {
+//   
+// })
+// console.log(aGradeStudents);
+
+
+// ============================================
+// DOM 선택 및 조작 문제 (querySelectorAll + forEach)
+// ============================================
+
+// HTML 구조:
+// <div id="star-wars">
+//   <div class="character" data-type="good-guy">루크 스카이워커</div>
+//   <div class="character" data-type="good-guy">요다</div>
+//   <div class="character" data-type="villain">다스 베이더</div>
+// </div>
+
+// 13. [querySelectorAll + 속성 선택자] 좋은 사람 선택
+// data-type="good-guy"인 모든 요소를 선택하세요
+
+// 작성 공간
+// const goodGuys = document.querySelectorAll('[data-type="good-guy"]');
+// console.log(goodGuys);
+
+
+// 14. [querySelectorAll + forEach + classList.add] 좋은 사람에게 클래스 추가
+// data-type="good-guy"인 모든 요소에 "excellent" 클래스를 추가하세요
+
+// 작성 공간
+// document.querySelectorAll('[data-type="good-guy"]').forEach((goodGuy) => {
+//   
+// })
+
+
+// 15. [querySelectorAll + 속성 선택자] 빌런 선택
+// data-type="villain"인 모든 요소를 선택하세요
+
+// 작성 공간
+// const villains = document.querySelectorAll('[data-type="villain"]');
+// console.log(villains);
+
+
+// 16. [querySelectorAll + forEach + classList.add] 빌런에게 클래스 추가
+// data-type="villain"인 모든 요소에 "naughty" 클래스를 추가하세요
+
+// 작성 공간
+// document.querySelectorAll('[data-type="villain"]').forEach((villain) => {
+//   
+// })
+
+
+// 17. [querySelectorAll + 클래스 선택자] 모든 캐릭터 선택
+// class="character"인 모든 요소를 선택하세요
+
+// 작성 공간
+// const allCharacters = document.querySelectorAll('.character');
+// console.log(allCharacters);
+
+
+// 18. [querySelectorAll + forEach + classList.add] 모든 캐릭터에게 클래스 추가
+// class="character"인 모든 요소에 "star-wars" 클래스를 추가하세요
+
+// 작성 공간
+// document.querySelectorAll('.character').forEach((character) => {
+//   
+// })
