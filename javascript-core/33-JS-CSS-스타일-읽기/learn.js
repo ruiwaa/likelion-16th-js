@@ -35,7 +35,7 @@ const heading1ComputedStyle = getComputedStyle(heading1) // CSSStyleDeclaration
 const sizeUpButton = document.querySelector('.js-size-up-button')
 sizeUpButton.addEventListener('click', () => {
   let currentFontSize = heading1ComputedStyle.getPropertyValue('font-size')
-  currentFontSize = parseInt(currentFontSize, 10)
+  currentFontSize = parseInt(currentFontSize, 10) //parseInt를 사용하여 숫자값(정수)로 변환시켜주기!
   const nextFontSize = currentFontSize + 8
   heading1.style.setProperty('font-size', nextFontSize + 'px')
 })
