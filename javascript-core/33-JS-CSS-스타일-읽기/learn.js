@@ -47,11 +47,13 @@ console.groupEnd()
 // 1. '.pseudo-box' 요소를 선택하세요.
 // 2. getComputedStyle()의 두 번째 인자를 활용하여 '::before' 가상 요소의 스타일을 가져오세요.
 // 3. 가상 요소의 'content'와 'color' 속성 값을 콘솔에 출력하세요.
-console.groupCollapsed('3. 가상 요소 스타일 읽기 (::before)')
+console.groupCollapsed('3. 가상 요소 스타일 읽기 (::before & ::after)')
 
 // 이곳에 코드를 작성하세요.
-
-
+// 가상 요소 스타일 읽기
+const pseudoStyles = getComputedStyle(sizeUpButton, '::after')
+console.log(pseudoStyles.getPropertyValue('content')) // 명시적으로 값을 가져올 떄 유용한 메서드:getpropertyValue
+console.log(pseudoStyles.getPropertyValue('font-size'))
 console.groupEnd()
 
 
@@ -62,4 +64,8 @@ console.groupEnd()
 // 2. getComputedStyle(요소): 모든 스타일 소스(외부 파일, 인라인 등)를 합쳐 브라우저가 최종 계산한 값을 읽습니다.
 // 3. 읽기 전용: getComputedStyle로 가져온 값은 수정할 수 없으며 오직 정보 확인용입니다.
 // 4. 절대 단위: getComputedStyle은 상대 단위(%, em)를 항상 절대 단위(px)로 변환하여 반환합니다.
+// --------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------
+// 실습
 // --------------------------------------------------------------------------

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>인라인 스타일 확인</title>
+    <style>
+	    .box {
+	      width: 200px;
+	      height: 100px;
+	      background-color: #3498db;
+	      color: #fff;
+	      font-size: 18px;
+	    }
+	  </style>
+  </head>
+
+  <body>
+
+    <p class="element" style="color: #e74c3c; font-size: 24px;">
+      이 단락은 인라인 스타일을 가지고 있습니다.
+    </p>
+
+    <p class="box">스타일을 읽어보세요!</p>
+
+    <script>
+      {
+        // 실습 1. 인라인 스타일 확인
+        // 인라인 스타일로 설정된 값을 style 속성, 
+        // style.cssText로 각각 읽어 콘솔에 출력합니다.
+        // 여기에 코드 작성
+        const element = document.querySelector('.element')
+        console.log(element.style)
+        console.log(element.style.color)
+        console.log(element.style.fontSize)
+        console.log(element.style['font-size'])
+
+      }
+
+      {
+        // 실습 2. 계산된 스타일 확인
+        // 요소의 스타일을 `getComputedStyle()` 메서드로 
+        // 읽어 콘솔 패널에 출력합니다.
+        const box =document.querySelector('.box')
+        const boxSnapShot = getComputedStyle(box)
+        console.log(boxSnapShot.getPropertyValue('width'))
+        console.log(boxSnapShot.getPropertyValue('font-size'))
+        console.log(boxSnapShot.getPropertyValue('color'))
+        console.log(boxSnapShot.getPropertyValue('margin'))
+        console.log(boxSnapShot.getPropertyValue('display'))
+        //getcomputedstyle로 속성 읽기, getpropertyvalue로 속성 가져오기
+      }
+    </script>
+
+  </body>
+
+</html>
