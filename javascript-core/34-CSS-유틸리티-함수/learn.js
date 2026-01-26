@@ -97,7 +97,6 @@ console.groupEnd()
 
 console.groupCollapsed('removeStyle() 함수 작성')
 {
-  const body = document.body
 
   
   // 기능 추상화 하여 사용할 경우
@@ -227,9 +226,69 @@ console.groupEnd()
 
 
 // --------------------------------------------------------------------------
-// 핵심 요약!
+// 핵심 요약!  
 // --------------------------------------------------------------------------
 // 1. getStyle: window.getComputedStyle(element)[propertyName] 활용
 // 2. setStyle: element.style[propertyName] = propertyValue; return element; 활용
 // 3. css: 인자(propertyValue)의 존재 여부에 따라 분기 처리 (if/else)
 // --------------------------------------------------------------------------
+
+
+// --------------------------------------------------------------------------
+// 함수 리팩토링
+
+// --------------------------------------------------------------------------
+{
+  // 세상에서 가장 사랑받는 라이브러리 jQuery 흉내내기!
+  // 우리의 css() 유틸리티 함수 리팩토링
+  const prose = document.querySelector('.prose')
+
+  css(prose, {
+    'color': '#34a853',
+    'background-color': '#054215',
+    'margin-block': '12px',
+    'padding': '24px',
+  })
+
+  function css(el,prop,value){
+    if (typeof prop === 'object' && prop && !Array.isArray(prop)) {
+    // 재귀 함수 활용
+    // 객체를 순환(반복)하려면? -> for..in 활용
+
+
+    //재귀: 나 자신의 함수를 부르는 것(호출)
+    }
+  }
+
+  // getStyle
+  function getStyle(el, prop) {
+    // return getComputedStyle(el)[prop]
+    return getComputedStyle(el).getPropertyValue(prop)
+  }
+
+  // setStyle
+  function setStyle(el, prop, value) {
+    // el.style[prop] = value
+    el.style.setProperty(prop, value)
+  }
+
+  // removeStyle
+  function removeStyle(el, prop) {
+    // el.style[prop] = null
+    el.style.removeProperty(prop)
+  }
+
+  // css
+  function css(el, prop, value) {
+    if (value === undefined) {
+      return getStyle(el, prop)
+    }
+
+    if (value === null) {
+      return removeStyle(el, prop)
+    }
+
+    setStyle(el, prop, value)
+  }
+
+}
