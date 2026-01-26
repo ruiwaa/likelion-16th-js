@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="유틸리티 함수 실습문제" />
+    <meta charset="UTF-8" />
+    <title>레인지 인풋으로 글자 크기 변경</title>
+    <style>
+      .text {
+        font-size: 16px;
+        color: #2d3436;
+      }
+
+      .slider-container {
+        margin-top: 1rem;
+      }
+
+      label {
+        font-size: 14px;
+        margin-right: 8px;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <h1>실습 문제 풀이</h1>
+    <p class="text">이 텍스트의 글자 크기를 조절해 보세요!</p>
+
+    <div class="slider-container">
+      <label for="font-size-slider">글자 크기</label>
+      <input type="range" id="font-size-slider" min="12" max="48" value="16" />
+      <output id="font-size-value">16px</output>
+    </div>
+
+    <script>
+      const text = document.querySelector(".text");
+      const slider = document.getElementById("font-size-slider");
+      const output = document.getElementById("font-size-value");
+   
+      
+      slider.addEventListener("input", () => {
+        //   // [실습 1] 현재 슬라이더의 값을 가져오세요.
+        
+        //    /* 여기에 코드 작성 */
+        let size = 50
+        function getStyle(element, propName){
+          if(element === null || element.nodeType !== document.ELEMENT_NODE){
+            console.warn('요소 타입의 노드 또는 요소 값이 없습니다.')
+            return null
+          }
+          if(typeof propName !== 'string' || !propName){
+            console.warn('속성을 문자열로 작성 또는 해당 속성값이 존재하지 않습니다.')
+            return null
+          }
+         const elementStyle = getComputedStyle(element)
+         const propertyValue = elementStyle.getPropertyValue(propName)
+         return propertyValue
+        }
+     
+      
+
+      //   // [실습 2] css 함수를 사용하여 .text 요소의 font-size를 변경하세요.
+      //   // 힌트: 값 뒤에 'px' 단위를 붙여야 합니다. (예: size + 'px')
+      //   /* 여기에 코드 작성 */
+      const textEl = document.querySelector('.text')
+      function css(element, propertyName,propertyValue){
+
+        if(!element === null || element.nodeType !== document.ELEMENT_NODE){
+          console.warn('요소 노드가 출력되어야 합니다.')
+          return null
+        }
+        setStyle(element, propertyName, propertyValue)
+        getStyle(element,propertyName)
+       
+      }
+      setStyle(textEl, 'font-size', 40 +'px')
+
+      // 스타일 변경 함수 만들기
+      function setStyle(element, propertyName, propertyValue){
+        element.style.setProperty(propertyName,propertyValue)
+      }
+
+      //input 값 변경 (setAttribute 활용한 함수 구현)
+      const inputEl = document.querySelector('input')
+      function changeInputValue(inputEl, valueProp, value){
+        const valueCalc = inputEl.setAttribute(valueProp,value)
+        return valueCalc
+      }
+     changeInputValue(inputEl,'value', 50)
+     
+
+      //   현재 몇 px인지 화면에 표시
+      //   output.textContent = size + "px";
+      const outputEl = document.querySelector('output')
+      const outputSyle = outputEl.textContent = size + 'px'
+
+      
+      });
+    </script>
+  </body>
+</html>

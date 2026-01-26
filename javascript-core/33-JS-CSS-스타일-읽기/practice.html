@@ -3,6 +3,8 @@
 
   <head>
     <meta charset="UTF-8" />
+    <meta name="description" content="실습 문제 풀이" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>인라인 스타일 확인</title>
     <style>
 	    .box {
@@ -12,16 +14,40 @@
 	      color: #fff;
 	      font-size: 18px;
 	    }
+      .quote {
+      padding-left: 20px;
+      position: relative;
+      font-size: 1.2rem;
+      color: #2c3e50;
+
+      &::before {
+        content: "💬";
+        position: absolute;
+        left: 0;
+      }
+    }
+       .responsive-box {
+	      width: 50%;
+	      height: 100px;
+	      background-color: orange;
+	      border: 5px solid black;
+	    }
 	  </style>
   </head>
 
   <body>
+    <h1>실습 문제 풀이</h1>
+    <h3>브라우저 창 크기를 조절한 뒤 버튼을 눌러보세요!</h3>
+	  
+	  <div class="responsive-box">너비 50% 박스</div>
+	  <button type="button" id="check-btn">크기 확인하기</button>
 
     <p class="element" style="color: #e74c3c; font-size: 24px;">
       이 단락은 인라인 스타일을 가지고 있습니다.
     </p>
 
     <p class="box">스타일을 읽어보세요!</p>
+     <p class="quote">이것은 가상 요소가 포함된 인용문입니다.</p>
 
     <script>
       {
@@ -50,7 +76,31 @@
         console.log(boxSnapShot.getPropertyValue('display'))
         //getcomputedstyle로 속성 읽기, getpropertyvalue로 속성 가져오기
       }
+
+      // 실습 3. 가상 요소 스타일 확인
+      {
+
+        const quoteEl = document.querySelector('body .quote')
+        const readQuoteEl = getComputedStyle(quoteEl,'::before')
+        console.log(quoteEl)
+      console.log(readQuoteEl.getPropertyValue('font-size'))
+      console.log(readQuoteEl.getPropertyValue('position'))
+      console.log(readQuoteEl.getPropertyValue('content'))
+      }
+
+      // 실습 4. 박스의 실제 크기 확인
+    const button = document.querySelector('#check-btn')
+    button.addEventListener('click',() =>{
+      const boxSize = getComputedStyle(document.querySelector('.responsive-box'))
+      console.log(boxSize.getPropertyValue('width'))
+    console.log(boxSize.style.width)
+    })
+ 
+      
+
     </script>
+
+    
 
   </body>
 
