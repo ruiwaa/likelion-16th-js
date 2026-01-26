@@ -8,9 +8,18 @@
 console.groupCollapsed('4. getStyle() 함수 작성');
 
 function getStyle(element, propertyName) {
-  // 이곳에 코드를 작성하세요.
-  
+  // 기능: 전달된 element의 브라우저에 의해 계산된 스타일 값을 반환
+  const elementStyleSnapshot = getComputedStyle(element)
+  const propertyValue = elementStyleSnapshot.getPropertyValue(propertyName)
+  return propertyValue
 }
+
+const strongElment = document.querySelector('.prose p:first-of-type strong')
+console.log(getStyle(strongElment,'font-size'))
+console.log(getStyle(strongElment,'color'))
+console.log(getStyle(strongElment, 'letter-spacing'))
+console.log(getStyle(strongElment, 'word-spacing'))
+
 
 console.groupEnd();
 
@@ -21,10 +30,6 @@ console.groupEnd();
 // 3. 메서드 체이닝이 가능하도록 요소를 반환(return)하세요.
 console.groupCollapsed('5. setStyle() 함수 작성');
 
-function setStyle(element, propertyName, propertyValue) {
-  // 이곳에 코드를 작성하세요.
-  
-}
 
 console.groupEnd();
 
