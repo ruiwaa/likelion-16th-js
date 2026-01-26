@@ -95,10 +95,10 @@ console.groupCollapsed('5. setStyle() 함수 작성')
 }
 console.groupEnd()
 
-console.group('removeStyle() 함수 작성')
+console.groupCollapsed('removeStyle() 함수 작성')
 {
   const body = document.body
-  const main = body.querySelector('main')
+
   
   // 기능 추상화 하여 사용할 경우
 {
@@ -149,7 +149,80 @@ console.groupEnd()
 // 1. 위에서 작성한 getStyle과 setStyle을 내부에서 활용하세요.
 // 2. propertyValue가 있으면 '설정(set)'하고, 없으면 '읽기(get)'를 수행하도록 조건문을 작성하세요.
 console.groupCollapsed('6. css() 함수 작성')
+{
+  const tipBoxHeading = document.querySelector('.tip-box h3')
 
+  // 스타일 설정(쓰기, 수정)
+  // 스타일 확인(읽기, 조회)
+  // 스타일 삭제
+
+  function getStyle(element, propertyName) {
+    return getComputedStyle(element).getPropertyValue(propertyName)
+  }
+
+  function setStyle(element, propertyName, propertyValue) {
+    element.style.setProperty(propertyName, propertyValue)
+  }
+
+  function removeStyle(element, propertyName) {
+    element.style.removeProperty(propertyName)
+  }
+}
+
+// 유틸리티를 통합한 css 함수를 사용하는 경우 (다형성)
+// - 읽기 (인자 2개)
+// - 쓰기 (인자 3개)
+// - 삭제 (인자 3개, 값이 null)
+{
+  // 이곳에 코드를 작성하세요.
+  const code = document.querySelector('.code-example code')
+  
+  // 다형성 특징을 가지는 통합 유틸리티 함수 css() 활용
+
+  // 쓰기
+  css(code, 'color', '#34a853')
+  css(code, 'background-color', '#095325')
+
+  // 읽기
+  const codeColor = css(code, 'color')
+  console.log(codeColor)
+  const codeBGColor = css(code, 'background-color')
+  console.log(codeBGColor)
+
+  // 삭제
+  css(code, 'color', null)
+  css(code, 'background-color', null)
+
+
+
+  function css(element, propertyName, propertyValue) {
+    // [읽기] 마지막 인자가 undefined인 경우
+    if (propertyValue === undefined) {
+      return getStyle(element, propertyName)
+    }
+    
+    // [삭제] 마지막 인자가 null인 경우
+    if (propertyValue === null) {
+      return removeStyle(element, propertyName)
+    }
+
+    // [쓰기] 그 외 나머지 경우
+    setStyle(element, propertyName, propertyValue)
+  }
+
+
+  function getStyle(element, propertyName) {
+    return getComputedStyle(element).getPropertyValue(propertyName)
+  }
+
+  function setStyle(element, propertyName, propertyValue) {
+    element.style.setProperty(propertyName, propertyValue)
+  }
+
+  function removeStyle(element, propertyName) {
+    element.style.removeProperty(propertyName)
+  }
+}
 console.groupEnd()
 
 
