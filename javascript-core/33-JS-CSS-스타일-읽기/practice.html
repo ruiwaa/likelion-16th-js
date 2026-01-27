@@ -94,7 +94,7 @@
     const boxSize = getComputedStyle(box)
     button.addEventListener('click',() =>{
       console.log(boxSize.getPropertyValue('width'))
-      console.log(box.style.width)
+      console.log(box.style.width) // 빈 값이 나오는 것이 정상!(인라인 스타일을 해당 요소에 적용하지 않았기 때문)
     })
  
       
