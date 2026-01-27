@@ -7,7 +7,18 @@
 // 2. getAttribute()를 사용하여 요소의 속성 값을 반환하는 로직을 작성하세요.
 console.groupCollapsed('getAttr() 함수 작성')
 
-// 이곳에 코드를 작성하세요.
+// 이곳에 코드를 작성하세요.'
+const pElement = document.querySelector('main p')
+const strongElment = document.querySelector('p strong')
+const prose = document.querySelector('.prose')
+console.log(prose)
+
+function getAttr(element, atrrName){
+const getAttrValue = element.getAttribute(atrrName)
+return getAttrValue
+}
+console.log(getAttr(pElement,'data-has-strong'))
+console.log(getAttr(strongElment,'title'))
 
 console.groupEnd()
 
@@ -19,6 +30,11 @@ console.groupEnd()
 console.groupCollapsed('setAttr() 함수 작성')
 
 // 이곳에 코드를 작성하세요.
+function setAttr(element,attrName,setValue){
+  const setAttrValue = element.setAttribute(attrName,setValue)
+  return setAttrValue
+}
+setAttr(strongElment,'id', 'powerful')
 
 console.groupEnd()
 
@@ -30,7 +46,10 @@ console.groupEnd()
 console.groupCollapsed('removeAttr() 함수 작성')
 
 // 이곳에 코드를 작성하세요.
-
+function removeAttr(element, removeName){
+  element.removeAttribute(removeName)
+}
+removeAttr(strongElment,'id')
 console.groupEnd()
 
 
@@ -41,6 +60,33 @@ console.groupEnd()
 console.groupCollapsed('attr() 함수 작성')
 
 // 이곳에 코드를 작성하세요.
+function attr(element, attrName, attrValue){
+  if(attrValue === undefined){
+    return getAttr(element, attrName)
+  }
+
+    if(attrValue === null){
+      return removeAttr(element,attrName)
+    }
+    setAttr(element,attrName,attrValue)
+}
+
+// 속성 추가(쓰기)
+attr(prose, 'id', 'main-container')
+attr(prose, 'data-id', 'main-element')
+
+// 속성 확인(읽기)
+const proseId = attr(prose, 'id')
+const proseDataId = attr(prose, 'data-id')
+console.log(proseId, proseDataId)
+
+//속성 제거(삭제)
+setTimeout(() => {
+  // 2.4초 뒤에 제거
+  attr(prose, 'id',null)
+  attr(prose, 'data-id',null)
+  console.log('prose 요소의 id, data-id 속성 모두 삭제')
+}, 2400)
 
 console.groupEnd()
 
