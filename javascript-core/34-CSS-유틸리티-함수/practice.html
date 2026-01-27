@@ -28,7 +28,7 @@
 
     <div class="slider-container">
       <label for="font-size-slider">글자 크기</label>
-      <input type="range" id="font-size-slider" min="12" max="48" value="16" />
+      <input type="range" id="font-size-slider" min="10" max="48" value="16" />
       <output id="font-size-value">16px</output>
     </div>
 
@@ -39,23 +39,12 @@
    
       
       slider.addEventListener("input", () => {
-        //   // [실습 1] 현재 슬라이더의 값을 가져오세요.
+        // [실습 1] 현재 슬라이더의 값을 가져오세요.
         
         //    /* 여기에 코드 작성 */
-        let size = 50
-        function getStyle(element, propName){
-          if(element === null || element.nodeType !== document.ELEMENT_NODE){
-            console.warn('요소 타입의 노드 또는 요소 값이 없습니다.')
-            return null
-          }
-          if(typeof propName !== 'string' || !propName){
-            console.warn('속성을 문자열로 작성 또는 해당 속성값이 존재하지 않습니다.')
-            return null
-          }
-         const elementStyle = getComputedStyle(element)
-         const propertyValue = elementStyle.getPropertyValue(propName)
-         return propertyValue
-        }
+        let size = slider.value
+       console.log(size)
+        
      
       
 
@@ -73,7 +62,7 @@
         getStyle(element,propertyName)
        
       }
-      setStyle(textEl, 'font-size', 40 +'px')
+      setStyle(textEl, 'font-size', size +'px')
 
       // 스타일 변경 함수 만들기
       function setStyle(element, propertyName, propertyValue){
@@ -86,7 +75,7 @@
         const valueCalc = inputEl.setAttribute(valueProp,value)
         return valueCalc
       }
-     changeInputValue(inputEl,'value', 50)
+     changeInputValue(inputEl,'value', size)
      
 
       //   현재 몇 px인지 화면에 표시
