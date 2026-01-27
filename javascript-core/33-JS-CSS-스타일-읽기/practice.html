@@ -90,10 +90,11 @@
 
       // 실습 4. 박스의 실제 크기 확인
     const button = document.querySelector('#check-btn')
+    const box = document.querySelector('.responsive-box')
+    const boxSize = getComputedStyle(box)
     button.addEventListener('click',() =>{
-      const boxSize = getComputedStyle(document.querySelector('.responsive-box'))
       console.log(boxSize.getPropertyValue('width'))
-    console.log(boxSize.style.width)
+      console.log(box.style.width)
     })
  
       
