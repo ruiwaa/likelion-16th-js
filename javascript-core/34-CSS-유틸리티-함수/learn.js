@@ -144,16 +144,31 @@ console.groupCollapsed('removeStyle() 함수 작성')
 console.groupEnd()
 
 
-// [실습] css() 함수
-// 1. 위에서 작성한 getStyle과 setStyle을 내부에서 활용하세요.
+/// [실습] css() 함수
+// 1. 위에서 작성한 getStyle과 setStyle, removeStyle을 내부에서 활용하세요.
 // 2. propertyValue가 있으면 '설정(set)'하고, 없으면 '읽기(get)'를 수행하도록 조건문을 작성하세요.
-console.groupCollapsed('6. css() 함수 작성')
+// 3. propertyValue가 null인 경우, 삭제(remove)하도록 조건 처리합니다.
+// 4. (심화) propertyName이 객체({})인 경우, 재귀 호출을 통해 여러 스타일을 한 번에 적용하세요.
+
+console.group('css() 함수 작성')
+
+// 개별 유틸리티 함수를 사용하는 경우
+// - getStyle
+// - setStyle
+// - removeStyle
 {
   const tipBoxHeading = document.querySelector('.tip-box h3')
+ 
 
   // 스타일 설정(쓰기, 수정)
+  setStyle(tipBoxHeading, 'font-size', 32 + 'px')
+  
   // 스타일 확인(읽기, 조회)
+  const tipBoxHeadingFontSize = getStyle(tipBoxHeading, 'font-size')
+  console.log(tipBoxHeadingFontSize)
+
   // 스타일 삭제
+  removeStyle(tipBoxHeading, 'font-size')
 
   function getStyle(element, propertyName) {
     return getComputedStyle(element).getPropertyValue(propertyName)
@@ -233,32 +248,114 @@ console.groupEnd()
 // 3. css: 인자(propertyValue)의 존재 여부에 따라 분기 처리 (if/else)
 // --------------------------------------------------------------------------
 
-
+ // --------------------------------------------------------------------------
+// 타입 검사 유틸리티 함수 (추상화)
 // --------------------------------------------------------------------------
-// 함수 리팩토링
-
+// - isObject
+// - isElement
 // --------------------------------------------------------------------------
+
+/**
+ * 요소의 CSS 스타일을 가져오거나 설정합니다.
+ * @param {HTMLElement} element - 대상 HTML 요소
+ * @param {string|Object} propertyOrProperties - CSS 속성 이름 또는 속성-값 쌍의 객체
+ * @param {string|number} [propertyValue] - CSS 속성 값 (propertyOrproperties가 문자열인 경우)
+ * @returns {string|undefined} 값을 가져올 때는 CSS 속성 값을 반환하고, 설정할 때는 undefined를 반환
+ */
 {
-  // 세상에서 가장 사랑받는 라이브러리 jQuery 흉내내기!
-  // 우리의 css() 유틸리티 함수 리팩토링
-  const prose = document.querySelector('.prose')
-
-  css(prose, {
-    'color': '#34a853',
-    'background-color': '#054215',
-    'margin-block': '12px',
-    'padding': '24px',
-  })
-
-  function css(el,prop,value){
-    if (typeof prop === 'object' && prop && !Array.isArray(prop)) {
-    // 재귀 함수 활용
-    // 객체를 순환(반복)하려면? -> for..in 활용
-
-
-    //재귀: 나 자신의 함수를 부르는 것(호출)
+function css(element, propertyOrProperties, propertyValue) {
+  // 재귀 : '나(함수 자신)를 내 안에서 다시 부른다.'
+  // 조건 : 두 번째 인자의 타입이 객체인 경우 → 객체 속성:값 순환(반복) → 재귀 호출
+  if (isObject(propertyOrProperties)) {
+    // 객체 속성(key):값(value) 순환(반복) 처리
+    const properties = propertyOrProperties
+    /* { key: value } */
+    /* value = properties[key] */
+    for(const prop in properties) {
+      const value = properties[prop]
+      // css(요소, 속성 이름, 속성 값)
+      // console.log(element, prop, value)
+      // 재귀 호출 (나 자신을 다시 부르자! 왜? 결국은 내가 그 일을 하는 기능이니까)
+      css(element, prop, value)
     }
   }
+
+  if (propertyValue === undefined) {
+    // 스타일 속성 값 읽기 (값 반환)
+     getStyle(element, propertyOrProperties)
+  }
+  
+  if (propertyValue === null) {
+    // 스타일 속성 삭제
+    removeStyle(element, propertyOrProperties)
+  }
+
+  // 스타일 속성 설정
+  setStyle(element, propertyOrProperties, propertyValue)
+}
+ function getStyle(element, propertyName) {
+     getComputedStyle(element).getPropertyValue(propertyName)
+  }
+
+  function setStyle(element, propertyName, propertyValue) {
+    element.style.setProperty(propertyName, propertyValue)
+  }
+
+  function removeStyle(element, propertyName) {
+    element.style.removeProperty(propertyName)
+  }
+
+ // css 함수 활요
+const code = document.querySelector('.code-example code')
+// 쓰기
+  css(code, 'color', '#34a853')
+  css(code, 'background-color', '#054215')
+  css(code, 'margin-block', '12px')
+  css(code, 'padding', '24px')
+
+   // 읽기
+  const codeColor = css(code, 'color')
+  console.log(codeColor)
+  const codeBGColor = css(code, 'background-color')
+  console.log(codeBGColor)
+
+  // 삭제
+  css(code, 'color', null)
+  css(code, 'background-color', null)
+
+}
+// --------------------------------------------------------------------------
+// 타입 검사 유틸리티 함수 (추상화)
+// --------------------------------------------------------------------------
+// - isObject
+// - isElement
+// --------------------------------------------------------------------------
+
+/**
+ * 주어진 데이터가 객체인지 확인합니다.
+ * @param {any} data - 검사할 데이터
+ * @returns {boolean} 객체 여부
+ */
+function isObject(data) {
+  return typeof data === 'object' && data !== null && !Array.isArray(data)
+}
+
+/**
+ * 요소 노드인지 확인해 결과를 불리언으로 반환합니다.
+ * @param {Node} node - 문서의 노드 (요소, 텍스트, 주석, 도큐멘트 등)
+ * @returns {boolean} 요소 노드 여부
+ */
+// eslint-disable-next-line no-unused-vars
+function isElement(node) {
+  return node && node.nodeType === document.ELEMENT_NODE
+}
+
+// --------------------------------------------------------------------------
+// 함수 리팩토링(Refactoring)
+// --------------------------------------------------------------------------
+
+{
+  const prose = document.querySelector('.prose')
 
   // getStyle
   function getStyle(el, prop) {
@@ -278,8 +375,37 @@ console.groupEnd()
     el.style.removeProperty(prop)
   }
 
+  // 세상에서 가장 사랑받는 라이브러리 jQuery 흉내내기!
+  // 우리의 css() 유틸리티 함수 리팩토링
+  css(prose, {
+    'color': '#34a853',
+    'background-color': '#051215',
+    'margin-block': '12px',
+    'padding': '24px',
+  })
+
   // css
-  function css(el, prop, value) {
+  function css(el, prop /* string or object */, value) {
+    console.log({ el, prop, value })
+
+    // A and B and C
+    if (typeof prop === 'object' && prop && !Array.isArray(prop)) {
+      //조건 데이터 타입이 객체이면서, 속성이 배열이 아닌 것
+      // 재귀(recursion) 함수 활용
+      // 객체를 순환(반복)하려면? -> for...in 문
+      for (const key in prop) {
+        const value = prop[key] // 객체의 속성에 접근하는 방법: 대괄호 표기법
+        console.log(key/* 속성 */, value/* 값 */)
+        // 재귀: 나(함수)를 내가 다시 불러요! (호출)
+        // css(요소, 속성, 값)
+        css(el, key, value)
+      }
+
+      // 함수 종료
+      return
+    }
+
+
     if (value === undefined) {
       return getStyle(el, prop)
     }
