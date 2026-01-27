@@ -6,7 +6,7 @@
 // 1. 특정 부모 요소 내부에서 querySelector()를 사용해 자손 요소를 찾는 로직을 작성하세요.
 // 2. children 속성(HTMLCollection)을 Array.from()을 이용해 배열로 변환하고 순회해 보세요.
 // 3. firstElementChild와 lastElementChild를 사용해 첫 번째와 마지막 자식에 접근하세요.
-console.group('아래로 탐색 실습')
+console.groupCollapsed('아래로 탐색 실습')
 
 // 이곳에 코드를 작성하세요.
 const targetElement = document.querySelector('[data-target]')
@@ -43,7 +43,7 @@ console.groupEnd()
 // 1. parentElement 속성을 사용하여 특정 요소의 직계 부모 노드에 접근하세요.
 // 2. closest() 메서드를 사용하여 상위 요소 중 특정 클래스를 가진 가장 가까운 조상을 찾으세요.
 // 3. 찾고자 하는 상위 요소가 없을 경우(null)를 대비한 방어적 코드(if문)를 작성하세요.
-console.group('위로 탐색 실습')
+console.groupCollapsed('위로 탐색 실습')
 //parentNode | parentElment
 
 
@@ -74,7 +74,7 @@ let grandParent = anotherTarget.parentElement.parentElement.parentElement.parent
 console.log(grandParent) // 체이닝
 
 // 가장 가까운(closeest) 메서드
-grandParent = anotherTarget.closest('[data-target= "here"')
+grandParent = anotherTarget.closest('[data-target= "here"]')
 console.log(grandParent)
 
 
@@ -86,10 +86,33 @@ console.groupEnd()
 // 1. nextElementSibling과 previousElementSibling을 사용하여 형제 요소 사이를 이동하세요.
 // 2. parentElement와 children 조합을 사용하여 특정 인덱스의 형제 요소에 접근하세요.
 // 3. Array.from().at(-1)을 사용하여 마지막 형제 요소를 선택하는 로직을 작성하세요.
-console.groupCollapsed('옆으로 탐색 실습')
+
+console.group('옆으로 탐색 실습')
 
 // 이곳에 코드를 작성하세요.
+console.log(targetElement)
 
+// previousSibling (Node: Element, Text, Comment, Document, ...)
+console.log('previousSibling: ', targetElement.previousSibling)
+// nextSibling (Node)
+console.log('nextSibling: ', targetElement.nextSibling)
+
+// previousElementSibling (Element) <header>
+console.log('previousElementSibling: ', targetElement.previousElementSibling)
+// nextElementSibling (Element) <section>
+console.log('nextElementSibling: ', targetElement.nextElementSibling)
+
+
+// 부모 + 자식들 + 인덱스(순서) 조합(combination)
+const targetStrong = document.querySelector('[data-list-type="ordered-list"] li:last-child strong')
+console.log(targetStrong)
+
+const ol = targetStrong.closest('ol')
+const olChildren = ol.children 
+const thirdLi = olChildren.item(2)
+const findYou = thirdLi.firstElementChild // thirdLi.lastElementChild
+console.log(findYou)
+console.log(targetStrong.closest('ol').children.item(2).firstElementChild)
 console.groupEnd()
 
 
