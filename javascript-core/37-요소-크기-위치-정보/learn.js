@@ -8,7 +8,35 @@
 console.groupCollapsed('getBoundingClientRect() 기본 측정')
 
 // 이곳에 코드를 작성하세요.
+const boxElement = document.querySelector('.box')
 
+
+// 난수(random inteager)를 반환하는 함수 (추상화)
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min
+}
+
+
+
+//임의의 위치로 이동
+// 임의의 위치로 이동
+
+let randomX = getRandomInt(24, 111), 
+    randomY = getRandomInt(37, 129)
+console.log('randomX =', randomX)
+console.log('randomY =', randomY)
+
+boxElement.style.cssText = `
+  transform: translateX(` + randomX +`px) translateY(`+ randomY +`px);
+  background-color: #fff;
+`
+
+const boundingRectButton = document.querySelector(".get-bounding-client-rect");
+
+boundingRectButton.addEventListener('click', () => {
+  const boxRect = boxElement.getBoundingClientRect()
+  console.log(boxRect)
+})
 console.groupEnd()
 
 

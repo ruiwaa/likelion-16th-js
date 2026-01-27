@@ -1,36 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko-KR">
-
   <head>
     <meta charset="UTF-8" />
     <title>속성 마스터: 요소의 크기와 위치 측정</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="요소의 크기와 위치 측정" />
     <link rel="stylesheet" href="./assets/styles.css" />
     <script src="./learn.js" defer></script>
+    <style>
+      .box {
+        --size: 174px;
+
+        display: grid;
+        place-content: center;
+        inline-size: var(--size);
+        block-size: var(--size);
+        margin-block: 24px;
+        border: 8px solid currentColor;
+        color: #1f1010;
+        font-size: 3.2rem;
+        font-weight: 800;
+      }
+      .get-bounding-client-rect {
+        cursor: pointer;
+        background-color: #1f1010;
+        color: #fff;
+        border: 0;
+        padding: 0.5em 1em;
+        border-radius: 3px;
+      }
+    </style>
   </head>
 
   <body>
     <a href="#main-content" class="skip-link">본문 바로가기</a>
 
     <main id="main-content" class="prose">
+      <button type="button" class="get-bounding-client-rect">
+        element.getBoundingClientRect()
+      </button>
+      <div class="box">Box</div>
       <header>
         <h1>요소의 크기와 위치 측정</h1>
         <p>
-          자바스크립트의 <code>getBoundingClientRect()</code> 메서드를 활용하여 
-          요소의 <strong>뷰포트 기준 위치와 크기</strong>를 계산하는 방법을 학습합니다.
+          자바스크립트의 <code>getBoundingClientRect()</code> 메서드를 활용하여
+          요소의 <strong>뷰포트 기준 위치와 크기</strong>를 계산하는 방법을
+          학습합니다.
         </p>
       </header>
 
       <section aria-labelledby="section-method">
         <h2 id="section-method">1. getBoundingClientRect() 메서드</h2>
-        <p>이 메서드는 엘리먼트의 크기와 뷰포트(현재 보이는 화면)를 기준으로 한 상대적 위치 정보를 제공합니다.</p>
+        <p>
+          이 메서드는 엘리먼트의 크기와 뷰포트(현재 보이는 화면)를 기준으로 한
+          상대적 위치 정보를 제공합니다.
+        </p>
         <pre><code class="language-javascript">const elRect = element.getBoundingClientRect();</code></pre>
       </section>
 
       <section aria-labelledby="section-properties">
         <h2 id="section-properties">2. DOMRect 속성 상세</h2>
         <table>
-          <caption>DOMRect 객체가 반환하는 주요 속성 목록</caption>
+          <caption>
+            DOMRect 객체가 반환하는 주요 속성 목록
+          </caption>
           <thead>
             <tr>
               <th scope="col">구분</th>
@@ -62,5 +95,4 @@
       </section>
     </main>
   </body>
-
 </html>

@@ -70,8 +70,13 @@ console.log('rootParentElement\n', rootParentElement) // 부모 요소는 없음
 const anotherTarget =targetElement.querySelector('th:nth-of-type(2)')
 console.log(anotherTarget)
 
-const grandParent = anotherTarget.parentElement.parentElement.parentElement.parentElement
+let grandParent = anotherTarget.parentElement.parentElement.parentElement.parentElement
 console.log(grandParent) // 체이닝
+
+// 가장 가까운(closeest) 메서드
+grandParent = anotherTarget.closest('[data-target= "here"')
+console.log(grandParent)
+
 
 
 console.groupEnd()
