@@ -6,10 +6,36 @@
 // 1. 특정 부모 요소 내부에서 querySelector()를 사용해 자손 요소를 찾는 로직을 작성하세요.
 // 2. children 속성(HTMLCollection)을 Array.from()을 이용해 배열로 변환하고 순회해 보세요.
 // 3. firstElementChild와 lastElementChild를 사용해 첫 번째와 마지막 자식에 접근하세요.
-console.groupCollapsed('아래로 탐색 실습')
+console.group('아래로 탐색 실습')
 
 // 이곳에 코드를 작성하세요.
+const targetElement = document.querySelector('[data-target]')
+console.log(targetElement.dataset.target)
 
+// 아래 방향으로 탐색 -----------------------
+// querySelector | querySelectorAll
+const captionElement = targetElement.querySelector('caption')
+console.log(captionElement)
+const thElements = targetElement.querySelectorAll('th')
+console.log(thElements)
+
+// childNodes | children
+console.log('childNodes\n', targetElement.childNodes) //NodeList (모든 노드가 다 출력됨)
+
+// 텍스트 노드와 엘리먼트 노드가 섞인 NodeList에서
+// 엘리먼트 노드만 수집한 배열을 필요로 한다면?
+
+const onlyElements = []
+
+for (const node of targetElement.childNodes) {
+  if(node.nodeType === document.ELEMENT_NODE) {
+    onlyElements.push(node)
+  }
+}
+
+console.log(onlyElements)
+
+console.log('children\n', targetElement.children) //HTMLCOllection
 console.groupEnd()
 
 
@@ -17,9 +43,36 @@ console.groupEnd()
 // 1. parentElement 속성을 사용하여 특정 요소의 직계 부모 노드에 접근하세요.
 // 2. closest() 메서드를 사용하여 상위 요소 중 특정 클래스를 가진 가장 가까운 조상을 찾으세요.
 // 3. 찾고자 하는 상위 요소가 없을 경우(null)를 대비한 방어적 코드(if문)를 작성하세요.
-console.groupCollapsed('위로 탐색 실습')
+console.group('위로 탐색 실습')
+//parentNode | parentElment
+
 
 // 이곳에 코드를 작성하세요.
+const parentNode = targetElement.parentNode 
+console.log('parentNode\n', parentNode)
+
+const parentElement = targetElement.parentElement 
+console.log('parentElement\n', parentElement)
+
+// 또 다른 기준점
+const rootElement = document.documentElement
+console.log(rootElement.localName) //html
+console.log(rootElement.nodeName) //HTML
+
+const rootParentNode = rootElement.parentNode 
+console.log('rootParentNode\n', rootParentNode) // 부모 노드 있음
+
+const rootParentElement = rootElement.parentElement  
+console.log('rootParentElement\n', rootParentElement) // 부모 요소는 없음
+
+
+// 다른 기준점 <th>
+const anotherTarget =targetElement.querySelector('th:nth-of-type(2)')
+console.log(anotherTarget)
+
+const grandParent = anotherTarget.parentElement.parentElement.parentElement.parentElement
+console.log(grandParent) // 체이닝
+
 
 console.groupEnd()
 
