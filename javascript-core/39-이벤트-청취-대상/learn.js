@@ -9,33 +9,32 @@
 console.group("this 키워드 활용 실습");
 
 // 이곳에 코드를 작성하세요.
-const jsToggleButton = document.querySelector('.js-button-toggle')
-jsToggleButton.addEventListener('click', handleChangeBGColor)
+const jsToggleButton = document.querySelector(".js-button-toggle");
+jsToggleButton.addEventListener("click", handleChangeBGColor);
 
 // 이벤트 핸들러 함수 분리
 function handleChangeBGColor() {
-  console.log('this =', this) // HTMLButtonElement: <button>
+  console.log("this =", this); // HTMLButtonElement: <button>
   // console.log(this === jsToggleButton) // true
 
   // 시각 디자인
-  this.style.setProperty('background-color', '#c3a6ff')
+  this.style.setProperty("background-color", "#c3a6ff");
   // [접근성 고려] 프레스(press) 상태 전환
-  if (this.getAttribute('aria-pressed') === 'false') {
-    this.setAttribute('aria-pressed', 'true')
+  if (this.getAttribute("aria-pressed") === "false") {
+    this.setAttribute("aria-pressed", "true");
   } else {
-    this.setAttribute('aria-pressed', 'false')
+    this.setAttribute("aria-pressed", "false");
   }
 }
 
-jsToggleButton.addEventListener('mouseenter', (e) => {
+jsToggleButton.addEventListener("mouseenter", (e) => {
   // 이벤트 객체(Event Object)
   // addEventListener()에 전달된 콜백 함수에 전달됩니다.
   // (e) => {}
   // console.log(e) // PointerEvent {} 또는 MouseEvent{}
-  
 
   //화살표 콜백 함수를 사용한다면? e.currenTarget을 사용하라
-  console.log(e.currentTarget)
+  console.log(e.currentTarget);
 
   // this 키워드
   // 화살표 함수 표현식 내부
@@ -45,13 +44,12 @@ jsToggleButton.addEventListener('mouseenter', (e) => {
   // 이벤트 콜백함수를 화살표 함수식으로 사용한 후 this키워드를 쓸 경우에는,
   //이벤트가 연결된 대상이 아닌 윈도우 객체이다!!
   //결론: 이벤트를 생성할 때, this키워드를 사용할 경우 화살표 함수식과 만나게 하지 마라!❌
-})
-
+});
 
 // 요약!!
 // 조건: addEventListener() 메서드의 리스너 함수를 화살표 함수 표현식으로 작성한 경우
-// 상황: ⚠️ this는 이벤트가 발생한 대상이 아니게 됩니다. 
-//      ✅ 이벤트 객체의 currentTarget 속성은 항상 이벤트가 발생한 대상을 가리킵니다.  
+// 상황: ⚠️ this는 이벤트가 발생한 대상이 아니게 됩니다.
+//      ✅ 이벤트 객체의 currentTarget 속성은 항상 이벤트가 발생한 대상을 가리킵니다.
 
 console.groupEnd();
 
@@ -66,7 +64,7 @@ console.groupCollapsed("e.currentTarget 활용 실습");
 console.groupEnd();
 
 // [실습] 화살표 함수에서의 요소 참조 (방어적 프로그래밍)
-// 1. 화살표 함수 내부에서 this를 사용했을 때 어떤 결과가 나오는지 테스트하세요.
+// 1. 화살표 함수 내부에서 this를 사용했을 때 어떤 결과가 나오는지 테스z트하세요.
 // 2. 화살표 함수를 사용하면서도 요소를 안전하게 참조하기 위해 e.currentTarget을 활용하세요.
 console.groupCollapsed("화살표 함수와 요소 참조");
 
