@@ -5,9 +5,38 @@
 // [실습] 기본적인 이벤트 위임 구현
 // 1. 상위 요소인 .link-list에 하나의 클릭 이벤트 리스너만 등록하세요.
 // 2. e.target 속성을 사용하여 실제 클릭된 요소가 무엇인지 콘솔에 찍어보세요.
-console.groupCollapsed('이벤트 위임 기본 동작 확인')
+console.group('이벤트 위임 기본 동작 확인')
 
 // 이곳에 코드를 작성하세요.
+
+const list = document.querySelector('.link-list')
+
+
+
+// 5번 순환함(이벤트 위임 적용 안함)
+// for (const link of links) {
+//   link.addEventListener('click', (event) => {
+//     event.preventDefault()
+//     const clickedLink = event.currentTarget
+//     console.log(clickedLink)
+//   })
+// }
+
+//이벤트 위임을 사용할 때
+list.addEventListener('click', (e) =>{
+  //브라우저 기본 작동 방지
+  e.preventDefault()
+  // 현재 이벤트 리스너가 추가된 대상
+  //e.currentTarget
+  const listElement = e.currentTarget
+  console.log(listElement)
+
+  // 이벤트 타켓: 이벤트 전파 중인 대상에서의 타켓을 가리키는 것
+  //e.target
+  const eventTarget = e.target
+  console.log(eventTarget,list === eventTarget) //ul(eventTarget)= true, li(list)= false
+
+})
 
 console.groupEnd()
 
