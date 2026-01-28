@@ -20,6 +20,28 @@
     <!-- 나쁜 코드 예시 -->
     <!-- <a href="https://google.com" onclick="return false;">구글 바로가기</a> -->
 
+    <form
+  method="POST"
+  action="https://www.w3schools.com/action_page.php"
+  class="form js-register-form"
+>
+  <fieldset>
+    <legend class="screen-reader-only">사용자 등록 정보</legend>
+
+    <div class="form-group">
+      <label for="username">이름</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="실명을 입력하세요."
+        aria-required="true"
+        required />
+    </div>
+
+    <button type="submit">제출</button>
+  </fieldset>
+</form>
     <main id="main-content" class="prose">
       <header>
         <h1>브라우저 기본 작동 방지</h1>

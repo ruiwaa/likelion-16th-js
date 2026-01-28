@@ -33,7 +33,12 @@ console.groupEnd();
 console.groupCollapsed("폼 제출 기본 동작 방지 실습");
 
 // 이곳에 코드를 작성하세요.
+const registerForm = document.querySelector('.js-register-form')
 
+registerForm.addEventListener('submit', (e) =>{
+  e.preventDefault()
+  console.log('폼에 전송하지 않습니다.(브라우저 기본 작동 방지')
+})
 console.groupEnd();
 
 // [실습] 체크박스 상태 변경 방지 (응용)
