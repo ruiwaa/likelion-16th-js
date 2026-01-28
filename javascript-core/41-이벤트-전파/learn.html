@@ -7,10 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/styles.css" />
     <script src="./learn.js" defer></script>
+    <style>
+      .box{
+        border: 6px solid currentColor;
+        padding:32px;
+      }
+      .layout-flex{
+        display: flex;
+        gap: 24px;
+
+        .box{
+          display: grid;
+          place-content: center;
+          flex: 1;
+          font-size: 20px;
+          font-weight: 800;
+
+          &:hover{
+            background-color:  rgba(30, 30, 70, 0.25);
+          }
+        }
+      }
+    </style>
   </head>
 
   <body>
     <a href="#main-content" class="sr-only">본문 바로가기</a>
+ <div class="box" data-name="wrapper">
+  <div class="box layout-flex" data-name="layout">
+    <div class="box " data-name="x">Box X</div>
+    <div class="box "  data-name="y">Box Z</div>
+  </div>
+</div>
+<label class="checkbox-input" style="display: flex; align-items: center; margin: 12px; user-select: none;">
+  <input type="checkbox" />
+  <span>버블링(Bubbling) 단계</span>
+</label>
 
     <main id="main-content" class="prose">
       <header>

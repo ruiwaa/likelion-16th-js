@@ -7,8 +7,41 @@
 // 2. e.eventPhase 속성을 사용해 현재 단계(1:캡처, 2:타겟, 3:버블)를 출력하세요.
 // 3. { capture: true } 옵션을 사용했을 때 콘솔에 찍히는 순서 변화를 확인하세요.
 console.groupCollapsed('이벤트 단계 및 전파 순서 확인')
+// 캡쳐링: 윈도우에서 이벤트 타켓까지 전달
 
 // 이곳에 코드를 작성하세요.
+// 이벤트 단계를 나타내는 상태 변수 설정
+let useCapture = false
+
+const boxList = document.querySelectorAll('.box')
+
+boxList.forEach((box) => {
+  box.addEventListener(
+    'click',
+    (e) => {
+      const currentBox = e.currentTarget
+      const boxLabel = currentBox.dataset.name
+      console.log('"' + boxLabel + '" Box')
+    },
+    // true, // useCapture "캡쳐링 단계를 사용할 것인가? 네!"
+    { capture: useCapture },
+  )
+})
+
+const checkboxLabel = document.querySelector('.checkbox-input')
+const checkboxInput = checkboxLabel.querySelector('input')
+const checkboxSpan = checkboxLabel.querySelector('span')
+
+checkboxInput.addEventListener('change', (e) => {
+  const input = e.currentTarget
+  if (input.checked) {
+    checkboxSpan.textContent = '캡쳐링(Capturing) 단계'
+    useCapture = true
+  } else {
+    checkboxSpan.textContent = '버블링(Bubbling) 단계'
+    useCapture = false
+  }
+})
 
 console.groupEnd()
 
