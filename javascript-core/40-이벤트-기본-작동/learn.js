@@ -13,8 +13,15 @@ console.group("링크 기본 동작 방지 실습");
 // 넷플릭스에 로그인을 안한 상태라면 넷플릭스 들어가기전에 로그인 페이지가 나오는 것
 const googleLink = document.querySelector('[href*="google"]');
 googleLink.addEventListener("click", (e) => {
-  e.preventDefault();
-  console.log("브라우저 기본 작동 방지");
+  //e.preventDefault();
+});
+
+googleLink.addEventListener("click", (e) => {
+  if (e.defaultPrevented) {
+    console.log("브라우저 기본 작동 방지");
+  } else {
+    console.log("브라우저 기본 작동 실행");
+  }
 });
 
 console.groupEnd();
@@ -36,6 +43,28 @@ console.groupEnd();
 console.groupCollapsed("체크박스 상태 변경 제어 실습");
 
 // 이곳에 코드를 작성하세요.
+const checkbox = document.querySelector(
+  '.prevent-default-demo-checkbox [type="checkbox"]',
+);
+
+checkbox.addEventListener("change", (e) => {
+  // 사용자가 행한 이벤트 타입은?
+  console.log(e.type); // 'change'
+
+  // 브라우저 기본 작동 방지 여부 (불리언 값)
+  console.log("브라우저 기본 작동 방지 상태:", e.defaultPrevented);
+
+  const checkboxInput = e.currentTarget;
+  // 사용자가 체크박스의 체크 상태를 변경(change)한 후 값 읽기 = change
+  console.log(checkboxInput.checked);
+});
+
+checkbox.addEventListener("click", (e) => {
+  // 사용자가 행한 이벤트 타입은?
+  console.log(e.type); // 'click'
+  // 브라우저 기본 작동 방지한다면?
+  e.preventDefault();
+});
 
 console.groupEnd();
 
