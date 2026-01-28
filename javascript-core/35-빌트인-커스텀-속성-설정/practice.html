@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="빌트인 커스텀 속성 실습 문제" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>속성 설정, 읽기, 제거 실습</title>
+    <style>
+      .sr-only {
+        overflow: hidden;
+        position: absolute;
+        clip: rect(1px, 1px, 1px, 1px);
+        clip-path: circle(0);
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        white-space: nowrap;
+}
+      .product {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+      }
+
+      .button {
+        margin-right: 0.5rem;
+      }
+      .like-button {
+	      cursor: pointer;
+	      border: 1px solid #ff4757;
+	      padding: 10px 15px;
+	      background: #fff;
+	      color: #ff4757;
+	      font-size: 1rem;
+	      border-radius: 5px;
+	      
+	      &.active ,[data-is-liked="true"] {
+		      background: #ff4757;
+		      color: #fff;
+		    }
+	    }
+
+      
+    </style>
+  </head>
+
+  <body>
+    <h1 class="sr-only">실습 문제 풀이</h1>
+    <main>
+      <div class="product" data-name="Red Sneakers" data-stock="3">
+        🛍️ 제품: <span class="name">레드 스니커스</span><br />
+        📦 재고: <span class="stock">3</span>
+      </div>
+      <button type="button" class="button" id="read">속성 읽기</button>
+      <button type="button" class="button" id="update">재고 수정</button>
+      <button type="button" class="button" id="remove">속성 제거</button>
+
+        <button type="button" class="like-button" data-is-liked="false">
+            <span class="icon">♡</span> <span class="text">좋아요</span>
+           </button>
+    </main>
+
+    <script>
+      {
+        // 문서에서 제어할 요소(객체)를 찾아 변수에 할당
+        const readButton = document.getElementById('read')
+        const updateButton = document.getElementById('update')
+        const removeButton = document.getElementById('remove')
+        const product = document.querySelector('.product')
+        const productStock = product.querySelector('.stock')
+
+
+        // 1. "속성 읽기" 버튼 클릭 시, 제품의 커스텀 속성을 읽어 콘솔 패널에 출력합니다. (`getAttribute` 활용)
+        readButton.addEventListener('click', () => {
+          console.log('속성 읽기 : getAttribute 활용')
+          console.log(product.getAttribute('data-name'))  // 'Red Sneakers'
+          console.log(product.getAttribute('data-stock')) // '3'
+        })
+
+        // 2. "속성 읽기" 버튼 클릭 시, 제품의 커스텀 속성을 읽어 콘솔 패널에 출력합니다. (`dataset` 활용)
+        readButton.addEventListener('click', () => {
+          console.log('속성 읽기 : dataset 활용')
+          console.log(product.dataset.name)  // 'Red Sneakers'
+          console.log(product.dataset.stock) // '3'
+        })
+        
+        // 3. "재고 수정" 버튼 클릭 시, 현재 재고 값에 2를 더한 값으로 설정하고 "📦 재고: 5"로 화면에 반영합니다.
+        updateButton.addEventListener('click', () => {
+          console.log('재고 수정')
+          const currentStock = Number(product.dataset.stock)
+          // console.log(currentStock, typeof currentStock)
+          const nextStock = currentStock + 2
+          // console.log(nextStock)
+          // productStock.textContent = String(nextStock)
+          // productStock.textContent = nextStock.toString()
+          // productStock.textContent = nextStock + ''
+          productStock.textContent = nextStock
+
+          // 상품의 재고 데이터(data-stock) 정보 업데이트
+          // 이유: 다음 연산(계산)을 위해
+          product.dataset.stock = nextStock
+        })
+        
+        // 4. "속성 제거" 버튼 클릭 시, 제품 `data-stock` 속성을 제거하고, "📦 재고: 없음"으로 화면에 반영합니다.
+        removeButton.addEventListener('click', () => {
+          console.log('속성 제거')
+          // 1. 제품 `data-stock` 속성을 제거
+          delete product.dataset.stock
+          // 2. "📦 재고: 없음"으로 화면 업데이트
+          productStock.textContent = '없음'
+        })
+
+      }
+
+      {//1. `.like-button`을 클릭하면 현재의 `data-is-liked` 속성값을 확인합니다. (`dataset` 사용)
+        const likeButton = document.querySelector('.like-button')
+        
+        //2. `'false'`라면 `'true'`로, `'true'`라면 `'false'`로 상태를 토글시킵니다.
+        likeButton.addEventListener(('click'),() =>{
+          let currentValue = likeButton.dataset.isLiked
+          const icon = document.querySelector('.icon')
+          const like = document.querySelector('.text')
+          likeButton.classList.toggle('active')
+          if(currentValue === 'false'){
+            //3. 상태가 `'true'`일 때 → 아이콘을 "♥"로, 텍스트를 "`좋아요 취소`"로 변경합니다.
+            likeButton.dataset.isLiked = 'true' // 변수를 넣면 안되는 이유: 변수의 논리값에 다시 재할당하는 것이기때문에 속성 이름을 찾을 수 없어서 안됨.
+            icon.textContent ='♥'
+            like.textContent ='좋아요 취소'
+
+            
+          }else {
+            //4. 상태가 `'false'`일 때 → 아이콘을 "♡"로, 텍스트를 "`좋아요`"로 변경합니다.
+           likeButton.dataset.isLiked = 'false'
+           icon.textContent ='♡'
+           like.textContent = '좋아요'
+          }
+
+          
+        })
+
+  
+      }
+    </script>
+
+  </body>
+
+</html>
