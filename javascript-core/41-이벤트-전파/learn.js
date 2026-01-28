@@ -15,18 +15,48 @@ let useCapture = false
 
 const boxList = document.querySelectorAll('.box')
 
-boxList.forEach((box) => {
-  box.addEventListener(
-    'click',
-    (e) => {
-      const currentBox = e.currentTarget
-      const boxLabel = currentBox.dataset.name
-      console.log('"' + boxLabel + '" Box')
-    },
-    // true, // useCapture "캡쳐링 단계를 사용할 것인가? 네!"
-    { capture: useCapture },
-  )
-})
+attachEvents()
+
+function handlePrintEventPhase(e) {
+
+  console.log(e.eventPhase, {
+    NONE: Event.NONE,
+    CAPTURING: Event.CAPTURING_PHASE,
+    TARGET: Event.AT_TARGET,
+    BUBBLING: Event.BUBBLING_PHASE,
+  })
+
+  // if (useCapture) {
+  //   console.log('캡쳐링 단계')
+  // } else {
+  //   console.log('버블링 단계')
+  // }
+  const currentBox = e.currentTarget
+  const boxLabel = currentBox.dataset.name
+  console.log('"' + boxLabel + '" Box')
+}
+
+function attachEvents() {
+  console.log('이벤트 추가')
+  boxList.forEach((box) => {
+    box.addEventListener(
+      'click',
+      handlePrintEventPhase,
+      // true, // useCapture "캡쳐링 단계를 사용할 것인가? 네!"
+      { capture: useCapture },
+    )
+  })
+}
+
+function detachEvents() {
+  console.log('이벤트 제거')
+  boxList.forEach((box) => {
+    box.removeEventListener(
+      'click',
+      handlePrintEventPhase,
+    )
+  })
+}
 
 const checkboxLabel = document.querySelector('.checkbox-input')
 const checkboxInput = checkboxLabel.querySelector('input')
@@ -41,9 +71,13 @@ checkboxInput.addEventListener('change', (e) => {
     checkboxSpan.textContent = '버블링(Bubbling) 단계'
     useCapture = false
   }
+
+  detachEvents()
+  attachEvents()
 })
 
 console.groupEnd()
+
 
 
 // [실습] stopPropagation()을 사용한 전파 방지
