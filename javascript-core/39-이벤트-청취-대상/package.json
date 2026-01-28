@@ -1,6 +1,7 @@
 {
   "scripts": {
     "dev": "live-server --host=localhost --port=3000 --entry-file=learn.html --no-browser",
+    "practice": "live-server --host=localhost --port=3000 --entry-file=practice.html --no-browser",
     "lint": "eslint .",
     "hint": "htmlhint **/*.html"
   },
