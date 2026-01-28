@@ -98,6 +98,53 @@ console.groupCollapsed('stopImmediatePropagation() 실습')
 
 // 이곳에 코드를 작성하세요.
 
+
+boxList.forEach((box) => {
+  box.addEventListener(
+    'click',
+    (e) => {
+      const currentBox = e.currentTarget
+      const boxName = currentBox.dataset.name
+      console.log('첫 번째 이벤트 연결: ', boxName)
+      
+      // 조건에 따라 이벤트 전파 중지(stop propagation)
+      if (boxName === 'z') {
+        // e.stopPropagation()
+      }
+      if (boxName === 'x') {
+        // e.stopPropagation()
+      }
+      if (boxName === 'layout') {
+        // e.stopPropagation()
+      }
+      if (boxName === 'wrapper') {
+        // e.stopPropagation()
+      }
+    },
+    // 현재 이벤트는 전파 중인 상태
+    // 이벤트 전파 '버블링' 단계 (기본값)
+    { capture: false },
+  )
+})
+
+
+const wrapperBox = boxList.item(0)
+const layoutBox = boxList.item(1)
+const xBox = boxList.item(2)
+const zBox = boxList.item(3)
+
+wrapperBox.addEventListener('click', (e) => {
+  console.log('두 번째 이벤트 연결: ', e.currentTarget.dataset.name)
+})
+layoutBox.addEventListener('click', (e) => {
+  console.log('두 번째 이벤트 연결: ', e.currentTarget.dataset.name)
+})
+xBox.addEventListener('click', (e) => {
+  console.log('두 번째 이벤트 연결: ', e.currentTarget.dataset.name)
+})
+zBox.addEventListener('click', (e) => {
+  console.log('두 번째 이벤트 연결: ', e.currentTarget.dataset.name)
+})
 console.groupEnd()
 
 
