@@ -26,15 +26,16 @@ const list = document.querySelector('.link-list')
 list.addEventListener('click', (e) =>{
   //브라우저 기본 작동 방지
   e.preventDefault()
-  // 현재 이벤트 리스너가 추가된 대상
-  //e.currentTarget
+  // 현재 이벤트 리스너가 추가된 대상 -> e.currentTarget
   const listElement = e.currentTarget
-  console.log(listElement)
-
+  console.log('현재 이벤트 리스너가 추가된 대상', 'e.currentTarget =', listElement) // <ul>
+  
+  
+  // 이벤트 발생한 대상(요소)
   // 이벤트 타켓: 이벤트 전파 중인 대상에서의 타켓을 가리키는 것
-  //e.target
   const eventTarget = e.target
-  console.log(eventTarget,list === eventTarget) //ul(eventTarget)= true, li(list)= false
+  console.log('이벤트 발생한 대상(요소)', 'e.target =', eventTarget) // <ul> or <li> or <a>
+
 
 })
 
