@@ -32,6 +32,7 @@ onceButton.addEventListener('click', handleOnceClick)
   
   function handleOnceClick(){
     console.log('작동 중 ....')
+    // 리스너 내부에 자기 자신을 호출 또는 {once: true} 옵션 사용
     onceButton.removeEventListener('click', handleOnceClick)
 
   }
