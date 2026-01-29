@@ -6,9 +6,21 @@
 // 1. window 객체에 'wheel' 또는 'touchmove' 이벤트를 등록하세요.
 // 2. { passive: true } 옵션을 설정하여 브라우저의 렌더링 대기 시간을 줄이세요.
 // 3. 리스너 내부에서 e.preventDefault()를 호출했을 때 발생하는 경고를 콘솔에서 확인하세요.
-console.groupCollapsed('passive 옵션 및 스크롤 최적화')
+console.group('passive 옵션 및 스크롤 최적화')
 
 // 이곳에 코드를 작성하세요.
+globalThis.addEventListener(
+  'scroll',
+  function listener(e) {
+    const globalObject = e.currentTarget
+    const scrollY = globalObject.scrollY
+    console.log({ y: scrollY })
+    
+    if (scrollY > 500) {
+      globalThis.removeEventListener('scroll', listener)
+    }
+  }
+)
 
 console.groupEnd()
 
@@ -19,7 +31,50 @@ console.groupEnd()
 console.groupCollapsed('signal 옵션을 이용한 우아한 이벤트 제거')
 
 // 이곳에 코드를 작성하세요.
+const logButton = document.querySelector('[data-log]')
 
+// 왜? 이걸 배워야 하나?
+// 리스너 함수를 분리해 이름을 부여하지 않고도
+// 함수 외부에서 추가된 이벤트 리스너를 제거할 수 있다.
+
+// 어떻게?
+
+// 최신 브라우저에서 지원 중인 실험적 기능
+// AbortController는 abort '(일을) 도중하차하다[중단시키다]'는 의미
+// 일을 중단시킬 수 있는 조절 기능을 제공하는 객체
+// 그런데 이 객체는 생성해야지만 사용 가능
+
+// AbortController 객체를 생성하는 방법
+const controller = new AbortController()
+
+console.log(controller) // AbortController { signal }
+
+// AbortController 객체의 signal 속성은 AbortSignal { aborted: boolean }
+
+// addEventListener() 메서드의 세 번째 인자(옵션) 객체의 signal 키 값에 AbortSignal 객체 연결
+// addEventListener(type, listener, options { signal: AbortSignal })
+
+// 익명(이름이 없는) 함수를 리스너로 사용해서
+// 리스너 제거가 가능하지 않은 상황
+logButton.addEventListener(
+  'click',
+  () => {
+    console.log('이벤트가 연결되어 있어요.')
+    console.log(`
+    현재는 문제는 이름 없는 함수가 
+    직접 리스너로 등록되서 제거할 방법이 없어요.
+  `)
+  },
+  {
+    signal: controller.signal // AbortSignal { aborted, reason, onabourt }
+  },
+)
+
+
+setTimeout(() => {
+    console.log('이벤트 리스닝을 중단하라! ❌')
+    controller.abort()
+}, 4000)
 console.groupEnd()
 
 // [실습] 익명 함수와 signal의 시너지 테스트
@@ -64,37 +119,54 @@ console.groupEnd()
   const checkPassive = document.getElementById('check-passive')
   const log = document.getElementById('log')
 
+  // 현재 어볼트 컨트롤러 = 비어있음
   let currentController = null
 
-  // 초기 실행
+  // 초기 실행 (처음 로드될 때 attachListener 함수 실행)
   attachListener()
   // 체크박스 변경 시, 리스너 재등록
   checkPassive.addEventListener('change', attachListener)
 
   function attachListener() {
     // 기존 리스너 제거 (AbortController 활용)
-    if (currentController) {
+    if (currentController !== null) {
+      // 기존에 추가된 이벤트 리스너 작업 중단
       currentController.abort()
     }
 
-    // 컨트롤러 생성
-    currentController = new AbortController()
+    // 생성된 어볼트 컨트롤러를 currentController 변수에 할당
+    currentController = new AbortController() // AbortController {}
+    
     // 체크 상태 확인 (패시브 설정)
     const isPassive = checkPassive.checked
 
-    log.textContent = '현재 옵션: { passive: ' + isPassive + '}'
-    log.style.color = isPassive ? '#00f' : '#f00'
+    log.textContent = '현재 옵션: { passive: ' + isPassive + ' }'
+    
+    // 삼항 연산자 식
+    // log.style.color = isPassive ? '#00f' : '#f00'
+    if (isPassive) {
+      log.style.setProperty('color', '#00f')
+    } else {
+      log.style.setProperty('color', '#f00')
+    }
 
+    // 타겟 박스에 이벤트 리스너 추가
+    // abortController에 의해 추가된 리스너 작동 중단될 수 있음
+    // currentController.abort() (removeEventListener 대체)
     targetBox.addEventListener(
       'wheel',
-      (e) => {
+      (eventObject) => {
+        // 비동기 프로그래밍
+        // try...catch 문
         try {
-          // 스크롤을 막으려는 시도
-          e.preventDefault()
+          // 브라우저에게 기본 작동 방지 명령
+          // 브라우저는 스크롤을 막으려는 시도 (일시적 대기 상태 => 모바일 환경 성능 저하)
+          eventObject.preventDefault()
+
           log.textContent = '스크롤 차단 성공! (preventDefault 작동)'
-        } catch (err) {
+        } catch (errorObject) {
           // passive: true일 때 오류 발생 (콘솔 패널 확인)
-          console.error(err)
+          console.error(errorObject)
         }
 
         if (isPassive) {
@@ -104,11 +176,18 @@ console.groupEnd()
       // [TODO] 여기에 옵션 객체를 작성하세요.
       // 1. passive 값을 isPassive 변수로 설정
       // 2. signal 값을 currentController.signal로 설정
-      /* 여기에 코드 작성 */
+      {
+        passive: isPassive, /* checked */
+        signal: currentController.signal, /* AbortSignal */
+      }
     )
   }
 }
 
+/**
+ * passive는 브라우저 렌더링을 우선시 하기 때문에 성능 최적화할 때 쓰이는데, 
+ * preventDefault()를 넣어버리면 성능 최적화라는 취지와는 대치되기 때문에 저런 에러가 뜬다고 보시면 되어요
+ */
 
 
 // --------------------------------------------------------------------------

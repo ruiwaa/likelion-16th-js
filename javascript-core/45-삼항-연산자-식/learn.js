@@ -1,6 +1,21 @@
 // --------------------------------------------------------------------------
-// 실습: 삼항 연산자 (Ternary Operator)
+// 실습: 삼항 연산자 (Ternary Operator) 표현식
 // --------------------------------------------------------------------------
+// 식은 반환값 있음, 문은 반환값없음
+
+// 조건 식
+// 삼항 연산자
+// log.style.color = isPassive ? '#00f' : '#f00'
+
+// 아래 구문은 허용되지 않습니다. 이유는... 문 (값이 없어요...)
+// log.style.color = if (isPassive) { '#00f' } else { '#f00' }
+
+// 조건 문 
+// if (isPassive) {
+//   log.style.color = '#00f'
+// } else {
+//   log.style.color = '#f00'
+// }
 
 // [실습] 기본 삼항 연산자 활용
 // 1. 특정 점수(score) 변수를 선언하세요.
@@ -8,8 +23,11 @@
 // 3. 결과를 변수에 담아 콘솔에 출력하세요.
 console.groupCollapsed('기본 삼항 연산자 식')
 
-// 이곳에 코드를 작성하세요.
 
+const score = 87
+const result = score >= 60 ? '합격' : '불합격'
+console.log(result)
+// 이곳에 코드를 작성하세요.
 console.groupEnd()
 
 
@@ -20,6 +38,20 @@ console.groupEnd()
 console.groupCollapsed('조건부 값 할당 실습')
 
 // 이곳에 코드를 작성하세요.
+let isLoggedIn = true
+let infoMessage = isLoggedIn ? '환영합니다!' : '로그인이 필요합니다.'
+console.log(infoMessage)
+
+isLoggedIn = !isLoggedIn // 값 반전
+
+if (isLoggedIn) {
+  infoMessage = '환영합니다.'
+}
+else {
+  infoMessage = '로그인이 필요합니다.'
+}
+
+console.log(infoMessage)
 
 console.groupEnd()
 
@@ -31,7 +63,40 @@ console.groupEnd()
 console.groupCollapsed('중첩 삼항 연산자 식 (2단계)')
 
 // 이곳에 코드를 작성하세요.
+const point = {
+    x: false,
+    z: false,
+}
 
+const resultMessage = point.z 
+    ? 'z는 참!' 
+    : point.x 
+      ? 'x는 참!' 
+      : 'x, z 모두 거짓!'
+
+console.log(resultMessage)
+
+const 아이 = {
+  성별: '여자',
+  생월:12,
+  장난감: null
+}
+
+// 삼항 조건 연산자를 사용한 식으로 변경
+아이.장난감 = 아이.성별 === '남자' ? ( 아이.생월 === 12 ? '포켓몬 GO' : '메카 로봇' ) : ( 아이.생월 === 12 ? '레고 디즈니 프린세스' : '공주 핸드백' )
+
+아이.장난감 = 아이.성별 === '남자'
+  ? (
+      아이.생월 === 12 
+        ? '포켓몬 GO' 
+        : '메카 로봇'
+    )
+  : (
+      아이.생월 === 12 
+        ? '레고 디즈니 프린세스' 
+        : '공주 핸드백'
+    )
+console.log(아이.장난감)
 console.groupEnd()
 
 
