@@ -10,6 +10,32 @@
 console.groupCollapsed('중첩 줄이기: Early Return 적용')
 
 // 이곳에 코드를 작성하세요.
+const mainContainer = document.getElementById('main-content')
+
+// 이벤트 위임 (버블링)
+mainContainer.addEventListener('click', (e) => {
+  const target = e.target.closest('[aria-labelledby="benefit"]')
+  console.log(target)
+
+  // 문서에서 대상(요소)이 없는데?
+  // 무슨 일을 더해? 여기서 함수 실행을 중단하자. (효과적, 능률 향상)
+  if (!target) return // 빠른 반환(Early Return)
+
+  if (target) {
+    console.log('요소가 있으니 할 일을 하자. 1')
+    console.log('요소가 있으니 할 일을 하자. 2')
+    console.log('요소가 있으니 할 일을 하자. 3')
+    console.log('요소가 있으니 할 일을 하자. 4')
+    console.log('요소가 있으니 할 일을 하자. 5')
+    console.log('요소가 있으니 할 일을 하자. 6')
+  }
+
+  console.log('요소가 없어도 다른 일 할 수 있지. 1')
+  console.log('요소가 없어도 다른 일 할 수 있지. 2')
+  console.log('요소가 없어도 다른 일 할 수 있지. 3')
+  console.log('요소가 없어도 다른 일 할 수 있지. 4')
+})
+
 
 console.groupEnd()
 
