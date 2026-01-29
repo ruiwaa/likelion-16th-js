@@ -70,3 +70,17 @@ console.groupEnd()
 // 3. 유지보수: 특정 조건에 대한 로직이 독립적으로 존재하므로 수정과 확장이 용이합니다.
 // 4. 팁: return 이후의 코드는 절대 실행되지 않는다는 점을 활용해 '안전 장치'로 쓰세요!
 // --------------------------------------------------------------------------
+
+
+// 실습 1
+let membership = null
+membership = getDiscountRate('VIP')
+
+function getDiscountRate(grade) {
+  // 여기에 빠른 반환 패턴을 사용하여 코드를 작성하세요
+  if(grade === 'VIP' ) return membership = 20
+  if(grade === 'GOLD' ) return membership = 10
+  if(grade === 'BRONZE' )return  membership = 0
+}
+
+console.log(membership)    // 20
