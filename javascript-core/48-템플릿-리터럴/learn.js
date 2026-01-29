@@ -10,6 +10,45 @@ console.groupCollapsed('템플릿 리터럴 기본 실습')
 
 // 이곳에 코드를 작성하세요
 
+function generateHTMLCode(
+  data /* { id: '', label: '', type: '', placholder: '' } */,
+) {
+  // 템플릿(Template) 리터럴(Literal, 값)
+  // JavaScript를 사용해 HTML 코드 구조화 (Markup)
+  const htmlTemplate = `
+    <div class="form-input">
+      <label for="${data.id}">${data.label}</label>
+      <input type="${data.type}" id="${data.id}" placeholder="${data.placholder}" />
+    </div>
+  `
+
+  return htmlTemplate
+}
+
+const emailInputTemaplte = generateHTMLCode({
+  id: 'isockd@dk-03',
+  label: 'user-email',
+  type: 'email',
+  placholder: 'user@company.io',
+})
+
+const passwordInputTemaplte = generateHTMLCode({
+  id: 'ocidsk!kd-82',
+  label: 'user-password',
+  type: 'password',
+  placholder: '숫자, 영어, 특수 문자 조합 8자리 이상 입력',
+})
+
+const passwordConfirmInputTemaplte = generateHTMLCode({
+  id: 'ocidsk!kd-81',
+  label: 'user-password-confirm',
+  type: 'password',
+  placholder: '입력한 패스워드와 일치하는 값 입력',
+})
+
+console.log(emailInputTemaplte)
+console.log(passwordInputTemaplte)
+console.log(passwordConfirmInputTemaplte)
 console.groupEnd()
 
 
