@@ -19,7 +19,6 @@ function getRandomInt(min, max) {
 
 
 //임의의 위치로 이동
-// 임의의 위치로 이동
 
 let randomX = getRandomInt(24, 111), 
     randomY = getRandomInt(37, 129)
