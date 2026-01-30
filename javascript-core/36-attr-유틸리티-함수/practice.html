@@ -1,31 +1,256 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko-KR">
-	<head>
-	  <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="속성 유틸리티 함수 만들기 실습 문제" />
-	  <title>접근성 토글 버튼</title>
-	  <style>
-		  /* 눌린 상태일 때 스타일 변화 */
-	    button[aria-pressed="true"] {
-	      background-color: #0056b3;
-	      color: #fff;
-	      font-weight: bold;
-	    }
-	  </style>
-	</head>
-	<body>
-	
-	  <main>
-	    <h1>게시물 피드</h1>
-	    <section>
-	      <p>오늘의 추천 게시물입니다.</p>
-	      <!-- 초기 상태: 눌리지 않음 (false) -->
-	      <button type="button" class="like-button" aria-pressed="false">
-	        좋아요
-	      </button>
-	    </section>
-	  </main>
-	
-	</body>
+    <title>접근성 토글 버튼</title>
+    <style>
+      .tab-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        gap: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .tab-button {
+        padding: 10px 20px;
+        cursor: pointer;
+        border: none;
+        background: none;
+
+        &[aria-selected="true"] {
+          border-bottom: 2px solid blue;
+          font-weight: bold;
+        }
+      }
+
+      .tab-panel {
+        display: none;
+        padding: 20px 0;
+
+        &:not([hidden]) {
+          display: block;
+        }
+      }
+      /* 눌린 상태일 때 스타일 변화 */
+      button[aria-pressed="true"] {
+        background-color: #0056b3;
+        color: #fff;
+        font-weight: bold;
+      }
+
+      .error-message {
+        color: #f00;
+        display: none;
+        font-size: 0.9em;
+      }
+
+      /* 오류 상태일 때 테두리 색상 변경 및 메시지 표시 */
+      input[aria-invalid="true"] {
+        border: 2px solid red;
+        & + .error-message {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>공지사항</h1>
+
+      <div role="tablist" class="tab-list">
+        <button
+          type="button"
+          id="tab-news"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-news"
+        >
+          최신 소식
+        </button>
+        <button
+          type="button"
+          id="tab-event"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-event"
+          tabindex="-1"
+        >
+          이벤트
+        </button>
+      </div>
+
+      <div role="tabpanel" id="panel-news" aria-labelledby="tab-news">
+        <p>최신 소식 콘텐츠입니다...</p>
+      </div>
+      <div role="tabpanel" id="panel-event" aria-labelledby="tab-event" hidden>
+        <p>이벤트 콘텐츠입니다...</p>
+      </div>
+    </main>
+    <main>
+      <h1>게시물 피드</h1>
+      <section>
+        <p>오늘의 추천 게시물입니다.</p>
+        <!-- 초기 상태: 눌리지 않음 (false) -->
+        <button type="button" class="like-button" aria-pressed="false">
+          좋아요
+        </button>
+      </section>
+    </main>
+    <main>
+      <form>
+        <fieldset>
+          <legend>회원 가입</legend>
+
+          <div class="field-group">
+            <label for="username">아이디 (5글자 이상)</label>
+            <!-- aria-describedby로 오류 메시지 ID를 미리 연결 -->
+            <input
+              type="text"
+              id="username"
+              aria-describedby="username-error"
+              aria-invalid="false"
+            />
+            <!-- role="alert"는 스크린 리더가 내용을 즉시 읽어주도록 함 -->
+            <span
+              role="alert"
+              id="username-error"
+              class="error-message"
+              aria-live="assertive"
+            >
+              아이디는 최소 5글자 이상이어야 합니다.
+            </span>
+          </div>
+        </fieldset>
+      </form>
+    </main>
+    <script>
+      const likeButton = document.querySelector(".like-button");
+      // 속성 읽기, 쓰기, 삭제 각각의 함수 만들기
+
+      function getAttr(elment, attrName) {
+        const getAttrValue = elment.getAttribute(attrName);
+        return getAttrValue;
+      }
+
+      function setAttr(elment, attrName, attrValue) {
+        const setAttrValue = elment.setAttribute(attrName, attrValue);
+        return setAttrValue;
+      }
+
+      function removeAttr(elment, attrName) {
+        const removeValue = elment.removeAttribute(attrName);
+        return removeValue;
+      }
+
+      //  하나로 합치기
+      function attr(elment, attrName, attrValue) {
+        // 객체인지 아닌지 검사
+        if (
+          typeof attrName === "object" &&
+          Object &&
+          !Array.isArray(attrName)
+        ) {
+          const isAttrObject = attrName;
+          for (const key in isAttrObject) {
+            const keyValue = isAttrObject[key];
+            attr(elment, key, keyValue);
+          }
+        }
+        if (attrValue === undefined) {
+          return getAttr(elment, attrName);
+        }
+        if (attrValue === null) {
+          return removeAttr(elment, attrName);
+        }
+        return setAttr(elment, attrName, attrValue);
+      }
+
+      // 적용
+      attr(likeButton, "aria-pressed", "true");
+
+      // 실습 2번 유효성 검사
+
+      const usernameInput = document.getElementById("username");
+
+      usernameInput.addEventListener("input", () => {
+        // 현재 입력된 값의 길이
+        const currentLength = usernameInput.value.length;
+
+        // [실습 1] 유효성 검사 로직 작성
+        // 조건: 5글자 미만이면 유효하지 않음(invalid)
+        let isInvalid = currentLength < 5;
+        /* 여기에 코드 작성 */
+
+        // [실습 2] attr 함수를 사용하여 aria-invalid 속성을 제어하세요.
+        // 조건:
+        // - 유효하지 않을 때(isInvalid가 true): 'true' 문자열 설정
+        // - 유효할 때(isInvalid가 false): 'false' 문자열 설정 (또는 null로 삭제)
+
+        if (!isInvalid) {
+          attr(usernameInput, "aria-invalid", null);
+        } else {
+          attr(usernameInput, "aria-invalid", "true");
+        }
+      });
+
+      // 실습 3번
+      const tabs = document.querySelectorAll('[role="tab"]');
+      const panels = document.querySelectorAll('[role="tabpanel"]');
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const selectedTab = tab;
+
+          // [단계 1] 모든 탭과 패널을 초기화 (비활성 상태로 만듦)
+          tabs.forEach((item) => {
+            // [실습 1] attr 함수(객체 인자)를 사용하여 탭을 비활성화하세요.
+            // - aria-selected: 'false'
+            // - tabindex: '-1' (키보드 탭 이동에서 제외）
+            /* 여기에 코드 작성 */
+            attr(item, {
+              "aria-selected": "false",
+              "aria-pressed": "false",
+              tabindex: -1,
+            });
+          });
+
+          panels.forEach((panel) => {
+            // [실습 2] attr 함수를 사용하여 모든 패널을 숨기세요.
+            // - hidden: '' (속성 추가 -> 숨김)
+            // hidden 속성 이름과 속성값이 있어야만 숨겨지므로, boolean 값을 줬음
+            /* 여기에 코드 작성 */
+            attr(panel, "hidden", "true");
+          });
+
+          // [단계 2] 선택된 탭 활성화
+          // [실습 3] attr 함수(객체 인자)를 사용하여 클릭된 탭을 활성화하세요.
+          // - aria-selected: 'true'
+          // - aria-pressed: 'true'
+          // - tabindex: '0' (키보드 탭 이동 가능) (null로 삭제해도 됨)
+          /* 여기에 코드 작성 */
+          if (selectedTab) {
+            attr(selectedTab, {
+              "aria-pressed": "true",
+              "aria-selected": "true",
+              tabindex: "0",
+            });
+          }
+
+          // [단계 3] 연결된 패널 표시
+          // 클릭된 탭의 aria-controls 값을 가져옴
+          let panelId = attr(tab, "aria-controls");
+          /* 여기에 코드 작성 */
+          const targetPanel = document.getElementById(panelId);
+
+          // [실습 4] attr 함수를 사용하여 해당 패널을 보이게 하세요.
+          // - hidden: null (속성 제거 -> 보임)
+          /* 여기에 코드 작성 */
+          attr(targetPanel, "hidden", null);
+        });
+      });
+    </script>
+  </body>
 </html>
