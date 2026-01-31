@@ -13,6 +13,31 @@
     <a href="#main-content" class="skip-link sr-only focusable"
       >본문 바로가기</a
     >
+    <ul class="menu">
+      <li>홈</li>
+      <li>서비스</li>
+      <li>포트폴리오</li>
+      <li class="active">블로그</li>
+      <li>연락처</li>
+    </ul>
+    <section class="card">
+      <h2 class="card__title">상품 정보</h2>
+      <div class="card__desc">
+        <p>이 제품은 <b>매우 유용</b>합니다.</p>
+        <p>이 제품은 <b>리미티드 에디션</b>합니다.</p>
+      </div>
+    </section>
+    <article class="modal">
+      <header class="modal__head">
+        <!-- ... -->
+      </header>
+      <div class="modal__content">
+        <!-- ... -->
+      </div>
+      <footer class="modal__foot">
+        <button type="button" class="modal__close">닫기</button>
+      </footer>
+    </article>
 
     <main id="main-content" class="prose">
       <header>
@@ -101,5 +126,33 @@
         </ul>
       </aside>
     </main>
+    <script>
+      const card = document.querySelector(".card");
+      const cardChildren = card.children;
+      // 아래 방향 탐색
+      console.log(card.children);
+      console.log(card.firstElementChild);
+      console.log(card.lastElementChild);
+      const cardDesc = card.querySelector(".card__desc");
+      console.log(cardDesc);
+      const pEls = cardDesc.children;
+      console.log(pEls);
+
+      // 위 방향 탐색
+      const closeButton = document.querySelector(".modal__close");
+      const closeButtonParent = closeButton.parentElement;
+      console.log(closeButtonParent);
+      console.log(closeButton.closest(".modal__close"));
+
+      // 옆 방향 탐색
+      const activeItem = document.querySelector(".active");
+      console.log(activeItem.previousElementSibling);
+      //2. `activeItem`의 다음 형제 요소를 선택해 콘솔 패널에 출력합니다.
+      console.log(activeItem.nextElementSibling);
+      //3. `"서비스"` 콘텐츠를 포함하는 형제 요소를 선택해 콘솔 패널에 출력합니다.
+      const firstItem = document.querySelector("ul li");
+      const itemList = firstItem.parentElement.children;
+      console.log(itemList[itemList.length - 4]);
+    </script>
   </body>
 </html>
