@@ -12,7 +12,7 @@ console.group("링크 기본 동작 방지 실습");
 // 리디렉션 예시
 // 넷플릭스에 로그인을 안한 상태라면 넷플릭스 들어가기전에 로그인 페이지가 나오는 것
 const googleLink = document.querySelector('[href*="google"]');
-googleLink.addEventListener("click", (e) => {
+googleLink.addEventListener("click", () => {
   //e.preventDefault();
 });
 
@@ -33,12 +33,12 @@ console.groupEnd();
 console.groupCollapsed("폼 제출 기본 동작 방지 실습");
 
 // 이곳에 코드를 작성하세요.
-const registerForm = document.querySelector('.js-register-form')
+const registerForm = document.querySelector(".js-register-form");
 
-registerForm.addEventListener('submit', (e) =>{
-  e.preventDefault()
-  console.log('폼에 전송하지 않습니다.(브라우저 기본 작동 방지')
-})
+registerForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log("폼에 전송하지 않습니다.(브라우저 기본 작동 방지");
+});
 console.groupEnd();
 
 // [실습] 체크박스 상태 변경 방지 (응용)
