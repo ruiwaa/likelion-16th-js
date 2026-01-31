@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="이벤트 전파 실습 문제" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .inner {
+        border: 2px solid black;
+        padding: 10px;
+      }
+
+      .middle {
+        border: 2px solid burlywood;
+        padding: 10px;
+      }
+
+      .outer {
+        border: 2px solid salmon;
+        padding: 10px;
+      }
+
+      .card {
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+      }
+
+      .card-content {
+        display: block;
+        padding: 20px;
+        text-decoration: none;
+        color: inherit;
+        &:hover {
+          background-color: #f9f9f9;
+        }
+      }
+
+      .button-delete {
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        border: none;
+        padding: 5px 12px;
+        border-radius: 4px;
+        background: #ff4444;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>이벤트 전파 실습 문제</h1>
+    <main>
+      <div class="outer">
+        <div class="middle">
+          <div class="inner">이벤트 단계 비교</div>
+        </div>
+      </div>
+
+      <article class="card">
+        <!-- 
+    접근성 준수: 
+    주요 콘텐츠는 <a> 태그로 감싸 키보드 탭 이동이 가능하게 합니다.
+    단, <button>은 <a> 태그 안에 넣을 수 없으므로(웹표준 위반), 형제 요소로 배치합니다.
+  -->
+        <a href="https://www.musinsa.com/products/1115031" class="card-content">
+          <h2>닥터마틴 단테</h2>
+          <p>
+            고급스러운 분위기와 미니멀한 디자인으로 인기있는 레더
+            스니터즈입니다.
+          </p>
+        </a>
+
+        <button type="button" class="button-delete" aria-label="상품 삭제">
+          삭제
+        </button>
+      </article>
+    </main>
+    <script>
+      // 1. 모든 <div> 요소에 이벤트 리스너를 두 번씩(캡쳐링, 버블링 단계 수신) 등록하세요.
+      const divs = document.querySelectorAll("div");
+
+      divs.forEach((div) => {
+        div.addEventListener("click", (e) => {
+          console.log("캡쳐링: outer");
+        });
+
+        div.addEventListener(
+          "click",
+          (e) => {
+            console.log("캡쳐링: outer");
+          },
+          true,
+        );
+      });
+      //2. 각 이벤트 리스너의 콜백은 다음 형식의 로그를 출력해야 합니다. `console.log('캡쳐링: outer')`
+      //3. 문서에서 요소를 클릭 시, 어떤 순서로 이벤트가 전파되는지 콘솔을 통해 확인합니다.
+      const inner = document.querySelector(".inner");
+      inner.addEventListener("click", (e) => {
+        e.stopPropagation;
+        console.log("inner 클릭됨 - 전파 중단");
+      });
+
+      const card = document.querySelector(".card");
+      const deleteButton = document.querySelector(".button-delete");
+
+      card.addEventListener("click", () => {
+        alert("카드 클릭됨: 상세 페이지 이동");
+      });
+
+      deleteButton.addEventListener("click", (e) => {
+        // 이곳에 코드를 작성하여 버블링을 막으세요.
+        deleteButton.stopPropagation;
+        console.log("삭제 버튼 클릭됨");
+      });
+    </script>
+  </body>
+</html>
