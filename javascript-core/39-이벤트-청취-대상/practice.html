@@ -24,21 +24,92 @@
           }
         }
       }
+
+      .card-container {
+        display: flex;
+        gap: 16px;
+        padding: 16px;
+      }
+
+      .card {
+        flex: 1;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        padding: 16px;
+        background-color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .card h3 {
+        margin: 0 0 8px;
+      }
+
+      .card p {
+        margin: 0 0 12px;
+        color: #666;
+      }
+
+      .card strong {
+        display: block;
+        margin-bottom: 12px;
+        font-size: 1.1rem;
+      }
+
+      .card button {
+        background-color: #42a5f5;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .card button:hover {
+        background-color: #1e88e5;
+      }
     </style>
   </head>
 
   <body>
-    <div role="group" class="view-toggle">
-      <button type="button" data-view="list" aria-pressed="false">
-        리스트 보기
-      </button>
-      <button type="button" data-view="grid" aria-pressed="true" class="active">
-        그리드 보기
-      </button>
-      <button type="button" data-view="table" aria-pressed="false">
-        테이블 보기
-      </button>
-    </div>
+    <main>
+      <h1>이벤트 청취 대상 실습 문제</h1>
+      <div role="group" class="view-toggle">
+        <button type="button" data-view="list" aria-pressed="false">
+          리스트 보기
+        </button>
+        <button
+          type="button"
+          data-view="grid"
+          aria-pressed="true"
+          class="active"
+        >
+          그리드 보기
+        </button>
+        <button type="button" data-view="table" aria-pressed="false">
+          테이블 보기
+        </button>
+      </div>
+      <div class="card-container">
+        <article class="card">
+          <h3>무선 이어폰</h3>
+          <p>노이즈 캔슬링 기능 포함</p>
+          <strong>129,000원</strong>
+          <button type="button">자세히 보기</button>
+        </article>
+        <article class="card">
+          <h3>스마트 워치</h3>
+          <p>헬스 트래킹 및 알림 기능</p>
+          <strong>189,000원</strong>
+          <button type="button">자세히 보기</button>
+        </article>
+        <article class="card">
+          <h3>게이밍 키보드</h3>
+          <p>RGB 백라이트와 기계식 스위치</p>
+          <strong>89,000원</strong>
+          <button type="button">자세히 보기</button>
+        </article>
+      </div>
+    </main>
 
     <script>
       const viewToggleGroup = document.querySelector(".view-toggle");
@@ -62,13 +133,28 @@
           // 2-1. getAttribute로 data-로 시작하는 속성 값 가져오기
           console.log(selectedButton.getAttribute("data-view"));
           // 2-1. 요소의 dataset 속성을 사용해 data-로 시작하는 속성 값 가져오기
-          console.log(selectedButton.dataset.view);
+          //console.log(selectedButton.dataset.view);
 
           // 3. `aria-pressed` 속성을 사용해 눌려진 버튼 상태를 명시합니다.
           // 이전 활성 상태였던 버튼(beforeActivedButton)은 aria-pressed="false"로 전환
           beforeActivedButton.setAttribute("aria-pressed", "false");
           // 현재 활성 상태인 버튼(selectedButton)은 aria-pressed="true"로 전환
           selectedButton.setAttribute("aria-pressed", "true");
+        });
+      });
+      // 2 번 상품 카드 목록
+      const buttons = document.querySelectorAll(".card-container button");
+      buttons.forEach((button) => {
+        button.addEventListener("click", function () {
+          //1단계: h3 요소 선택자 변수 만들기
+          const title = document.querySelector(".card h3");
+          // 2단계: 해당 버튼을 누를 때마다 해당 버튼이 있는 카드 내에 카드 제목 탐색해주기
+          // 아래에서 위로 탐색하는 거기때문에 closest 메서드 사용
+          // 버튼에서 제일 가까운 클래스 이름 카드인 요소를 찾는 거기때문에
+          // 이벤트 청취요소(=button)기때문에 'this' 키워드 사용
+          const card = this.closest(".card");
+          console.log(this);
+          console.log(title);
         });
       });
     </script>
