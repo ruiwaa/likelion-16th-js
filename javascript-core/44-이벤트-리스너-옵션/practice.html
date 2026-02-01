@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="이벤트 리스너 옵션" />
+    <title>Document</title>
+    <style>
+      .experiment-box {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        max-width: 400px;
+      }
+
+      .scroll-box {
+        height: 200px;
+        overflow-y: scroll;
+        background: #fff;
+        border: 2px solid #333;
+        margin: 15px 0;
+      }
+
+      .content {
+        padding: 20px;
+        background: linear-gradient(to bottom, #fff, #eee);
+      }
+
+      .spacer {
+        height: 400px;
+      }
+
+      #log {
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 4px;
+        font-family: monospace;
+      }
+
+      .toggle-switch {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        margin-bottom: 10px;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: 20px auto;
+        font-family: sans-serif;
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        color: white;
+
+        &.button--primary {
+          background-color: #3b82f6;
+        }
+        &.button--danger {
+          background-color: #ef4444;
+        }
+        &:disabled {
+          cursor: not-allowed;
+          background-color: #ccc;
+        }
+      }
+
+      .tracker-area {
+        height: 300px;
+        background-color: #f3f4f6;
+        border: 2px dashed #d1d5db;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s;
+
+        &.active {
+          background-color: #e0f2fe;
+          border-color: #3b82f6;
+        }
+      }
+
+      #coordinates {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #374151;
+        margin-top: 10px;
+      }
+
+      .sr-only {
+        overflow: hidden;
+        position: absolute;
+        clip: rect(1px, 1px, 1px, 1px);
+        clip-path: circle(0);
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        white-space: nowrap;
+
+        caption& {
+          position: static;
+        }
+
+        &.focusable:focus {
+          overflow: initial;
+          position: static;
+          clip: auto;
+          clip-path: unset;
+          width: initial;
+          height: initial;
+          margin: initial;
+          white-space: initial;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>이벤트 리스너 옵션</h1>
+    <main>
+      <div class="experiment-box">
+        <h3>Passive 옵션 테스트</h3>
+
+        <label class="toggle-switch">
+          <input type="checkbox" id="check-passive" aria-checked="false" />
+          <span class="slider"></span>
+          <span class="label-text"
+            >Passive: true 활성화 (스크롤 차단 불가)</span
+          >
+        </label>
+
+        <div
+          class="scroll-box"
+          id="target-box"
+          tabindex="0"
+          role="region"
+          aria-label="스크롤 테스트 영역"
+        >
+          <div class="content">
+            <p>
+              이 박스 위에서 <strong>마우스 휠이나 방향키</strong>를 사용해
+              보세요.
+            </p>
+          </div>
+        </div>
+
+        <div id="log" aria-live="polite">상태: 대기 중</div>
+      </div>
+
+      <div class="container">
+        <div class="controls" role="group" aria-label="추적 컨트롤러">
+          <button
+            id="button-start"
+            class="button button--primary"
+            type="button"
+          >
+            추적 시작
+          </button>
+          <button
+            id="button-stop"
+            class="button button--danger"
+            disabled
+            type="button"
+          >
+            추적 중지 (Signal Abort)
+          </button>
+        </div>
+
+        <div class="tracker-area" role="region" aria-labelledby="tracker-title">
+          <h3 id="tracker-title" class="sr-only">좌표 추적 결과</h3>
+          <p id="status-text" aria-live="polite">시작 버튼을 눌러주세요.</p>
+          <div id="coordinates" aria-live="quiet">X: 0, Y: 0</div>
+        </div>
+      </div>
+    </main>
+    <script>
+      const targetBox = document.getElementById("target-box");
+      const checkPassive = document.getElementById("check-passive");
+      const log = document.getElementById("log");
+
+      let currentController = null;
+
+      // 초기 실행
+      attachListener();
+      // 체크박스 변경 시, 리스너 재등록
+      checkPassive.addEventListener("change", attachListener);
+
+      function attachListener() {
+        // 기존 리스너 제거 (AbortController 활용)
+        if (currentController) {
+          currentController.abort();
+        }
+
+        // 컨트롤러 생성
+        currentController = new AbortController();
+        // 체크 상태 확인 (패시브 설정)
+        const isPassive = checkPassive.checked;
+
+        log.textContent = "현재 옵션: { passive: " + isPassive + "}";
+        log.style.color = isPassive ? "#00f" : "#f00";
+
+        targetBox.addEventListener(
+          "wheel",
+          (e) => {
+            try {
+              // 스크롤을 막으려는 시도
+              e.preventDefault();
+              log.textContent = "스크롤 차단 성공! (preventDefault 작동)";
+            } catch (err) {
+              // passive: true일 때 오류 발생 (콘솔 패널 확인)
+              console.error(err);
+            }
+
+            if (isPassive) {
+              log.textContent = "스크롤 됨 (passive라 차단 실패, 콘솔 확인)";
+            }
+          },
+          // [TODO] 여기에 옵션 객체를 작성하세요.
+          // 1. passive 값을 isPassive 변수로 설정
+          // 2. signal 값을 currentController.signal로 설정
+          /* 여기에 코드 작성 */ {
+            passive: isPassive,
+            signal: currentController.signal,
+          },
+        );
+      }
+
+      const buttonStart = document.getElementById("button-start");
+      const buttonStop = document.getElementById("button-stop");
+      const trackerArea = document.querySelector(".tracker-area");
+      const statusText = document.getElementById("status-text");
+      const coords = document.getElementById("coordinates");
+
+      let controller = null;
+
+      // 추적 시작
+      buttonStart.addEventListener("click", (e) => {
+        // [TODO] 1. 새로운 AbortController를 생성하여 controller 변수에 할당하세요.
+        /* 여기에 코드 작성 */
+        controller = new AbortController();
+
+        // UI 업데이트
+        buttonStart.disabled = true;
+        buttonStop.disabled = false;
+        trackerArea.classList.add("active");
+        statusText.textContent = "마우스를 움직이거나 클릭해보세요!";
+
+        // 마우스 이동 이벤트
+        trackerArea.addEventListener(
+          "mousemove",
+          (e) => {
+            coords.textContent = "X: " + e.offsetX + ", Y: " + e.offsetY;
+          },
+          // [TODO] 2. signal 옵션을 설정하세요.
+          /* 여기에 코드 작성 */
+          { signal: controller.signal },
+        );
+
+        // 클릭 이벤트
+        trackerArea.addEventListener(
+          "click",
+          () => {
+            trackerArea.style.backgroundColor = "#bbf7d0";
+            setTimeout(
+              () => (trackerArea.style.backgroundColor = "#e0f2fe"),
+              200,
+            );
+            console.log("클릭 감지됨!");
+          },
+          // [TODO] 3. signal 옵션을 설정하세요.
+          /* 여기에 코드 작성 */
+          { signal: controller.signal },
+        );
+      });
+
+      // 추적 중지 (Abort 실행)
+      buttonStop.addEventListener("click", () => {
+        if (controller) {
+          // [TODO] 4. 추가된 모든 이벤트를 한 번에 제거하세요.
+          /* 여기에 코드 작성 */
+          controller.abort();
+
+          // UI 초기화
+          buttonStart.disabled = false;
+          buttonStop.disabled = true;
+          trackerArea.classList.remove("active");
+          statusText.textContent = "추적이 중지되었습니다.";
+          coords.textContent = "X: 0, Y: 0";
+          controller = null;
+        }
+      });
+    </script>
+  </body>
+</html>
