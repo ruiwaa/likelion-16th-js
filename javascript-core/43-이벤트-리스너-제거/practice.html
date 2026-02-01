@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="이벤트 리스너 제거 실습 문제" />
+    <title>Document</title>
+    <style>
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+
+        .button-group {
+          display: flex;
+          justify-content: center;
+          gap: 4px;
+        }
+
+        button {
+          flex-shrink: 0;
+          display: block;
+          margin: 1rem auto;
+          padding: 0.5rem 1rem;
+          font-size: 16px;
+          cursor: pointer;
+        }
+
+        output {
+          margin-top: 2rem;
+          font-size: 18px;
+          color: #333;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>이벤트 리스너 제거 실습 문제</h1>
+    <main>
+      <div class="container">
+        <div class="button-group">
+          <button data-id="reset-button" type="button">초기화</button>
+          <button data-id="log-button" type="button">클릭 메시지 출력</button>
+          <button data-id="remove-button" type="button">리스너 제거</button>
+          <button data-id="limited-button" type="button">
+            3번만 클릭 가능
+          </button>
+        </div>
+        <output>클릭 횟수 출력</output>
+      </div>
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const clickButton = document.querySelector('[data-id ="log-button"]');
+        const output = document.querySelector("output");
+        const removeButton = document.querySelector(
+          '[data-id = "remove-button"]',
+        );
+        const clickThreeButton = document.querySelector(
+          '[data-id = "limited-button"]',
+        );
+        const resetButton = document.querySelector(
+          '[data-id = "reset-button"]',
+        );
+        let i = 0;
+        let limitedCount = 0;
+        function outputFn() {
+          // 매개 변수에 i를 넣으면 NAN가 뜨는 이유는, 함수가 이벤트에 연결되면,
+          // 객체로 인식하기 때문에 i가 객체타입이 되어 숫자로 인식이 안되기때문
+          ++i;
+          output.textContent = `버튼이 ${i} 번 클릭되었습니다.`;
+          console.log(output);
+        }
+        function limited() {
+          limitedCount++;
+          if (limitedCount === 3) {
+            clickThreeButton.removeEventListener("click", limited);
+          }
+          output.textContent = `버튼이 ${limitedCount} 번 클릭되었습니다.`;
+          console.log(output);
+        }
+        // 1. '클릭 메시지 출력' 버튼 클릭 시,
+        //    output에 '버튼이 n번 클릭되었습니다' 출력
+        clickButton.addEventListener("click", outputFn);
+
+        // 2. '리스너 제거' 버튼 클릭 시,
+        //    위 버튼의 이벤트 리스너 제거
+        //    output에 '이벤트가 제거되었습니다.' 출력
+        removeButton.addEventListener("click", () => {
+          clickButton.removeEventListener("click", outputFn);
+          console.log((output.textContent = "이벤트가 제거되었습니다."));
+        });
+        // 3. '3번만 클릭 가능' 버튼은 클릭할 때마다 횟수를 세고,
+        //    세 번째 클릭 후 자동으로 리스너 제거
+        clickThreeButton.addEventListener("click", limited);
+
+        // 4. 초기화 기능
+        //    다시 처음으로 돌아가 코드가 실행되도록 구현
+        resetButton.addEventListener("click", (e) => {
+          clickButton.addEventListener("click", outputFn);
+          clickThreeButton.addEventListener("click", limited);
+          output.textContent = "클릭 횟수 출력";
+          console.log(output);
+          i = 0;
+          limitedCount = 0;
+        });
+      });
+    </script>
+  </body>
+</html>
