@@ -135,6 +135,117 @@ console.log(printFriendsStep3(['박한영', '김준수', '장하준', '이현종
 console.groupEnd()
 
 
+
+
+
+
+// --------------------------------------------------------------------------
+// 구조 분해 할당 + 기본 값 설정
+// --------------------------------------------------------------------------
+
+console.groupCollapsed('구조 분해 할당 + 기본 값 설정')
+{
+  const myCup = {
+    name: '머그컵',
+    color: '하얀색',
+    material: '사기(도자기)',
+    price: 7000,
+    // isPresent: false,
+  }
+  
+  const yourCup = {}
+  
+  // 만약 myCup 객체에 isPresent 속성이 없다면?
+  // isPresent 속성의 기본 값을 할당하자.
+  const { 
+    name = 'Mug Cup', 
+    color = '민트색', 
+    material = '플라스틱', 
+    price = 3000, 
+    isPresent = true 
+  } = yourCup // myCup
+  
+  console.log(name, color, material, price)
+  console.log(isPresent)
+  
+  // 함수의 매개변수를 구조분해할당하는 단계별 이해
+  
+    // 단계 1.
+    function printInfoStep1(product) {
+      const name = product.name || 'Mug Cup'
+      const color = product.color || '민트색'
+      const material = product.material || '플라스틱'
+      const price = product.price || 3000
+      const isPresent = product.isPresent || true
+  
+      console.log('name =', name)
+      console.log('color =', color)
+      console.log('material =', material)
+      console.log('price =', price)
+      console.log('isPresent =', isPresent)
+  
+      // 암묵적으로 undefined 반환
+      // return undefined
+    }
+  
+    console.log(printInfoStep1(myCup))
+    console.log(printInfoStep1({
+      color: '골드색',
+      price: 27000,
+    }))
+
+    // 단계 2.
+  function printInfoStep2(product) {
+    // 객체 구조 분해 할당 활용
+    // product // { name, color, material, price, isPresent }
+    const { 
+      name = 'Mug Cup', 
+      color = '민트색', 
+      material = '플라스틱', 
+      price = 3000, 
+      isPresent = true 
+    } = product
+
+    console.log('name =', name)
+    console.log('color =', color)
+    console.log('material =', material)
+    console.log('price =', price)
+    console.log('isPresent =', isPresent)
+
+    // 암묵적으로 undefined 반환
+    // return undefined
+  }
+
+  console.log(printInfoStep2(myCup))
+  console.log(printInfoStep2({
+    color: '골드색',
+    price: 27000,
+  }))
+  
+  // 단계 3.
+  function printInfoStep3({
+    name = 'Mug Cup', 
+    color = '민트색', 
+    material = '플라스틱', 
+    price = 3000, 
+    isPresent = true 
+  }){
+    console.log('name =', name)
+    console.log('color =', color)
+    console.log('material =', material)
+    console.log('price =', price)
+    console.log('isPresent =', isPresent)
+  }
+ console.log(printInfoStep3(myCup))
+console.log(printInfoStep3({
+  color: '골드색',
+  price: 27000,
+}))
+}
+
+console.groupEnd()
+
+
 // --------------------------------------------------------------------------
 // 핵심 요약!
 // --------------------------------------------------------------------------
