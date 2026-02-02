@@ -24,7 +24,32 @@ console.groupEnd()
 console.groupCollapsed('메서드 단축 실습')
 
 // 이곳에 코드를 작성하세요
+// 예전(물론, 지금도 사용 가능. 웹은 호환성이 중요)
+{
+  const memory = {
+    amount: 64,
+    getAmount: function() {
+      console.log({ 'this': this })
+      return this.amount + 'GB'
+    }
+  }
 
+  console.log(memory.getAmount())
+}
+
+// 현재 사용하는 방법 (메서드 단축: Method Shorthand)
+{
+  const memory = {
+    amount: 64,
+    // 함수를 객체의 속성으로 할당했을 때 객체의 메서드라 부른다. 
+    getAmount() {
+      console.log({ 'this': this })
+      return this.amount + 'GB'
+    }
+  }
+
+  console.log(memory.getAmount())
+}
 console.groupEnd()
 
 
@@ -39,7 +64,25 @@ console.groupEnd()
 console.groupCollapsed('계산된 속성 이름 실습')
 
 // 이곳에 코드를 작성하세요
+const prefix = 'user'
+const id = 29831
+const computedPropKey = `${prefix}-${id}` // 표현식 -> 값
 
+const userHong = {
+  // 3. computed property
+  ['prefix']: prefix, 
+  ['id']: id,
+  [computedPropKey]: '홍길동',
+  // 2. method shorthand
+  // getComputedPropValue: function() {
+  getComputedPropValue() {
+    return this[computedPropKey]
+  },
+}
+
+// 1. property shorthand
+console.log({ userHong })
+console.log(userHong.getComputedPropValue())
 console.groupEnd()
 
 

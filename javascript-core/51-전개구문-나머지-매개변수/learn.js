@@ -9,7 +9,36 @@
 console.groupCollapsed('배열 전개 구문 실습')
 
 // 이곳에 코드를 작성하세요
+const snacks = ['cookie','jelly']
 
+// ...배열 = 배열 내부 원소들을 펼친 것과 같음
+console.log(...snacks)
+
+
+// 전개된(펼쳐진) 배열의 요소를 전달받는 함수
+function logSnacks(snack1, snack2, snack3) {
+  console.log(snack1)
+  console.log(snack2)
+  console.log(snack3)
+}
+
+logSnacks(snacks.at(0), snacks.at(1), snacks.at(-1))
+logSnacks(...snacks)
+
+const otherSnacks = ['cracker', 'pocky']
+
+// 배열의 concat() 메서드 vs 전개 구문
+{
+  // 배열 병합(배열 메서드 활용, Array's concat method)
+  const newSnacks = otherSnacks.concat(snacks)
+  console.log(newSnacks)
+}
+
+{
+  // 배열 병합(전개 구문 활용, spread syntax)
+  const newSnacks = [...otherSnacks, ...snacks]
+  console.log(newSnacks)
+}
 console.groupEnd()
 
 
@@ -24,6 +53,115 @@ console.groupEnd()
 console.groupCollapsed('나머지 매개변수 실습')
 
 // 이곳에 코드를 작성하세요
+// 여러 숫자를 전달받아 계산하는 함수
+
+{
+  function sum(
+    num1, 
+    num2 = 0, 
+    num3 = 0, 
+    num4 = 0,
+    num5 = 0,
+    num6 = 0,
+    num7 = 0,
+    num8 = 0,
+    num9 = 0,
+  ) {
+    // 예전 방식
+    // 함수 안에서만 살아가는 (숨겨진) 객체 활용
+    // 인자들(arguments)의 집합 객체
+    
+    // 새로운 방식
+    // rest parameters
+  
+    const total = num1 + num2 + num3 + num4 + num5 + num6 + num7 + num8 + num9
+    return total
+  }
+
+  // 일일이 다 더해줘야함(비효율적))
+  console.log(sum(1))
+  console.log(sum(1, 2))
+  console.log(sum(1, 2, 3))
+  console.log(sum(1, 2, 3, 4))
+  console.log(sum(11, 22, 33, 44))
+  console.log(sum(10, -9, 8, 7))
+  console.log(sum(7, 5, 3, 1, 9, 11, 27, 35, 90))
+  console.log(sum(7, 5, 3, 1, 9, 11, 27, 35, 90, 101))
+}
+
+
+// 단계 2. 여러 수를 연산하는 함수 
+{
+  function sum(/* num1, num2, num3, ..., numN */) {
+    // 예전 방식
+    // 함수 안에서만 살아가는 (숨겨진) 객체 활용
+    // 인자들(arguments)의 집합 객체
+    console.log(arguments)
+    
+    // 유사 배열 → 배열 객체로 변환
+    // - Array.prototype.slice.call(유사배열)
+    // - Array.from(유사배열)
+    // - [...유사배열]
+
+    const args = Array.from(arguments)
+
+    let total = 0
+
+    // for (const arg of args) total += arg
+    args.forEach((arg) => total += arg)
+
+    return total
+  }
+
+  console.log(sum(1))
+  console.log(sum(1, 2))
+  console.log(sum(1, 2, 3))
+  console.log(sum(1, 2, 3, 4))
+  console.log(sum(11, 22, 33, 44))
+  console.log(sum(10, -9, 8, 7))
+  console.log(sum(7, 5, 3, 1, 9, 11, 27, 35, 90))
+  console.log(sum(7, 5, 3, 1, 9, 11, 27, 35, 90, 101))
+}
+
+
+
+// 단계 3. 여러 수를 연산하는 함수 
+{
+  function sum(...restNumbers) {
+    // 오늘날 자주 사용하는 방식
+    // 나머지 매개변수 : 함수 외부에서 전달된 인자들의 집합 (실제 배열)
+    // console.log(Array.isArray(restNumbers))
+    
+    let total = 0
+
+    // 반복 처리
+
+    // for 문 활용
+    // for (let i = 0; i < restNumbers.length; ++i) {
+    //   const number = restNumbers[i]
+    //   total += number
+    // }
+
+    // for...of 문 활용
+    // for (const number of restNumbers) {
+    //   total += number
+    // }
+
+    // forEach() 메서드 활용
+    restNumbers.forEach((n) => total += n)
+
+    return total
+  }
+
+  console.log(sum(1))
+  console.log(sum(1, 2))
+  console.log(sum(1, 2, 3))
+  console.log(sum(1, 2, 3, 4))
+  console.log(sum(11, 22, 33, 44))
+  console.log(sum(10, -9, 8, 7))
+  console.log(sum(7, 5, 3, 1, 9, 11, 27, 35, 90))
+  console.log(sum(7, 5, 3, 1, 9, 11, 27, 35, 90, 101))
+}
 
 console.groupEnd()
 
