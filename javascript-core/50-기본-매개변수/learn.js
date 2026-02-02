@@ -9,6 +9,33 @@
 console.groupCollapsed('기본 매개변수 실습')
 
 // 이곳에 코드를 작성하세요
+function px2rem(pxValue, baseValue = 16){
+  // (이전 방식)const baseNumberValue = parseFloat(baseValue || 16)
+  const baseNumberValue = parseFloat(baseValue)
+  const pxNumberValue = parseFloat(pxValue)
+  const remValue = `${pxNumberValue / baseNumberValue} rem`
+  return remValue
+
+}
+
+// 테스트 코드
+console.log(px2rem(20))             // '1.25rem'
+console.log(px2rem('20px'))         // '1.25rem'
+console.log(px2rem(20, 10))         // '2rem'
+console.log(px2rem('20px', '10px')) // '2rem'
+
+function rem2px(remValue, baseValue = 16) {
+  const remNumberValue = parseFloat(remValue)
+  const baseNumberValue = parseFloat(baseValue)
+  const pxValue = `${remNumberValue * baseNumberValue}px`
+  return pxValue
+}
+
+// 테스트 코드
+console.log(rem2px(2.475)) // '39.6px'
+console.log(rem2px('2.475rem')) // '39.6px'
+console.log(rem2px(3.145, 10)) // '31.45px'
+console.log(rem2px('3.145px', '10px')) // '31.45px'
 
 console.groupEnd()
 
@@ -35,7 +62,175 @@ console.groupEnd()
 console.groupCollapsed('매개변수 패턴 비교')
 
 // 이곳에 코드를 작성하세요
+// 사용자 정보를 포함하는 객체 생성 함수
 
+{
+  //단계 1 사용자 정보를 포함하는 객체 생성 함수
+  function createUser(name, age, job, location, email, password) {
+    // 사용자 생성 (객체 구조)
+    const createdUser = {
+      name: name,
+      age: age,
+      job: job,
+      address: location,
+      email: email,
+      password: password,
+    }
+  
+    return createdUser
+  }
+  
+  const userMin = createUser('박중민', 22, '학생', '대전시', 'jungmin@naver.com', 'jomkdi@31')
+  const userYoun = createUser('어수연', 31, '행정복지사', '이천시', 'suyoun@kakao.com', 'dkcisl!92')
+  
+  console.log(userMin)
+  console.log(userYoun)
+
+}
+
+{
+  // 단계 2. 사용자 정보를 포함하는 객체 생성 함수
+  function createPremiumUser(userInfo) {
+    const premiumUser = {
+      grade: 'Premium',
+      name: userInfo.name,
+      age: userInfo.age,
+      job: userInfo.job,
+      address: userInfo.location,
+      email: userInfo.email,
+      password: userInfo.password,
+    }
+
+    return premiumUser
+  }
+
+  const userMin = createPremiumUser({
+    name: '박중민', 
+    age: 22, 
+    job: '학생', 
+    location: '대전시', 
+    email: 'jungmin@naver.com', 
+    password: 'jomkdi@31',
+  })
+
+  const userYoun = createPremiumUser({
+    name: '어수연', 
+    age: 31, 
+    job: '행정복지사', 
+    location: '이천시', 
+    email: 'suyoun@kakao.com', 
+    password: 'dkcisl!92',
+  })
+
+  console.log(userMin)
+  console.log(userYoun)
+}
+
+// 단계 3. 사용자 정보를 포함하는 객체 생성 함수
+{
+  function createPremiumUser(userInfo) {
+    // 매개변수(객체 타입) 구조 분해 할당
+    const { 
+        name, 
+        age = 1, 
+        job = '학생', 
+        location: address = '서울시', 
+        email = null, 
+        password = null,
+    } = userInfo
+
+    const premiumUser = {
+      grade: 'Premium',
+      name: name,
+      age: age,
+      job: job,
+      address: address,
+      email: email,
+      password: password,
+    }
+
+    return premiumUser
+  }
+
+  const userMin = createPremiumUser({
+    name: '박중민', 
+    age: 22, 
+    job: '학생', 
+    location: '대전시', 
+    email: 'jungmin@naver.com', 
+    password: 'jomkdi@31',
+  })
+
+  const userYoun = createPremiumUser({
+    name: '어수연', 
+    age: 31, 
+    job: '행정복지사', 
+    location: '이천시', 
+    email: 'suyoun@kakao.com', 
+    password: 'dkcisl!92',
+  })
+
+  const userHoon = createPremiumUser({
+    name: '최지훈', 
+    age: 42, 
+    job: '변호사',
+  })
+
+  console.log(userMin)
+  console.log(userYoun)
+  console.log(userHoon)
+}
+
+{
+  // 단계 4. 사용자 정보를 포함하는 객체 생성 함수
+  // 매개변수(객체 타입) 구조 분해 할당
+  function createPremiumUser({
+    name,
+    age = 1,
+    job = '학생',
+    location: address = '서울시',
+    email = null,
+    password = null,
+  } = {}) {
+    return {
+      grade: 'Premium',
+      name: name,
+      age: age,
+      job: job,
+      address: address,
+      email: email,
+      password: password,
+    }
+  }
+
+  const userMin = createPremiumUser({
+    name: '박중민',
+    age: 22,
+    job: '학생',
+    location: '대전시',
+    email: 'jungmin@naver.com',
+    password: 'jomkdi@31',
+  })
+
+  const userYoun = createPremiumUser({
+    name: '어수연',
+    age: 31,
+    job: '행정복지사',
+    location: '이천시',
+    email: 'suyoun@kakao.com',
+    password: 'dkcisl!92',
+  })
+
+  const userHoon = createPremiumUser({
+    name: '최지훈',
+    age: 42,
+    job: '변호사',
+  })
+
+  console.log(userMin)
+  console.log(userYoun)
+  console.log(userHoon)
+}
 console.groupEnd()
 
 
