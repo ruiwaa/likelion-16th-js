@@ -9,6 +9,17 @@
 console.groupCollapsed('객체 구조 분해 할당 실습')
 
 // 이곳에 코드를 작성하세요
+const myNotebook = {
+  brand: 'Macbook Pro',
+  processor: 'M4',
+  ram:'32GB',
+  ssd:'2TB',
+  maker:'Apple'
+}
+
+// 구조 분해 할당: 더 펀리하고 많이 사용되는 방법
+const {brand, processor, ram, ssd, maker} = myNotebook
+console.log(brand,processor,ram,ssd,maker)
 
 console.groupEnd()
 
@@ -24,6 +35,20 @@ console.groupEnd()
 console.groupCollapsed('배열 구조 분해 할당 실습')
 
 // 이곳에 코드를 작성하세요
+const points = [92, -24, 0]
+
+{
+  const x = points.at(0)
+  const y = points.at(1)
+  const z = points.at(-1)
+
+  console.log(x, y,z)
+}
+
+{
+  const[x,y,z] = points
+  console.log(x,y,z)
+}
 
 console.groupEnd()
 
