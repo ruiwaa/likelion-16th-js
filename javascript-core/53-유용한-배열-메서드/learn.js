@@ -119,7 +119,7 @@ if (foundNumber) {
   // {객채 매개변수} 안에 category = 'name'는 'name'이라는 객체의 기본값(실제 데이터가 가진 값) 설정
   // user 객체 내의 name 키과 동일한 것이다.
   // ->
-  function findUser(list, { category = 'name', search = '' } = {}) {
+  function findUser(users, { category = 'name', search = '' } = {}) {
   // find 메서드를 사용하여, user 객체 안에 카테고리 키안에 search가 포함된 키값을 찾기
     foundUser = users.find((user) => user[category].includes(search))
     return foundUser
@@ -344,6 +344,8 @@ console.log(customResult)
   // 사용자 이름 목록 만들기(가공해 새로운 배열 생성)
   // 구조 분해 할당하지 않은 버전
   //const userNames = users.map((user) => user.name)
+  
+  // 구조 분해한 버전
   const userNames = users.map(({name}) => name) 
   console.log(userNames)
 
