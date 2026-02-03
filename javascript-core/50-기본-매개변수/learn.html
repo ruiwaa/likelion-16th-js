@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko-KR">
-
   <head>
     <meta charset="UTF-8" />
     <title>함수 마스터: 기본 매개변수 & 객체 패턴</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="기본 매개변수" />
     <link rel="stylesheet" href="./assets/styles.css" />
     <script src="./learn.js" defer></script>
   </head>
@@ -16,23 +16,35 @@
       <header>
         <h1>함수를 유연하게! 기본 매개변수</h1>
         <p>
-          인수가 누락되어도 안전하게 작동하고, <strong>객체 패턴</strong>을 통해 복잡한 인수를 깔끔하게 관리하는 기법을 배웁니다.
+          인수가 누락되어도 안전하게 작동하고, <strong>객체 패턴</strong>을 통해
+          복잡한 인수를 깔끔하게 관리하는 기법을 배웁니다.
         </p>
       </header>
 
       <section>
         <h2>기본 매개변수의 장점</h2>
         <ul>
-          <li><strong>안정성:</strong> 인수가 전달되지 않아도 <code>undefined</code>로 인한 에러를 방지합니다.</li>
-          <li><strong>가독성:</strong> 해당 매개변수가 어떤 역할을 하는지 기본값을 통해 힌트를 제공합니다.</li>
-          <li><strong>유연성:</strong> 필수가 아닌 '선택적 인수'를 정의하기에 매우 적합합니다.</li>
+          <li>
+            <strong>안정성:</strong> 인수가 전달되지 않아도
+            <code>undefined</code>로 인한 에러를 방지합니다.
+          </li>
+          <li>
+            <strong>가독성:</strong> 해당 매개변수가 어떤 역할을 하는지 기본값을
+            통해 힌트를 제공합니다.
+          </li>
+          <li>
+            <strong>유연성:</strong> 필수가 아닌 '선택적 인수'를 정의하기에 매우
+            적합합니다.
+          </li>
         </ul>
       </section>
 
       <section>
         <h2>매개변수 전달 패턴 비교</h2>
         <table>
-          <caption>객체 매개변수 vs 구조 분해 변수</caption>
+          <caption>
+            객체 매개변수 vs 구조 분해 변수
+          </caption>
           <thead>
             <tr>
               <th scope="col">구분</th>
@@ -62,9 +74,76 @@
 
       <section>
         <h2>요약</h2>
-        <p>기본 매개변수와 객체 패턴은 <strong>사용자 정의 함수를 더 견고하게</strong> 만듭니다. 인수의 순서에 얽매이지 않고 이름으로 소통하는 스마트한 개발자로 성장해 보세요!</p>
+        <p>
+          기본 매개변수와 객체 패턴은
+          <strong>사용자 정의 함수를 더 견고하게</strong> 만듭니다. 인수의
+          순서에 얽매이지 않고 이름으로 소통하는 스마트한 개발자로 성장해
+          보세요!
+        </p>
       </section>
-    </main>
-  </body>
 
+      <div id="practice1">
+        <div>
+          <label for="income">소득 (원)</label>
+          <input type="number" id="income" value="10000" />
+        </div>
+        <div>
+          <label for="taxRate">세율 (0 ~ 1)</label>
+          <input
+            type="number"
+            id="taxRate"
+            value="0.033"
+            step="0.001"
+            min="0"
+            max="1"
+          />
+        </div>
+        <p
+          class="result-box"
+          style="margin-top: 10px; padding: 10px; background: #f0f0f0"
+        >
+          소득 <strong class="val-income"></strong>원에 대한 세율
+          <strong class="val-rate"></strong>% 적용 시,<br />
+          예상 세금은
+          <strong class="val-tax" style="color: red"></strong>원입니다.
+        </p>
+      </div>
+    </main>
+
+    <script>
+      // 요소 선택
+      const practice1 = document.getElementById("practice1");
+      const incomeInput = document.getElementById("income");
+      const rateInput = document.getElementById("taxRate");
+      const valIncome = practice1.querySelector(".val-income");
+      const valRate = practice1.querySelector(".val-rate");
+      const valTax = practice1.querySelector(".val-tax");
+
+      // 이벤트 연결
+      incomeInput.addEventListener("input", update);
+      rateInput.addEventListener("input", update);
+
+      // 초기 실행
+      update();
+
+      // 세금 계산 함수 (기본 매개변수 사용)
+      // calculateTax 작성
+      function calculateTax({ rate = 0.033 } = {}) {
+        rate = rate * 100;
+        const result = incomeInput.value * (rate / 100);
+        valIncome.textContent = `${incomeInput.value}`;
+        valRate.textContent = rate.toFixed(1);
+        valTax.textContent = `${result}`;
+      }
+
+      // 화면 업데이트 함수
+      function update() {
+        const income = Number(incomeInput.value);
+        const rate = Number(rateInput.value);
+
+        // calculateTax 함수를 호출하고 DOM을 업데이트하세요.
+        calculateTax();
+      }
+    </script>
+  </body>
 </html>
