@@ -10,6 +10,60 @@ console.groupCollapsed('1. Keys & Values 실습')
 
 // 이곳에 코드를 작성하세요
 
+{
+  const inventory = { shoes: 10, shirt: 25, hat: 5 }
+
+  // 객체의 속성, 값을 순환해 출력
+  // 순환하기 위해서는 배열처럼 length 속성을 가져야 하거나, 
+  // forEach()와 같은 메서드가 필요하다.
+
+  console.log(inventory.length)
+  console.log('forEach' in inventory)
+  console.log(Array.from(inventory))
+
+  // for...in문 (객체 순환 ✅)
+  for (const property in inventory) {
+    if (!Object.hasOwn(inventory, property)) continue
+    const value = inventory[property]
+    console.log(property, value)
+  }
+
+  // 객체도 forEach(), map(), filter(), slice(), ... 
+  // 배열 메서드로 순환할 수 있을까?
+
+  // 클래스 메서드
+  // 생성자함수.정적_메서드()
+  // Object.staticMethod
+
+  // Object.keys(object) -> 키로 구성된 배열
+  // console.log(Object.keys(inventory))
+  Object.keys(inventory).forEach((item) => {console.log(item)})
+
+  // Object.values(object) -> 값으로 구성된 배열
+  // console.log(Object.values(inventory))
+  Object.values(inventory).forEach(item => { console.log(item) })
+
+  // Object.entries(object) -> [키, 값]으로 구성된 배열 (2차원 배열)
+  // console.log(Object.entries(inventory))
+  // 단계 1.
+  Object.entries(inventory).forEach((keyValue/* [key, value] */) => {
+    const key = keyValue.at(0)
+    const value = keyValue.at(-1)
+    console.log({ key, value })
+  })
+  // 단계 2. 배열 구조 분해 할당
+  Object.entries(inventory).forEach((keyValue) => {
+    const [key, value] = keyValue
+    console.log({ key, value })
+  })
+  // 단계 3. 배열 매개변수 구조 분해 할당
+  Object.entries(inventory).forEach(([key, value]) => {
+    console.log({ key, value })
+  })
+
+}
+
+
 console.groupEnd()
 
 
