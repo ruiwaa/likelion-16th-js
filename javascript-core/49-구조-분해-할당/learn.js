@@ -233,7 +233,7 @@ console.groupCollapsed('구조 분해 할당 + 기본 값 설정')
     console.log('name =', name)
     console.log('color =', color)
     console.log('material =', material)
-    console.log('price =', price)
+    console.log('price =', price) 
     console.log('isPresent =', isPresent)
   }
  console.log(printInfoStep3(myCup))
