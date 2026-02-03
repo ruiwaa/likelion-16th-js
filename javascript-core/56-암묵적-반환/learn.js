@@ -8,8 +8,43 @@
 console.groupCollapsed('1. 객체 변환 실습 (암묵적 반환)')
 
 // 이곳에 코드를 작성하세요
+const names = ['우혁', '하민', '준식']
+
+// 명시적 반환
+{
+  const result = names.map((name) => {
+    //const returnValue = { ['name']: name } // [name]: name 이렇게 하면 키값이 두번 나옴
+    // const returnValue = { 'name': name }
+    //const returnValue = { name: name } // 앞에 name은 변수 이름이여서, 코드 작성자가 원하는대로 할당 가능
+    //const returnValue = { name }
+    //return returnValue
+    return { name } // 구조 분해를 하여서 변수명과 키값이 동일하기 때문에 naem 한번만 작성해주면 됨
+  })
+
+  // const result = [{ name: '우혁' },{ name: '하민' },{ name: '준식' }]
+  console.log(result)
+}
+
+
+
+// 암묵적 반환
+{
+  // () => { return value }
+  // () => (value)
+  // 객체 리터럴의 중괄호와 함수 코드 블록 중괄호 모양이 같으므로,
+  // 암묵적 반환을 하려면 소괄호로 객체를 감싸주어야 한다. 
+ const result = names.map((name) => ({ name }))
+  //const result = names.map((myName) => {
+  //return {myName}
+  //  
+// })
+
+  console.log(result)
+}
+
 
 console.groupEnd()
+
 
 
 // --------------------------------------------------------------------------
@@ -19,6 +54,13 @@ console.groupEnd()
 console.groupCollapsed('2. 데이터 필터링 실습')
 
 // 이곳에 코드를 작성하세요
+const ages = [15, 22, 19, 30, 26, 17]
+
+const result = ages.filter((age) => {
+  if((age > 20))
+    return {age}
+})
+console.log(result)
 
 console.groupEnd()
 
@@ -31,6 +73,19 @@ console.groupEnd()
 console.groupCollapsed('3. 동적 렌더링 실습')
 
 // 이곳에 코드를 작성하세요
+const fruits = ['사과', '배', '포도'] 
+
+const fruitsMarkup = fruits.map((data) => {
+  const markup =
+  `<li>${data}</li> `
+  return markup
+})
+
+const fruitsHtmlCode = fruitsMarkup.join('')
+console.log(fruitsHtmlCode)
+const fruitContainer = document.querySelector('[data-container="fruit"]')
+
+fruitContainer.innerHTML = fruitsHtmlCode
 
 console.groupEnd()
 
