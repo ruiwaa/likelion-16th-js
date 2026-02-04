@@ -3,18 +3,7 @@
 // --------------------------------------------------------------------------
 
 // 데이터 정의
-const users = [
-  { name: '김민수', age: 28, job: '웹개발자' },
-  { name: '이수진', age: 32, job: '디자이너' },
-  { name: '박지훈', age: 24, job: '대학생' },
-  { name: '최유리', age: 29, job: '마케터' },
-  { name: '정우성', age: 35, job: '교사' },
-  { name: '한지민', age: 27, job: '간호사' },
-  { name: '오세훈', age: 31, job: '회계사' },
-  { name: '유나영', age: 26, job: '바리스타' },
-  { name: '장동건', age: 38, job: '영업사원' },
-  { name: '서지수', age: 23, job: '학생' },
-]
+
 
 {
   // 제어할 요소들
@@ -107,7 +96,30 @@ const users = [
       }
     )
 
-  })()
+  })//()
+
+  // 효과적으로 여러 요소(들)을 DOM에 삽입하는 방법
+// 문서 조각(DocumentFragment) 요소를 사용
+;(() => {
+  // 문서 조각(가상 DOM 컨테이너) 객체 생성
+  // 실제 문서가 아닌, 가상의 DOM 컨테이너(메모리) 상에 상주하는 데이터 활용
+  const fragment = document.createDocumentFragment()
+  fragment.appendChild(document.createElement('ul'))
+  // <document-fragment><ul>...</ul></document-fragment>
+  // console.log(fragment) 
+
+  button.addEventListener('click', () => {
+    users.forEach(({ job, name }) => {
+      const item = document.createElement('li')
+      item.textContent = `${job} ${name}`
+      // fragment 객체에 삽입 (성능 저하? 없어요!!!)
+      fragment.firstElementChild.appendChild(item)
+    })
+
+    // console.log(fragment.firstElementChild.outerHTML)
+    list.innerHTML += fragment.firstElementChild.innerHTML
+  })
+})()
 }
 
 const todaysMenu = [
@@ -130,7 +142,63 @@ const newReviews = [
 console.groupCollapsed('1. 사용자 검색 및 추가')
 
 // 이곳에 코드를 작성하세요
+const users = [
+  { name: '김민수', age: 28, job: '웹개발자' },
+  { name: '이수진', age: 32, job: '디자이너' },
+  { name: '박지훈', age: 24, job: '대학생' },
+  { name: '최유리', age: 29, job: '마케터' },
+  { name: '정우성', age: 35, job: '교사' },
+  { name: '한지민', age: 27, job: '간호사' },
+  { name: '오세훈', age: 31, job: '회계사' },
+  { name: '유나영', age: 26, job: '바리스타' },
+  { name: '장동건', age: 38, job: '영업사원' },
+  { name: '서지수', age: 23, job: '학생' },
+]
 
+{
+  const practice = document.getElementById('practice1')
+  const form = practice.querySelector('.user-search-form')
+  const list = practice.querySelector('.user-list')
+  const printError = practice.querySelector('.state-error')
+
+  form.addEventListener('submit', (e) => {
+    // 브라우저 기본 작동 방지
+    e.preventDefault()
+
+    // 사용자 입력 값 가져오기 (input은 객체이므로 객체 구조 분해로 가져올 수 있음)
+    const { search } = form.elements
+    const inputedName = search.value.trim().toLowerCase()
+    
+    // 사용자 입력 값(이름)이 users 배열 내부의 아이템의 name 필드와 일치한다면?
+    //find 메서드 사용, 
+    const searchedUser = users.find(({ name }) => name.includes(inputedName))
+    
+    if (searchedUser) {
+      // 검색된 사용자가 있다면?
+      // 새로운 <li> 요소 만들어 이름, 나이, 직업 정보 구성
+      const item = document.createElement('li')
+      const { name, age, job } = searchedUser
+      item.textContent = `${job} ${name}(${age})`
+      // 생성된 <li> 요소를 <ul> 안에 마지막 자식 요소로 추가
+      list.appendChild(item)
+    } else {
+      // 검색 결과 사용자가 없다면?
+      // 일치하는 사용자가 없다면 경고 메시지를 출력
+      printError.textContent = `검색된 ${searchedUser} 사용자가 없습니다.`
+
+      //사용자가 인식살 수 있는 시간이 지나면
+      // 경고창 사라짐
+
+      setTimeout(() => {
+        printError.textContent = ''
+      }, 3000)
+
+    }
+
+    // 폼 초기화
+    form.reset()
+  })
+}
 console.groupEnd()
 
 

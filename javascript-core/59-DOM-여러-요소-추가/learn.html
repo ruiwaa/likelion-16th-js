@@ -1,6 +1,5 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko-KR">
-
   <head>
     <meta charset="UTF-8" />
     <title>효율적인 요소 추가</title>
@@ -9,7 +8,7 @@
     <link rel="stylesheet" href="./assets/styles.css" />
     <script src="./learn.js" defer></script>
     <style>
-      .container{
+      .container {
         margin: 32px;
         padding: 24px;
         border: 8px solid currentColor;
@@ -25,14 +24,15 @@
       <ul class="list">
         <!-- 여기에 여러 요소 추가 -->
       </ul>
-
     </div>
 
     <main id="main-content" class="prose">
       <header>
         <h1>성능 최적화: 효율적인 DOM 조작</h1>
         <p>
-          반복적인 리플로우(Reflow)를 방지하고 <strong>innerHTML</strong>과 <strong>DocumentFragment</strong>를 활용하는 고성능 렌더링 기법을 배웁니다.
+          반복적인 리플로우(Reflow)를 방지하고 <strong>innerHTML</strong>과
+          <strong>DocumentFragment</strong>를 활용하는 고성능 렌더링 기법을
+          배웁니다.
         </p>
       </header>
 
@@ -40,7 +40,9 @@
         <h2>렌더링 방식 비교</h2>
 
         <table>
-          <caption>DOM 추가 방식 비교</caption>
+          <caption>
+            DOM 추가 방식 비교
+          </caption>
           <thead>
             <tr>
               <th scope="col">방법</th>
@@ -68,18 +70,31 @@
       <section id="practice1">
         <h2>🔍 사용자 정보 검색</h2>
         <form class="user-search-form">
-          <input type="text" aria-label="사용자 이름" placeholder="예) 이수진" class="search-input" />
+          <label for="search"></label>
+          <input
+            type="search"
+            name="search"
+            id="search"
+            aria-label="사용자 이름"
+            placeholder="예) 이수진"
+            class="search-input"
+          />
           <button type="submit">추가</button>
+          <div role="alert" class="state-error"></div>
         </form>
         <p class="guide">
-          <strong>💡 입력 가능 이름:</strong> 김민수, 이수진, 박지훈, 최유리 등
+          <strong>💡 입력 가능한 사용자 이름</strong>
+          김민수, 이수진, 박지훈, 최유리, 정우성, 한지민, 오세훈, 유나영,
+          장동건, 서지수
         </p>
         <ul class="user-list"></ul>
       </section>
 
       <section id="practice2">
         <h2>🍽️ 오늘의 메뉴</h2>
-        <button type="button" class="btn-load-menu">오늘의 메뉴 불러오기</button>
+        <button type="button" class="btn-load-menu">
+          오늘의 메뉴 불러오기
+        </button>
         <ul class="menu"></ul>
         <p class="info">📌 버튼을 눌러 메뉴를 확인하세요.</p>
       </section>
@@ -92,8 +107,6 @@
           <li>양이 많고 간도 딱 좋네요. 가족끼리 먹기 좋아요.</li>
         </ul>
       </section>
-
     </main>
   </body>
-
 </html>
