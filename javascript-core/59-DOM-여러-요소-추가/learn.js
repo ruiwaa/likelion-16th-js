@@ -16,6 +16,100 @@ const users = [
   { name: '서지수', age: 23, job: '학생' },
 ]
 
+{
+  // 제어할 요소들
+  const container = document.querySelector('.container')
+  const button = container.firstElementChild
+  const list = container.lastElementChild
+
+  // 성능 저하를 유발하는 사례
+  ;(() => {
+    
+    button.addEventListener('click', () => {
+      users.forEach(({ job, name }) => {
+        const item = document.createElement('li')
+        item.textContent = `${job} ${name}`
+        // 성능 저하를 유발하는 렌더링 (반복하는 동안 계속)
+        list.append(item)
+      })
+    })
+
+  })//()
+
+ // 성능 최적화 사례 (요소 생성 및 삽입)
+;(() => {
+  
+  button.addEventListener(
+    'click', 
+    () => {
+      const items = users.map(({ job, name }) => {
+        const item = document.createElement('li')
+        item.textContent = `${job} ${name}`
+        return item
+      })
+
+      // list.append(item0, item1, item2, ..., item9)
+      // 전개 연산자를 사용하여 배열을 펼칠 수 있다. 
+      // list.append(...items)
+      list.append(...items) // item[]
+    },
+    { once: true },
+  )
+
+})//()
+
+// 성능 최적화 사례 (HTML 문자열 DOM에 삽입)
+  ;(() => {
+
+
+    // list의 개별 요소에 이벤트 리스너 추가
+    // 문제점: 새로 추가된 요소들의 내용을 가져올 수 없음 (동적이지 않음)
+    // Array.from(list.children).forEach((child) => {
+    //   child.addEventListener('click', (e) => {
+    //     const item = e.currentTarget
+    //     const itemContent = item.textContent
+    //     alert(itemContent)
+    //   })
+    // })
+
+    // 이벤트 위임의 위대함(?) 👏
+    // 동적으로 추가된 요소들에게
+    list.addEventListener('click', (e) => {
+      const listItem = e.target.closest('li')
+      if (!listItem) return
+      alert(listItem.textContent)
+    })
+    
+    button.addEventListener(
+      'click', 
+      () => {
+        // ❌ 나쁜 코드 (성능 저하 )
+        // users.forEach(({ job, name }) => {
+        //   // HTML 코드 생성
+        //   const htmlCode = `<li>${job} ${name}</li>`
+        //   list.innerHTML += htmlCode // 그려라! x 10
+        // })
+
+        // ✅ 좋은 코드 (성능 저하 없음)
+        // const liItemsHTMLCode = users
+          // 메서드 체이닝
+          // .map(({ job, name }) => `<li>${job} ${name}</li>`)
+          // .join('')
+
+        const liItemsHTMLCode = users
+          .reduce((htmlCode, { job, name }) => {
+            htmlCode += `<li>${job} ${name}</li>`
+            return htmlCode
+          }, '')
+
+        // console.log(liItemsHTMLCode)
+        list.innerHTML += liItemsHTMLCode // 그려라! x 1
+      }
+    )
+
+  })()
+}
+
 const todaysMenu = [
   { name: '김치찌개', price: 9000 },
   { name: '비빔밥', price: 9500 },
