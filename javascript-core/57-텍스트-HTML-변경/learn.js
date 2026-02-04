@@ -7,6 +7,9 @@
 // 2. 버튼을 클릭하면 <h2>(또는 출력용 요소)의 텍스트가 변경되도록 작성하세요.
 console.groupCollapsed('1. textContent 실습')
 
+
+// 이곳에 코드를 작성하세요
+{
 const headlines = [
   '전자레인지에 금속 용기 사용 금지', '생수병은 직사광선 피해서 보관하기',
   '양치 후 30분 이내에는 커피 피하기', '스마트폰은 잠들기 1시간 전 사용 자제',
@@ -30,7 +33,26 @@ const headlines = [
   '공공장소에서는 이어폰 사용하기', '비상연락망은 가족끼리 공유'
 ]
 
-// 이곳에 코드를 작성하세요
+const practice1 = document.getElementById('practice1')
+const display = document.querySelector('.headline-display')
+
+// 이벤트 위임
+practice1.addEventListener('click',(e) => {
+  // 실제 이벤트가 발생한 대상을 포함해 가장 가까운 부모까지 
+   // 거슬러 올라가 요소를 찾고, 요소가 없을 경우 null 반환
+  const button = e.target.closest('.btn-change')
+  
+  //버튼이 아닐 경우 종료(빠른 반환)
+  if(!button) return
+   // 랜덤 '오늘의 생활 수칙' 꺼내기
+  const randomIndex = Math.floor(Math.random() * headlines.length)
+  const randomContent = headlines.at(randomIndex)
+
+  // DOM 요소의 텍스트 콘텐츠 조작(update)
+  display.textContent = randomContent
+})
+}
+
 
 console.groupEnd()
 
@@ -42,7 +64,33 @@ console.groupEnd()
 console.groupCollapsed('2. innerHTML 실습')
 
 // 이곳에 코드를 작성하세요
+{
+  const practice2 = document.getElementById('practice2')
+  const container = practice2.querySelector('.card-container')
 
+  practice2.addEventListener('click', (e) => {
+    const button = e.target.closest('.btn-add')
+    // 빠른 반환: 버튼이 아닐 시 종료
+    if (!button) return
+    if (container.innerHTML.trim() !== '') return
+    renderCard()
+    disable(button)
+  })
+
+  // 카드 렌더링 함수
+ function renderCard() {
+    container.innerHTML = /* html */`
+      <h2>박상현</h2>
+      <p>프론트엔드 개발자</p>
+    `
+  }
+
+// 비활성화 함수
+  function disable(element) {
+    element.disabled = true
+    element.style.setProperty('cursor', 'not-allowed')
+  }
+}
 console.groupEnd()
 
 
