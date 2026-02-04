@@ -1,22 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko-KR">
-
   <head>
     <meta charset="UTF-8" />
     <title>요소 생성 및 추가</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="돔 요소 추가" />
     <link rel="stylesheet" href="./assets/styles.css" />
+    <style>
+      .container {
+        margin: 32px;
+      }
+    </style>
     <script src="./learn.js" defer></script>
   </head>
 
   <body>
     <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+    <div class="container">
+      <button type="button" class="append-button">생성된 요소 추가</button>
+      <button type="button" class="add-button">
+        마지막 리스트 아이템 요소 추가
+      </button>
+      <!-- appendChild: 생성된 요소를 이 위치에 추가 -->
+    </div>
 
     <main id="main-content" class="prose">
       <header>
         <h1>DOM 동적 제어: 생성과 삽입</h1>
         <p>
-          메모리에 요소를 만드는 <strong>createElement</strong>와 화면에 배치하는 <strong>추가 메서드</strong>들을 학습합니다.
+          메모리에 요소를 만드는 <strong>createElement</strong>와 화면에
+          배치하는 <strong>추가 메서드</strong>들을 학습합니다.
         </p>
       </header>
 
@@ -24,7 +37,9 @@
         <h2>요소 추가 메서드 비교</h2>
 
         <table>
-          <caption>DOM 추가 메서드 요약</caption>
+          <caption>
+            DOM 추가 메서드 요약
+          </caption>
           <thead>
             <tr>
               <th scope="col">메서드</th>
@@ -52,7 +67,14 @@
       <section id="practice1">
         <h2>📋 오늘의 할 일</h2>
         <form class="todo-form">
-          <input type="text" aria-label="할 일" placeholder="할 일 작성" class="todo-input" />
+          <label for="todo-info"></label>
+          <input
+            type="text"
+            aria-label="할 일"
+            placeholder="할 일 작성"
+            class="todo-input"
+            id="todo-info"
+          />
           <button type="submit">추가</button>
         </form>
         <ul class="todo-list"></ul>
@@ -82,8 +104,6 @@
           <li>포도</li>
         </ol>
       </section>
-
     </main>
   </body>
-
 </html>
