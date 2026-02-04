@@ -129,7 +129,25 @@ console.groupEnd()
 console.groupCollapsed('2. insertBefore 실습 (Recipe)')
 
 // 이곳에 코드를 작성하세요
+{
+  const button = document.querySelector('.btn-insert')
+  button.addEventListener('click', () => {
 
+    const newListItem = document.createElement('li')
+    newListItem.textContent = '면을 넣고 3~4분간 끓입니다.'
+  
+    // 부모 요소 찾기
+    const recipteOl = document.querySelector('.ramen-cooking-recipe')
+    // 다른 요소 위차 찾기
+    const target = recipteOl.children[2]
+  
+    // 다른 요소 위치 앞에 추가
+    recipteOl.insertBefore(newListItem, target)
+
+  })
+
+
+}
 
 
 
