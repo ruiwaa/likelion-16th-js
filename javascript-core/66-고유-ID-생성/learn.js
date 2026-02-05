@@ -1,7 +1,40 @@
 // --------------------------------------------------------------------------
 // 실습: 고유 식별자(Unique ID) 생성 및 활용
 // --------------------------------------------------------------------------
+;(() => {
+  
+  const list = document.querySelector('.web-tech-list')
+  const webTeches = ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Vite', 'Webpack', 'Jest', 'Vitest', 'React', 'Next.js', 'Supabase']
 
+  const listChildrenCode =webTeches.reduce((htmlCode, curWebTech) => {
+    const uniqueId = generateUniqueString()
+    htmlCode += `<li id="tech-${uniqueId}">${curWebTech}</li>`
+    return htmlCode
+  }, '')
+
+  list.innerHTML = listChildrenCode
+
+})//()
+
+// DocumentFragment 버전 + append()
+;(() => {
+  
+  const webTeches = ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Vite', 'Webpack', 'Jest', 'Vitest', 'React', 'Next.js', 'Supabase']
+  
+  const fragment = new DocumentFragment() // 가상 DOM 컨테이너 (메모리, 매우 가벼움)
+  const list = document.querySelector('.web-tech-list')
+  
+  webTeches.forEach((techName) => {
+    const item = document.createElement('li')
+    item.textContent = techName
+    item.id = `tech-${generateUniqueString()}`
+    fragment.append(item) // 가상 DOM 컨테이너 내부 마지막 자식 요소로 삽입 (가벼움)
+  })
+
+  // 반복이 끝난 후, fragment 내부에 그려진 모든 li 아이템을 한 번에 list에 삽입 (1번만 그림 : 성능 최적화!)
+  list.append(fragment)
+
+})()
 /**
  * 36진수를 활용한 고유 문자열 생성 함수
  * @param {number} length - 생성할 문자열 길이
