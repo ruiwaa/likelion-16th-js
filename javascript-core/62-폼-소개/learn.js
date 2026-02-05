@@ -35,7 +35,7 @@ subscribeForm.addEventListener('submit', (e) => {
   // [미션 2] 사용자가 입력한 이메일 값을 가져오세요.
   // 여기에 코드 작성
   const inputEmail = document.getElementById('userEmail')
-  const {value} = inputEmail
+  const {value} = inputEmail.split('@').at(0)
   console.log(`사용자가 입력한 이메일 주소는 "${value}" 입니다.`)
   //console.log(inputEmail.value)
 
