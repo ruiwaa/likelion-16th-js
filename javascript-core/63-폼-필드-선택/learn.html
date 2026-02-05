@@ -9,7 +9,7 @@
     <link rel="icon" href="./assets/es-logo.png" />
     <script src="./learn.js" defer></script>
     <style>
-      #login-form{
+      #login-form {
         margin: 40px;
       }
     </style>
@@ -28,6 +28,26 @@
       </div>
       <button type="submit">로그인</button>
     </form>
+
+    <form id="feedback-form">
+      <div class="form-field">
+        <label for="user-email">이메일</label>
+        <input type="email" name="email" id="user-email" />
+      </div>
+      <div class="form-field">
+        <label for="feedback">피드백</label>
+        <textarea name="feedback" id="feedback"></textarea>
+      </div>
+      <button type="submit" class="submit-button">보내기</button>
+    </form>
+
+    <form id="radio-check-form">
+    <p>관심있는 프로그래밍 언어는?</p>
+    <label><input type="radio" name="lang" value="JavaScript" /> JavaScript</label>
+    <label><input type="radio" name="lang" value="Python" /> Python</label>
+    <label><input type="radio" name="lang" value="Java" /> Java</label>
+    <button type="submit">선택 완료</button>
+  </form>
 
     <main class="prose">
       <h1>폼 필드 선택 및 제어 실습</h1>

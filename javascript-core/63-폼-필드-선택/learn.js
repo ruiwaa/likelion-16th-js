@@ -68,6 +68,57 @@ formElement.addEventListener('submit',(e) => {
 
 
 })()
+
+// --------------------------------------------------------------------------
+// 실습 2: 피드백 폼
+// --------------------------------------------------------------------------
+//보내기 버튼을 누르면 사용자가 입력한 이메일, 피드백 내용을 읽어와 화면에 얼럿(alert) 창을 띄웁니다.
+
+;(() => {
+  const form = document.getElementById('feedback-form')
+  const formControls = form.elements
+  
+  
+  form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    
+    const {value:email} = formControls.email
+    const {value: textArea} = formControls.feedback
+    alert(`이메일: ${email}, 텍스트 내용: ${textArea}`)// 객체여서, 문자열로 변환해줘야함
+    
+
+    e.currentTarget.reset()
+
+  })
+ 
+
+
+})//()
+
+
+//[실습 3]
+//사용자가 관심있는 프로그래밍 언어를 체크한 후, 선택 완료 버튼을 누르면 체크된 값을 콘솔 패널에 출력
+;(() => {
+const form = document.getElementById('radio-check-form')
+const formControls = form.elements
+
+form.addEventListener('submit', (e)=> {
+  e.preventDefault()
+  
+  const boxes = formControls.lang
+  for(const checkedBox of boxes){
+
+    //checked 속성으로 조건문 처리
+  if(checkedBox.checked === true){
+    console.log(checkedBox.value)
+  }
+
+  
+}
+  
+ 
+})
+})()
 // --------------------------------------------------------------------------
 // 핵심 정리
 // --------------------------------------------------------------------------
