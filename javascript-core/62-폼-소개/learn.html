@@ -1,6 +1,5 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko-KR">
-
   <head>
     <meta charset="UTF-8" />
     <title>폼(Form) 이해하기</title>
@@ -8,16 +7,50 @@
     <link rel="stylesheet" href="./assets/styles.css" />
     <link rel="icon" href="./assets/es-logo.png" />
     <script src="./learn.js" defer></script>
+    <style>
+      #subscribeForm{
+        margin: 40px
+      }
+    </style>
   </head>
 
   <body>
     <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
+    <form
+      class="send-email-form"
+      action="server-program-url"
+      style="margin: 32px"
+    >
+      <!-- label,id,name이 폼 요소 안에 반드시 들어와 있어야 한다.  -->
+      <div class="form-field">
+        <label for="user-mail">이메일</label>
+        <input type="email" name="email" id="user-mail" />
+      </div>
+      <button type="submit">보내기</button>
+    </form>
+
+    <form id="subscribeForm">
+      <div class="form-field">
+        <label for="userEmail">이메일</label>
+        <input
+          id="userEmail"
+          name="userEmail"
+          type="email"
+          placeholder="mail@example.com"
+          required
+        />
+      </div>
+      <button type="submit">구독</button>
+    </form>
+
+    <div id="messageBox" aria-live="polite"></div>
 
     <main id="main-content" class="prose">
       <header>
         <h1>데이터의 관문: 폼(Form)</h1>
         <p>
-          사용자로부터 정보를 입력받고 전송하는 <strong>폼(Form)</strong>의 구조와 자바스크립트를 통한 <strong>제어 방법</strong>을 배웁니다.
+          사용자로부터 정보를 입력받고 전송하는 <strong>폼(Form)</strong>의
+          구조와 자바스크립트를 통한 <strong>제어 방법</strong>을 배웁니다.
         </p>
       </header>
 
@@ -25,7 +58,9 @@
         <h2>폼 요소 및 필드 속성 요약</h2>
 
         <table>
-          <caption>폼 구성 핵심 속성</caption>
+          <caption>
+            폼 구성 핵심 속성
+          </caption>
           <thead>
             <tr>
               <th scope="col">속성/요소</th>
@@ -62,17 +97,29 @@
 
       <section id="practice-form-submit">
         <h2>📩 폼 제출 및 클라이언트 제어</h2>
-        <p>기본 동작을 방지하고 입력된 데이터를 자바스크립트로 가공해 보세요.</p>
+        <p>
+          기본 동작을 방지하고 입력된 데이터를 자바스크립트로 가공해 보세요.
+        </p>
 
         <form action="/server-url" method="POST" class="user-form">
           <div class="form-field">
             <label for="usermail">이메일 주소</label>
-            <input type="email" id="usermail" name="email" placeholder="example@mail.com" required />
+            <input
+              type="email"
+              id="usermail"
+              name="email"
+              placeholder="example@mail.com"
+              required
+            />
           </div>
 
           <div class="form-field">
             <label for="user-message">문의 내용</label>
-            <textarea id="user-message" name="message" placeholder="궁금한 점을 적어주세요"></textarea>
+            <textarea
+              id="user-message"
+              name="message"
+              placeholder="궁금한 점을 적어주세요"
+            ></textarea>
           </div>
 
           <div class="button-group">
@@ -89,13 +136,20 @@
       <section id="learning-point">
         <h2>💡 학습 포인트</h2>
         <ul>
-          <li><strong>e.preventDefault():</strong> 페이지 새로고침을 막고 JS로직을 먼저 실행합니다.</li>
-          <li><strong>폼 제출 방식:</strong> 버튼 클릭뿐만 아니라 input에서 Enter를 눌러도 이벤트가 발생합니다.</li>
-          <li><strong>데이터 처리:</strong> 처리 후 <code>form.submit()</code>을 호출하거나 비동기 통신을 수행합니다.</li>
+          <li>
+            <strong>e.preventDefault():</strong> 페이지 새로고침을 막고 JS로직을
+            먼저 실행합니다.
+          </li>
+          <li>
+            <strong>폼 제출 방식:</strong> 버튼 클릭뿐만 아니라 input에서
+            Enter를 눌러도 이벤트가 발생합니다.
+          </li>
+          <li>
+            <strong>데이터 처리:</strong> 처리 후 <code>form.submit()</code>을
+            호출하거나 비동기 통신을 수행합니다.
+          </li>
         </ul>
       </section>
-
     </main>
   </body>
-
 </html>
