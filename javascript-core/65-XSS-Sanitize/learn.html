@@ -56,6 +56,14 @@
         <h2>3. URL 기반 XSS 방어</h2>
         <p>악성 링크(<code>javascript:alert(1)</code>) 생성 방어 테스트</p>
         <div id="link-area"></div>
+        <form id="create-link-form">
+          <div>
+            <label for="url">이동할 링크</label>
+            <input type="text" name="url" id="url" placeholder="https://google.com" />
+          </div>
+          <button type="submit">링크 생성</button>
+        </form>
+        <ul id="created-link-list"></ul>
       </section>
     </main>
   </body>
