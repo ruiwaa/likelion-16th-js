@@ -1,45 +1,69 @@
 import './styles/main.css'
 
+(() => {
+  const macbookPro = {
+    operatingSystem: 'macOS Sequoia 15.5(24F74)',
+    processor: '2.4GHz 8core Intel Core i9',
+    memory: 64,
+  }
+
+  // JS → JSON (서버에 보내기 전에 변환)
+  // const jsonString = JSON.stringify(macbookPro, ['processor', 'memory'])
+  const jsonString = JSON.stringify(macbookPro, null, 2)
+
+  const output = document.querySelector('.output-container')
+  output.textContent = jsonString
+
+
+  // JSON → JS (서버에서 가져온 후 변환)
+  const parsedMacbookPro = JSON.parse(jsonString)
+  console.log(parsedMacbookPro)
+}) //()
+
 // --------------------------------------------------------------------------
 // 실습: JSON 파싱 및 데이터 정리 (Data Massaging)
 // --------------------------------------------------------------------------
 
-/**
- * GitHub 저장소 데이터를 가져와 필요한 정보만 추출하고 화면에 렌더링합니다.
- * @param {string} username - GitHub 사용자 이름
- */
-function fetchAndProcessRepos(username) {
+;(() => {
+  
   const xhr = new XMLHttpRequest()
 
-  xhr.addEventListener('load', (e) => {
-    // [실습 1] JSON 파싱
-    // 서버가 응답한 JSON 문자열을 배열 객체로 변환하여 변수 repos에 할당하세요.
-    
+  xhr.open('GET', 'https://api.github.com/users/yamoo9/repos')
 
-    // [실습 2] 데이터 정리 (Data Massaging)
-    // .map() 메서드를 사용하여 repos 배열에서 다음 정보만 추출한 새 배열 data를 만드세요.
-    // - name: 저장소 이름 (repo.name)
-    // - isPublic: 공개 여부 (repo.private 속성을 반전시켜 boolean으로 저장)
-    // - url: 저장소 주소 (repo.html_url)
-    
+  // 서버에 보낼 데이터
+  const data = {
+    message: '배고파요!'
+  }
 
-    // [실습 3] 데이터 렌더링 (DOM 업데이트)
-    // 정리된 data 배열을 순회하며 <ul> 요소 내부에 <li> 항목들을 추가하세요.
-    // (힌트: .reduce() 또는 .forEach()를 사용하여 innerHTML을 구성해 보세요.)
-    
+  // 요청할 때 보낼 데이터(js 객체 -> json 문자열화)
+  // xhr.send(JSON.stringify(data))
+  xhr.send(null)
+
+  // 응답 받은 결과(json 문자열 -> js 객체화)
+  xhr.addEventListener('readystatechange', (e) => {
+    const { response } = e.currentTarget
+    // console.log(response, typeof response)
+    // json string -> js object
+    const repos = JSON.parse(response)
+    // 실제 필요한 정보만 데이터 정리(massage)
+    const massagedRepos = repos.map(({ name, visibility, private: priv, url }) => {
+      return {
+        name,
+        visibility,
+        private: priv,
+        url,
+      }
+    })
+
+    console.log(massagedRepos)
   })
 
-  xhr.open('GET', `https://api.github.com/users/${username}/repos`)
-  xhr.send()
-}
+})()
 
-// [실습 4] JSON 문자화 (stringify) 연습
-// 아래 객체를 들여쓰기 2칸이 적용된 JSON 문자열로 변환하여 콘솔에 출력해 보세요.
-const studyStatus = {
-  subject: 'JSON & AJAX',
-  progress: '80%',
-  isFun: true
-}
+
+
+
+
 
 
 // --------------------------------------------------------------------------

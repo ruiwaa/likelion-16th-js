@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/es-logo.png" />
     <style>
+      
       .control-group {
         margin-top: 20px;
       }
@@ -41,7 +42,9 @@
 
   <body>
     <a href="#main-content" class="sr-only focusable">본문 바로가기</a>
-
+    <div style="margin: 32px" hidden>
+  <button type="button" class="call-ajax">AJAX 호출</button>
+    </div>
     <main id="main-content" class="prose">
       <h1>AJAX 비동기 통신 실습</h1>
       <p>서버와 데이터를 주고받는 <strong>요청(Request)</strong>과 <strong>응답(Response)</strong> 과정을 실습합니다.</p>
@@ -58,7 +61,7 @@
 
       <section class="log-area">
         <h3>서버 응답 결과 (결과 데이터)</h3>
-        <output id="response-log">사용자 이름을 입력하고 버튼을 눌러주세요.</output>
+        <output id="response-log" aria-live="polite">사용자 이름을 입력하고 버튼을 눌러주세요.</output>
       </section>
     </main>
   </body>
