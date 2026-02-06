@@ -48,8 +48,7 @@
 
 }) //()
 
-
-// 체크박스 체크 상태(checked ⭐️) 및 값(value: 기본 값 'on') 접근
+// 체크박스 체크 상태(checked ⭐️) 및 값(value: 기본 값 'on') 접근(읽기)
 ;(() => {
   
   const container = document.querySelector('.checkbox-container')
@@ -102,9 +101,38 @@
     // })
   })
 
+}) ()
 
-})//()
+// 라디오 버튼 체크 상태 및 값 접근(읽기)
+;(() => {
+  
+  const container = document.querySelector('.radio-button-container')
+  const radioControls = Array.from(container.querySelectorAll('[type="radio"]'))
+  const radioValues = radioControls.map(({ value }) => value) // value 속성이 지정되지 않은 경우 기본값: 'on'
+  console.log(radioValues)
 
+  // 가공된 데이터 배열 만들기 목적
+  const radiosChecked = radioControls.map(({ checked }) => checked)
+  console.log(radiosChecked)
+
+  // 배열의 각 요소 순환해 값 출력 목적
+  radioControls.forEach(({ checked }) => console.log(checked))
+  
+  // 배열 내부에서 체크 상태가 참인 라디오 버튼 찾기
+  const checkedRadioButton = radioControls.find(({ checked })=> checked)
+  
+  // 방어적 프로그래밍
+  if (checkedRadioButton) {
+    const { id, checked } = checkedRadioButton
+    console.log({ id, checked })
+  }
+
+  // 배열 내부에서 체크 상태가 참인 것만 필터링
+  const checkedRadios = radioControls.filter(({ checked }) => checked)
+  console.log(checkedRadios)
+
+
+}) ()
 
 // 라디오 버튼 이벤트 리스너 추가
 ;(() => {
@@ -120,12 +148,10 @@
     })
   })
 
-})//()
+}) //()
 
-
-
-// textArea 속성 접근(읽기)
-// textArea 이벤트 리스너 추가
+// Textarea 속성 접근(읽기)
+// Textarea 이벤트 리스너 추가
 ;(() => {
   
   const container = document.querySelector('.textarea-container')
@@ -160,25 +186,37 @@
     console.log('focusout:', target)
   })
 
-})//()
+})()
 
-// 드롭다운(select) 선택된 옵션 값, 이름 접근(읽기)
+// 드롭다운 (select) 선택된 옵션 값, 이름 접근(읽기)
 // 드롭다운 체인지 이벤트 리스너 추가
 ;(() => {
   
   const container = document.querySelector('.select-container')
   const select = container.querySelector('select')
-  console.log(select) // 셀렉트 요소
-  console.log(select.options) // 포함된 옵션들 (HTMLOptionsCollection)
-  console.log(select.selectedIndex) // 선택된 옵션의 인덱스
 
-  // 선택된 옵션의 값 가져오기
-  console.log(select.value)
-  // 선택된 옵션의 레이블(이름) 가져오기
-  const selectedOption = select.options[select.selectedIndex]
-  console.log(selectedOption.text)
+  select.addEventListener('change', (e) => {
+    const { currentTarget: select } = e
+    
+    // console.log(select) // 셀렉트 요소
+    // console.log(select.options) // 포함된 옵션들 (HTMLOptionsCollection)
+    // console.log(select.selectedIndex) // 선택된 옵션의 인덱스
+    
+    // 선택된 옵션의 값 가져오기
+    console.log('선택된 옵션 값:', select.value)
+
+    if (select.value === '') {
+      console.log('빈공백: 지역을 선택하세요')
+    }
+
+    // 선택된 옵션의 레이블(이름) 가져오기
+    const selectedOption = select.options[select.selectedIndex]
+    console.log('선택된 옵션 이름:', selectedOption.text)
+  })
 
 })()
+
+
 // --------------------------------------------------------------------------
 // 핵심 정리
 // --------------------------------------------------------------------------
