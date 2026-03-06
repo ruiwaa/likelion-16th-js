@@ -19,6 +19,7 @@ const server = {
     // 인증 엔드포인트: /auth/login (POST)
     // ---------------------------------------------------------------
     if (url.pathname === '/auth/login' && request.method === 'POST') {
+      
       const credentials = await request.json()
 
       // 입력한 값과 비교 (avat, avatpass)
