@@ -83,7 +83,7 @@ formElement.addEventListener('submit',(e) => {
     e.preventDefault()
     
     const {value:email} = formControls.email
-    const {value: textArea} = formControls.feedback
+    const {value:textArea} = formControls.feedback
     alert(`이메일: ${email}, 텍스트 내용: ${textArea}`)// 객체여서, 문자열로 변환해줘야함
     
 
@@ -93,7 +93,7 @@ formElement.addEventListener('submit',(e) => {
  
 
 
-})//()
+})()
 
 
 //[실습 3]

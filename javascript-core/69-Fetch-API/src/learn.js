@@ -47,7 +47,7 @@ const prose = document.querySelector('.prose')
 prose.querySelector('h1').textContent = name
 prose.querySelector('p').textContent = bio
 })
-})//()
+})()
 
 
 // GitHub 사용자의 저장소 정보 화면에 표시 (데이터 요청 → UI 업데이트)
@@ -76,7 +76,7 @@ prose.querySelector('p').textContent = bio
   function renderList(data) {
    const repoList = document.querySelector('.repo-list')
     const fragment = new DocumentFragment()
-    
+
     const renderedListFragment = data.reduce((fragment, currentItem) => {
       const {name, url, visibility} = currentItem
       const item = document.createElement('li')
@@ -92,7 +92,7 @@ prose.querySelector('p').textContent = bio
 
   repoList.append(renderedListFragment)
   }
-})()
+})//()
 
 // --------------------------------------------------------------------------
 // 핵심 요약
