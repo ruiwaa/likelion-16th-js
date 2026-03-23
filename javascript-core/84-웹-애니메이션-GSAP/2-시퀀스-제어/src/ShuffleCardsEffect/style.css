@@ -1,0 +1,134 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  overflow: hidden;
+  height: 100vh;
+  background-color: #010409;
+  font-family: system-ui, sans-serif;
+  cursor: none;
+}
+
+[data-custom-cursor] {
+  --size: 4px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10001;
+  width: var(--size);
+  height: var(--size);
+  background: #FFD700;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+
+[data-cursor-ripple] {
+  border: 2px solid #FFD700;
+  position: fixed;
+  z-index: 10000;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+[data-noise-overlay] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-image: url("/noise.svg");
+  pointer-events: none;
+  opacity: 0.05;
+}
+
+[data-card-stage] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+}
+
+[data-card] {
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: -60px;
+  left: -95px;
+  width: 190px;
+  height: 120px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #fff;
+  user-select: none;
+  border-radius: 12px;
+  box-sizing: border-box;
+  backface-visibility: visible;
+}
+
+[data-controls] {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  bottom: 8vh;
+  left: 50%;
+  z-index: 9999;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+[data-guide-wrapper] {
+  padding: 1rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  border-radius: 50px;
+}
+
+[data-guide] {
+  margin: 0;
+  font-weight: 600;
+  color: #fff;
+}
+
+[data-button-group] {
+  display: flex;
+  gap: 1rem;
+  pointer-events: auto;
+}
+
+
+[data-ghost-button] {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.8rem 1.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.6);
+  font-weight: 600;
+  color: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-radius: 8px;
+  
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  & svg {
+    --size: 16px;
+    width: var(--size);
+    height: var(--size);
+    stroke: #fff;
+  }
+}

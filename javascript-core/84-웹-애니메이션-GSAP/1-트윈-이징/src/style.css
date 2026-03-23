@@ -1,0 +1,92 @@
+:root {
+  --bg-color: #010409;
+  --card-gradient: linear-gradient(135deg, #db2777, #831843);
+  --btn-bg: rgba(255, 255, 255, 0.05);
+  --btn-bg-hover: rgba(255, 255, 255, 0.15);
+  --text-primary: #ffffff;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+[data-container] {
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+
+  & [data-title] {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  & [data-description] {
+    font-size: 0.9rem;
+    opacity: 0.6;
+    margin-bottom: 2rem;
+  }
+
+  & [data-visual-stage] {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+
+    & [data-card] {
+      width: 160px;
+      height: 100px;
+      border-radius: 12px;
+      background: var(--card-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+
+      & [data-card-label] {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+      }
+    }
+  }
+
+  & [data-control-panel] {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+
+    & [data-action] {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: var(--btn-bg);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+
+      &:hover,
+      &:focus {
+        background: var(--btn-bg-hover);
+        outline: none;
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+}

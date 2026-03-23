@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 야간 학습</title>
+    <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
+    <script src="https://unpkg.com/gsap/dist/gsap.min.js"></script>
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body>
+
+    <div data-app-container="main">
+      <section data-section="stagger">
+        <h1 data-display="stagger-title">
+          LIKELION
+        </h1>
+        <button type="button" data-action="stagger-play">
+          스태거(Stagger) 실행
+        </button>
+      </section>
+
+      <section data-section="timeline">
+        <div data-element="box">GO!</div>
+        <button type="button" data-action="timeline-play">
+          타임라인(Timeline) 실행
+        </button>
+      </section>
+    </div>
+
+  </body>
+
+</html>

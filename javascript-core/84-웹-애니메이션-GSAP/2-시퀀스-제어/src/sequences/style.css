@@ -1,0 +1,65 @@
+:root {
+  --pink: #db2777;
+  --bg: #010409;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: system-ui, sans-serif;
+}
+
+/* 💡 속성 선택자와 Nesting 활용 🎹 */
+[data-app-container="main"] {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  text-align: center;
+
+  & [data-section] {
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+  }
+
+  & [data-display="stagger-title"] {
+    font-size: 5rem;
+    margin-top: 0;
+
+    & [data-char] {
+      display: inline-block;
+    }
+  }
+
+  & [data-element="box"] {
+    width: 100px;
+    height: 100px;
+    background: var(--pink);
+    margin: 20px auto;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+  }
+
+  & button[data-action] {
+    margin-top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.4);
+    border: 1px solid currentColor;
+    border-radius: 6px;
+    transition: 0.3s;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
